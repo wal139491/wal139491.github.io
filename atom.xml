@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-07-06T09:48:38.584Z</updated>
+  <updated>2016-07-28T09:37:08.724Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>相册效果页面</title>
+    <link href="http://yoursite.com/2016/07/28/%E7%9B%B8%E5%86%8C%E6%95%88%E6%9E%9C%E9%A1%B5%E9%9D%A2/"/>
+    <id>http://yoursite.com/2016/07/28/相册效果页面/</id>
+    <published>2016-07-28T08:45:57.000Z</published>
+    <updated>2016-07-28T09:37:08.724Z</updated>
+    
+    <content type="html">&lt;h6 id=&quot;7-27晚上花了半个小时-百度google没解决&quot;&gt;&lt;a href=&quot;#7-27晚上花了半个小时-百度google没解决&quot; class=&quot;headerlink&quot; title=&quot;7.27晚上花了半个小时 百度google没解决&quot;&gt;&lt;/a&gt;7.27晚上花了半个小时 百度google没解决&lt;/h6&gt;&lt;p&gt;   &lt;img src=&quot;http://o9pxg8pv5.bkt.clouddn.com/London.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h6 id=&quot;7-28上午stack-overflow-python3-5操作注册表库-winreg改变winreg-一次性解决&quot;&gt;&lt;a href=&quot;#7-28上午stack-overflow-python3-5操作注册表库-winreg改变winreg-一次性解决&quot; class=&quot;headerlink&quot; title=&quot;7.28上午stack overflow, python3.5操作注册表库_winreg改变winreg,一次性解决&quot;&gt;&lt;/a&gt;7.28上午stack overflow, python3.5操作注册表库&lt;code&gt;_winreg&lt;/code&gt;改变&lt;code&gt;winreg&lt;/code&gt;,一次性解决&lt;/h6&gt;&lt;p&gt;  &lt;img src=&quot;http://o9pxg8pv5.bkt.clouddn.com/Sydney.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;结论：百度不靠谱，Google大法好&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h6 id=&quot;7-27晚上花了半个小时-百度google没解决&quot;&gt;&lt;a href=&quot;#7-27晚上花了半个小时-百度google没解决&quot; class=&quot;headerlink&quot; title=&quot;7.27晚上花了半个小时 百度google没解决&quot;&gt;&lt;/a&gt;7.27晚上花了半个小时 百
+    
+    </summary>
+    
+      <category term="hexo" scheme="http://yoursite.com/categories/hexo/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>Android避免OOM(内存优化)</title>
