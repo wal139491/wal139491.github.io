@@ -164,7 +164,7 @@
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                5
+                7
                 <span>文章</span>
             </div>
             <div class="article-info-block">
@@ -217,6 +217,321 @@
 
             
             <section id="main">
+    <article id="post-Markdown高阶语法手册2" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2016/08/17/Markdown高阶语法手册2/">Markdown高阶语法手册2</a>
+        </h1>
+    
+
+                <div class="article-meta">
+                    
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2016/08/17/Markdown高阶语法手册2/">
+            <time datetime="2016-08-17T07:40:27.296Z" itemprop="datePublished">2016-08-17</time>
+        </a>
+    </div>
+
+
+                    
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Markdown语法/">Markdown语法</a>
+    </div>
+
+                    
+                </div>
+            </header>
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <p><h1 id="Cmd-Markdown-高阶语法手册"><a href="#Cmd-Markdown-高阶语法手册" class="headerlink" title="Cmd Markdown 高阶语法手册"></a>Cmd Markdown 高阶语法手册</h1><p><img src="http://o9pxg8pv5.bkt.clouddn.com/markdownicon.jpg" alt=""></p>
+<h3 id="1-内容目录"><a href="#1-内容目录" class="headerlink" title="1. 内容目录"></a>1. 内容目录</h3><p>在段落中填写 <code>[TOC]</code> 以显示全文内容的目录结构。</p>
+<p>[TOC]</p>
+<h3 id="2-标签分类"><a href="#2-标签分类" class="headerlink" title="2. 标签分类"></a>2. 标签分类</h3><p>在编辑区任意行的列首位置输入以下代码给文稿标签：</p>
+<p>标签： 数学 英语 Markdown</p>
+<p>或者</p>
+<p>Tags： 数学 英语 Markdown</p>
+<h3 id="3-删除线"><a href="#3-删除线" class="headerlink" title="3. 删除线"></a>3. 删除线</h3><p>使用 ~~ 表示删除线。</p>
+<p><del>这是一段错误的文本。</del></p>
+<h3 id="4-注脚"><a href="#4-注脚" class="headerlink" title="4. 注脚"></a>4. 注脚</h3><p>使用 [^keyword] 表示注脚。</p>
+<p>这是一个注脚[^footnote]的样例。</p>
+<p>这是第二个注脚[^footnote2]的样例。</p>
+<h3 id="5-LaTeX-公式"><a href="#5-LaTeX-公式" class="headerlink" title="5. LaTeX 公式"></a>5. LaTeX 公式</h3><p>$ 表示行内公式：</p>
+<p>质能守恒方程可以用一个很简洁的方程式 $E=mc^2$ 来表达。</p>
+<p>$$ 表示整行公式：</p>
+<p>$$\sum_{i=1}^n a_i=0$$</p>
+<p>$$f(x_1,x_x,\ldots,x_n) = x_1^2 + x_2^2 + \cdots + x_n^2 $$</p>
+<p>$$\sum^{j-1}<em>{k=0}{\widehat{\gamma}</em>{kj} z_k}$$</p>
+<p>访问 <a href="http://meta.math.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference">MathJax</a> 参考更多使用方法。</p>
+<h3 id="6-加强的代码块"><a href="#6-加强的代码块" class="headerlink" title="6. 加强的代码块"></a>6. 加强的代码块</h3><p>支持四十一种编程语言的语法高亮的显示，行号显示。</p>
+<p>非代码示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get install vim-gnome</span><br></pre></td></tr></table></figure>
+<p>Python 示例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@requires_authorization</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">somefunc</span><span class="params">(param1=<span class="string">''</span>, param2=<span class="number">0</span>)</span>:</span></span><br><span class="line">    <span class="string">'''A docstring'''</span></span><br><span class="line">    <span class="keyword">if</span> param1 &gt; param2: <span class="comment"># interesting</span></span><br><span class="line">        <span class="keyword">print</span> <span class="string">'Greater'</span></span><br><span class="line">    <span class="keyword">return</span> (param2 - param1 + <span class="number">1</span>) <span class="keyword">or</span> <span class="keyword">None</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SomeClass</span>:</span></span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>message = <span class="string">'''interpreter</span><br><span class="line"><span class="meta">... </span>prompt'''</span></span><br></pre></td></tr></table></figure>
+<p>JavaScript 示例：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line">* nth element in the fibonacci series.</span><br><span class="line">* @param n &gt;= 0</span><br><span class="line">* @return the nth element, &gt;= 0.</span><br><span class="line">*/</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fib</span>(<span class="params">n</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> a = <span class="number">1</span>, b = <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">var</span> tmp;</span><br><span class="line">  <span class="keyword">while</span> (--n &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">    tmp = a;</span><br><span class="line">    a += b;</span><br><span class="line">    b = tmp;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> a;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">document</span>.write(fib(<span class="number">10</span>));</span><br></pre></td></tr></table></figure></p>
+            <p class="article-more-link">
+                <a href="/2016/08/17/Markdown高阶语法手册2/#more">查看更多</a>
+            </p>
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://yoursite.com/2016/08/17/Markdown高阶语法手册2/" data-id="cirypdybi0002bob05uv1bs4i" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://yoursite.com/2016/08/17/Markdown高阶语法手册2/#comments" class="article-comment-link ds-thread-count" data-thread-key="http://yoursite.com/2016/08/17/Markdown高阶语法手册2/">评论</a>
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
+    <article id="post-Markdown简明语法手册1" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2016/08/17/Markdown简明语法手册1/">Markdown简明语法手册1</a>
+        </h1>
+    
+
+                <div class="article-meta">
+                    
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2016/08/17/Markdown简明语法手册1/">
+            <time datetime="2016-08-17T02:55:22.052Z" itemprop="datePublished">2016-08-17</time>
+        </a>
+    </div>
+
+
+                    
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Markdown语法/">Markdown语法</a>
+    </div>
+
+                    
+                </div>
+            </header>
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <h1 id="Cmd-Markdown-简明语法手册"><a href="#Cmd-Markdown-简明语法手册" class="headerlink" title="Cmd Markdown 简明语法手册"></a>Cmd Markdown 简明语法手册</h1><p>标签： Cmd-Markdown</p>
+<hr>
+<h3 id="1-斜体和粗体"><a href="#1-斜体和粗体" class="headerlink" title="1. 斜体和粗体"></a>1. 斜体和粗体</h3><p>使用 <em> 和 *</em> 表示斜体和粗体。</p>
+<p>示例：</p>
+<p>这是 <em>斜体</em>，这是 <strong>粗体</strong>。</p>
+<h3 id="2-分级标题"><a href="#2-分级标题" class="headerlink" title="2. 分级标题"></a>2. 分级标题</h3><p>使用 === 表示一级标题，使用 — 表示二级标题。</p>
+<p>示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">这是一个一级标题</span><br><span class="line">============================</span><br><span class="line"></span><br><span class="line">这是一个二级标题</span><br><span class="line">--------------------------------------------------</span><br><span class="line"></span><br><span class="line">### 这是一个三级标题</span><br></pre></td></tr></table></figure>
+<p>你也可以选择在行首加井号表示不同级别的标题 (H1-H6)，例如：# H1, ## H2, ### H3，#### H4。</p>
+<h3 id="3-外链接"><a href="#3-外链接" class="headerlink" title="3. 外链接"></a>3. 外链接</h3><p>使用 [描述](链接地址) 为文字增加外链接。</p>
+<p>示例：</p>
+<p>这是去往 <a href="http://ghosertblog.github.com" target="_blank" rel="external">本人博客</a> 的链接。</p>
+<h3 id="4-无序列表"><a href="#4-无序列表" class="headerlink" title="4. 无序列表"></a>4. 无序列表</h3><p>使用 *，+，- 表示无序列表。</p>
+<p>示例：</p>
+<ul>
+<li>无序列表项 一</li>
+<li>无序列表项 二</li>
+<li>无序列表项 三</li>
+</ul>
+<h3 id="5-有序列表"><a href="#5-有序列表" class="headerlink" title="5. 有序列表"></a>5. 有序列表</h3><p>使用数字和点表示有序列表。</p>
+<p>示例：</p>
+<ol>
+<li>有序列表项 一</li>
+<li>有序列表项 二</li>
+<li>有序列表项 三</li>
+</ol>
+<h3 id="6-文字引用"><a href="#6-文字引用" class="headerlink" title="6. 文字引用"></a>6. 文字引用</h3><p>使用 &gt; 表示文字引用。</p>
+<p>示例：</p>
+<blockquote>
+<p>野火烧不尽，春风吹又生。</p>
+</blockquote>
+<h3 id="7-行内代码块"><a href="#7-行内代码块" class="headerlink" title="7. 行内代码块"></a>7. 行内代码块</h3><p>使用 `代码` 表示行内代码块。</p>
+<p>示例：</p>
+<p>让我们聊聊 <code>html</code>。</p>
+<h3 id="8-代码块"><a href="#8-代码块" class="headerlink" title="8.  代码块"></a>8.  代码块</h3><p>使用 四个缩进空格 表示代码块。</p>
+<p>示例：</p>
+<pre><code>这是一个代码块，此行左侧有四个不可见的空格。
+</code></pre><h3 id="9-插入图像"><a href="#9-插入图像" class="headerlink" title="9.  插入图像"></a>9.  插入图像</h3><p>使用 ![描述](图片链接地址) 插入图像。</p>
+<p>示例：</p>
+<p><img src="https://www.zybuluo.com/static/img/my_head.jpg" alt="我的头像"></p>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://yoursite.com/2016/08/17/Markdown简明语法手册1/" data-id="cirypdyb60000bob0jhhtfgrc" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://yoursite.com/2016/08/17/Markdown简明语法手册1/#comments" class="article-comment-link ds-thread-count" data-thread-key="http://yoursite.com/2016/08/17/Markdown简明语法手册1/">评论</a>
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
     <article id="post-Linux学习笔记1" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
@@ -224,7 +539,7 @@
 <div class="article-gallery">
     <div class="article-gallery-photos">
         
-            <a class="article-gallery-img fancybox" href="http://o9pxg8pv5.bkt.clouddn.com/Licon1.jpg" rel="gallery_cirt9czer0000isb0ulfxe4le">
+            <a class="article-gallery-img fancybox" href="http://o9pxg8pv5.bkt.clouddn.com/Licon1.jpg" rel="gallery_cirypdyc90008bob0m4af124g">
                 <img src="http://o9pxg8pv5.bkt.clouddn.com/Licon1.jpg" itemprop="image">
             </a>
         
@@ -281,7 +596,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2016/08/13/Linux学习笔记1/" data-id="cirt9czer0000isb0ulfxe4le" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yoursite.com/2016/08/13/Linux学习笔记1/" data-id="cirypdyc90008bob0m4af124g" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -422,7 +737,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2016/08/07/正则表达式和Python中正则的使用/" data-id="cirt9czfy0006isb0dbii3mgy" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yoursite.com/2016/08/07/正则表达式和Python中正则的使用/" data-id="cirypdycv000dbob0e3nnnm4p" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -507,7 +822,7 @@
 <div class="article-gallery">
     <div class="article-gallery-photos">
         
-            <a class="article-gallery-img fancybox" href="http://o9pxg8pv5.bkt.clouddn.com/Eiffel.jpg" rel="gallery_cirt9czfn0003isb0sbipizdy">
+            <a class="article-gallery-img fancybox" href="http://o9pxg8pv5.bkt.clouddn.com/Eiffel.jpg" rel="gallery_cirypdyck000abob0yhfnumnh">
                 <img src="http://o9pxg8pv5.bkt.clouddn.com/Eiffel.jpg" itemprop="image">
             </a>
         
@@ -558,7 +873,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2016/07/28/相册效果页面/" data-id="cirt9czfn0003isb0sbipizdy" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yoursite.com/2016/07/28/相册效果页面/" data-id="cirypdyck000abob0yhfnumnh" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -712,7 +1027,7 @@ int heapsize=manager.getMemoryClass();</code></li>
 
 </div>
 
-    <a data-url="http://yoursite.com/2016/07/06/Android避免OOM-内存优化/" data-id="cirt9czft0005isb0m719blva" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yoursite.com/2016/07/06/Android避免OOM-内存优化/" data-id="cirypdyby0005bob0m0lggwm7" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -790,133 +1105,9 @@ int heapsize=manager.getMemoryClass();</code></li>
 
 
 
-    <article id="post-my-first-blog" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2016/06/20/my-first-blog/">美团大众点评大咖秀(2016.6.19)</a>
-        </h1>
-    
-
-                <div class="article-meta">
-                    
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2016/06/20/my-first-blog/">
-            <time datetime="2016-06-20T09:43:32.000Z" itemprop="datePublished">2016-06-20</time>
-        </a>
-    </div>
-
-
-                    
-                    
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/something/">something</a>
-    </div>
-
-                </div>
-            </header>
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            <p><p>我去听了半天课</p>
-<p>###git add详解<br>git add. 添加所有文件<br>git add -u 将所有修改或删除的文件添加到索引库<br>git add -i 查看所有修改或者删除但是没有被提交的文件</p>
-<p>美团IOS工程师(北航)<br><img src="https://raw.githubusercontent.com/wal139491/myphoto/master/IMAG1070.jpg" alt="建议"><br></p>
-            <p class="article-more-link">
-                <a href="/2016/06/20/my-first-blog/#more">查看更多</a>
-            </p>
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://yoursite.com/2016/06/20/my-first-blog/" data-id="cirt9czf50001isb0nzgjhvd8" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-        <a href="http://yoursite.com/2016/06/20/my-first-blog/#comments" class="article-comment-link ds-thread-count" data-thread-key="http://yoursite.com/2016/06/20/my-first-blog/">评论</a>
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
+    <nav id="page-nav">
+        <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">下一页 &raquo;</a>
+    </nav>
 </section>
             
                 <aside id="sidebar">
@@ -926,6 +1117,44 @@ int heapsize=manager.getMemoryClass();</code></li>
         <h3 class="widget-title">最新文章</h3>
         <div class="widget">
             <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/08/17/Markdown高阶语法手册2/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://o9pxg8pv5.bkt.clouddn.com/markdownicon.jpg)" alt="Markdown高阶语法手册2" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Markdown语法/">Markdown语法</a></p>
+                            <p class="item-title"><a href="/2016/08/17/Markdown高阶语法手册2/" class="title">Markdown高阶语法手册2</a></p>
+                            <p class="item-date"><time datetime="2016-08-17T07:40:27.296Z" itemprop="datePublished">2016-08-17</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/08/17/Markdown简明语法手册1/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://www.zybuluo.com/static/img/my_head.jpg)" alt="Markdown简明语法手册1" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Markdown语法/">Markdown语法</a></p>
+                            <p class="item-title"><a href="/2016/08/17/Markdown简明语法手册1/" class="title">Markdown简明语法手册1</a></p>
+                            <p class="item-date"><time datetime="2016-08-17T02:55:22.052Z" itemprop="datePublished">2016-08-17</time></p>
+                        </div>
+                    </li>
                 
                     <li>
                         
@@ -984,44 +1213,6 @@ int heapsize=manager.getMemoryClass();</code></li>
                         </div>
                     </li>
                 
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2016/07/06/Android避免OOM-内存优化/" class="thumbnail">
-    
-    
-        <span style="background-image:url(http://o9pxg8pv5.bkt.clouddn.com/OOM1.png)" alt="Android避免OOM(内存优化)" class="thumbnail-image"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Android/">Android</a></p>
-                            <p class="item-title"><a href="/2016/07/06/Android避免OOM-内存优化/" class="title">Android避免OOM(内存优化)</a></p>
-                            <p class="item-date"><time datetime="2016-07-06T07:22:11.000Z" itemprop="datePublished">2016-07-06</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2016/06/20/my-first-blog/" class="thumbnail">
-    
-    
-        <span style="background-image:url(https://raw.githubusercontent.com/wal139491/myphoto/master/IMAG1070.jpg)" alt="美团大众点评大咖秀(2016.6.19)" class="thumbnail-image"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"></p>
-                            <p class="item-title"><a href="/2016/06/20/my-first-blog/" class="title">美团大众点评大咖秀(2016.6.19)</a></p>
-                            <p class="item-date"><time datetime="2016-06-20T09:43:32.000Z" itemprop="datePublished">2016-06-20</time></p>
-                        </div>
-                    </li>
-                
             </ul>
         </div>
     </div>
@@ -1045,7 +1236,7 @@ int heapsize=manager.getMemoryClass();</code></li>
     <div class="widget-wrap">
         <h3 class="widget-title">分类</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux学习/">Linux学习</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/hexo/">hexo</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a><span class="category-list-count">1</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux学习/">Linux学习</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Markdown语法/">Markdown语法</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/hexo/">hexo</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a><span class="category-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -1054,7 +1245,7 @@ int heapsize=manager.getMemoryClass();</code></li>
     <div class="widget-wrap">
         <h3 class="widget-title">归档</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">1</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -1075,6 +1266,8 @@ int heapsize=manager.getMemoryClass();</code></li>
 <li><a href="http://www.jianshu.com/users/de17c721f02a/latest_articles" title="jianshu">简书</a></li>
 <li><a href="https://blog.jamespan.me/" title="James Pan's Blog">James Pan's Blog </a></li>
 <li><a href="http://ibruce.info/" title="icruce">不如</a></li>
+<li><a href="http://rocko.xyz/2016/06/14/ADB-Issue-2/" title="rocko">Rocko</a></li>
+
 
 </ul>
 </div>
