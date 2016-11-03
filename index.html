@@ -164,11 +164,11 @@
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                11
+                12
                 <span>文章</span>
             </div>
             <div class="article-info-block">
-                5
+                6
                 <span>标签</span>
             </div>
         </div>
@@ -217,6 +217,433 @@
 
             
             <section id="main">
+    <article id="post-Python开发3(控制语句和文件操作)" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2016/10/11/Python开发3(控制语句和文件操作)/">Python开发3(控制语句和文件操作)</a>
+        </h1>
+    
+
+                <div class="article-meta">
+                    
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2016/10/11/Python开发3(控制语句和文件操作)/">
+            <time datetime="2016-10-11T01:06:30.797Z" itemprop="datePublished">2016-10-11</time>
+        </a>
+    </div>
+
+
+                    
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/python/">python</a>
+    </div>
+
+                    
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/python基础/">python基础</a>
+    </div>
+
+                </div>
+            </header>
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <p><p><img src="http://huaban.com/go/?pin_id=436154113" alt=""></p>
+<h5 id="python的控制语句"><a href="#python的控制语句" class="headerlink" title="python的控制语句"></a>python的控制语句</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">x = input(<span class="string">"x:"</span>)</span><br><span class="line"><span class="comment"># input支持用户输入数字和表达式，最后返回数字类型，表达式会自动计算</span></span><br><span class="line">print(x)</span><br><span class="line">x = raw_imput(<span class="string">"x:"</span>)</span><br><span class="line"><span class="comment"># raw_input捕获原始输入，返回的是字符串类型</span></span><br><span class="line">x = int(x) <span class="comment"># 如果需要使用数字类型,转换位数字类型</span></span><br><span class="line">x = x+<span class="number">1</span></span><br></pre></td></tr></table></figure>
+<p>####### switch语句</p>
+<blockquote>
+<p>switch语句容易造成代码不易维护，使源文件拥挤。<strong>面向对象程序设计，常常对switch语句进行重构，把switch语句分解成若干个类。</strong>当然对于分支流程简单的switch可以使用字典来实现，使用字典更加容易管理switch.<br>字典是键值对组成的集合，类似JAVA的HashTable</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 使用字典实现switch</span></span><br><span class="line"><span class="keyword">from</span> __future__ <span class="keyword">import</span> division</span><br><span class="line"><span class="comment"># python提供了__future__模块，把新版本的特性导入到当前版本</span></span><br><span class="line">x =<span class="number">1</span></span><br><span class="line">y = <span class="number">2</span></span><br><span class="line">operator = <span class="string">"/"</span></span><br><span class="line">result = &#123;</span><br><span class="line"><span class="string">"+"</span>: x+y,</span><br><span class="line"><span class="string">"*"</span>: x*y,</span><br><span class="line"><span class="string">"-"</span>: x-y,</span><br><span class="line"><span class="string">"/"</span>: x/y,</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">print</span> result.get(operator)</span><br></pre></td></tr></table></figure>
+<h6 id="循环语句"><a href="#循环语句" class="headerlink" title="循环语句"></a>循环语句</h6><p>python循环语句包括while和for<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">####### while循环</span></span><br><span class="line">numbers = raw_input(<span class="string">"输入几个数字，以逗号分隔"</span>).split(<span class="string">","</span>)</span><br><span class="line"><span class="comment"># 输入数字，赋值给numbers列表</span></span><br><span class="line">x = <span class="number">0</span></span><br><span class="line"><span class="keyword">if</span> x &lt; len(numbers):</span><br><span class="line"><span class="keyword">print</span> numbers[x]</span><br><span class="line">x+<span class="number">1</span> = x</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 带else的while的循环语句</span></span><br><span class="line">x = input(<span class="string">"输入x的值"</span>)</span><br><span class="line">i = <span class="number">0</span></span><br><span class="line"><span class="keyword">while</span>(x!=<span class="number">0</span>):</span><br><span class="line">  <span class="keyword">if</span>(x&gt;<span class="number">0</span>)</span><br><span class="line">  x<span class="number">-1</span>=x</span><br><span class="line">  <span class="keyword">else</span>:</span><br><span class="line">   x+<span class="number">1</span>=x</span><br><span class="line"> i+<span class="number">1</span>=i</span><br><span class="line"> print(<span class="string">"第%d循环"</span>%i, x)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">print(<span class="string">"x等于0"</span>，x)</span><br></pre></td></tr></table></figure>
+<p>####### for循环<br>for循环用于遍历一个集合，依次访问集合中的每一个项目<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> 变量 <span class="keyword">in</span> 集合：</span><br><span class="line">...</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">...</span><br><span class="line"><span class="comment"># 集合可以是元组、列表、字典等数据结构</span></span><br><span class="line"><span class="comment"># 每次从集合中取出一个值并赋值给变量，else可以省略</span></span><br><span class="line"><span class="string">'''</span><br><span class="line">for循环通常与range()函数一起使用，range(开始，结束值，步长)返回一个列表</span><br><span class="line">range(5,-1,-1) -&gt;[5,4,3,2,1,0]    包前不包后</span><br><span class="line">'''</span></span><br><span class="line"><span class="comment"># for in 语句</span></span><br><span class="line"><span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">-1</span>,<span class="number">3</span>,<span class="number">1</span>):</span><br><span class="line">    <span class="keyword">if</span> x &gt; <span class="number">0</span> :</span><br><span class="line">        print(<span class="string">"正数"</span>,x)</span><br><span class="line">    <span class="keyword">elif</span> x == <span class="number">0</span> :</span><br><span class="line">        print(<span class="string">"零"</span>,x)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        print(<span class="string">"负数"</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    print(<span class="string">"函数结束"</span>)</span><br></pre></td></tr></table></figure></p>
+<p>python中没有for(x=2;x&lt;15;x++)这种表达式，可以使用：<br><code>x= 0
+while x &lt; 5:
+    print x
+    x + 1=x</code></p>
+<p>####### break 和 continue<br>break: 直接中断循环<br>continue: 停止本次循环，进入下一次循环<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">x = <span class="number">4</span></span><br><span class="line"><span class="keyword">for</span> y <span class="keyword">in</span> range(<span class="number">0</span>,<span class="number">20</span>,):</span><br><span class="line">    <span class="keyword">if</span> x != y:</span><br><span class="line">        print(y)</span><br><span class="line">        <span class="keyword">continue</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        print(x)</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line"><span class="comment"># x不等于y，continue，进入下次循环</span></span><br><span class="line"><span class="comment"># x等于y,break中断循环，输入：0，1，2，3，4</span></span><br></pre></td></tr></table></figure></p>
+<p><strong>介绍下xrange()函数：</strong><br>xrange是一个类，返回一个xrange对象，`xrange(开始，结束值，步长）<br>xrange()进行遍历的时候                      <strong>每次只返回一个值</strong> <strong><br>range()返回的是列表             </strong>一次性计算并返回所有的值**，<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># xrange()</span></span><br><span class="line">x = xrange(<span class="number">0</span>,<span class="number">8</span>)</span><br><span class="line"><span class="keyword">print</span> x <span class="comment">#输出xrange(8),这是一个xrange对象</span></span><br><span class="line"><span class="keyword">print</span> x[<span class="number">0</span>] <span class="comment">#输出 0</span></span><br><span class="line"><span class="keyword">print</span> x[<span class="number">7</span>] <span class="comment">#输出最后一个元素的值 输出结果为：7</span></span><br></pre></td></tr></table></figure></p>
+<p>####### xrange()实现的冒泡排序算法<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">bubbleSort</span><span class="params">(numbers)</span>:</span></span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> range(len(numbers)<span class="number">-1</span>,<span class="number">-1</span>,<span class="number">-1</span>):</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(j):</span><br><span class="line">            <span class="keyword">if</span> numbers[i] &gt; numbers[i+<span class="number">1</span>]:   <span class="comment"># 把数值小的放到顶端</span></span><br><span class="line">                numbers[i], numbers[i+<span class="number">1</span>] = numbers[i+<span class="number">1</span>], numbers[i]</span><br><span class="line">            print(numbers)</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></span><br><span class="line">    numbers = [<span class="number">23</span>,<span class="number">12</span>,<span class="number">9</span>,<span class="number">15</span>,<span class="number">6</span>]</span><br><span class="line">    bubbleSort(numbers)</span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure></p>
+<h4 id="Python文件的处理"><a href="#Python文件的处理" class="headerlink" title="Python文件的处理"></a>Python文件的处理</h4><p>数据的存储可以使用数据库（保持了数据完整性、关联性，数据更加安全可靠）和文件（简单易用，通常用于存储应用程序软件的参数和临时数据）</p>
+<h5 id="文件的基本操作"><a href="#文件的基本操作" class="headerlink" title="文件的基本操作"></a>文件的基本操作</h5><p>python提供os,os.path,shutil等模块用于处理文件用于处理文件，包括：<br>文件的创建、读写、修改和复制、删除和重命名<br>文件内容的搜索和替换<br>文件内容的比较<br>配置文集的读写，目录创建和遍历<br>文件和流</p>
+<h6 id="文件的打开和创建"><a href="#文件的打开和创建" class="headerlink" title="文件的打开和创建"></a>文件的打开和创建</h6><p>python使用内联函数file()创建和打开文件， 返回一个file对象可以对文件进行各种操作<br><strong>使用open()可以替换file()，open()是file()的别名</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">file(name, mode, buffering)</span><br><span class="line"><span class="comment"># name:被打开文件的名称，mode文件的打开模式，buffering设置缓存模式，0是无缓存，1表示行缓存，&gt;1表示缓冲区的大小以字节为单位</span></span><br></pre></td></tr></table></figure></p>
+<table>
+<thead>
+<tr>
+<th>模式名称</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>r</td>
+<td>以只读方式打开</td>
+</tr>
+<tr>
+<td>r+</td>
+<td>以读写方式打开</td>
+</tr>
+<tr>
+<td>w</td>
+<td>以写入方式打开，先删除原有内容，再写入新的数据，<strong>如果文件不存在就创建一个新的文件 </strong></td>
+</tr>
+<tr>
+<td>w+</td>
+<td>以读写方式打开，先删除原有内容，再写入新的数据，<strong>如果文件不存在就创建一个新的文件</strong></td>
+</tr>
+<tr>
+<td>a</td>
+<td>以写入方式打开，在文件末尾增加新的内容，如果文件不存在就创建一个新的文件</td>
+</tr>
+<tr>
+<td>a+</td>
+<td>以读写方式打开，在文件末尾增加新的内容，如果文件不存在就创建一个新的文件</td>
+</tr>
+<tr>
+<td>b</td>
+<td>以二进制方式打开文件，与r r+  w w+ a +结合使用</td>
+</tr>
+<tr>
+<td>U</td>
+<td>支持所有换行符，\r \n <code>\r\n</code></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>对于图片，视频文件必须使用“b”（也就是二进制的方式读写）</p>
+</blockquote>
+<p><strong>file的常用属性和方法：</strong></p>
+<table>
+<thead>
+<tr>
+<th>属性名称</th>
+<th>方法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Closed</td>
+<td>判断文件是否关闭，关闭返回True</td>
+</tr>
+<tr>
+<td>Mode</td>
+<td>显示文件的打开模式</td>
+</tr>
+<tr>
+<td>Encoding</td>
+<td>显示文件的编码模式   print(f.Encoding) f是file对象</td>
+</tr>
+<tr>
+<td>Newlines</td>
+<td>显示文件的换行模式</td>
+</tr>
+<tr>
+<td>file(name,mode,buffering)</td>
+<td>以mode模式打开name文件</td>
+</tr>
+<tr>
+<td>flush</td>
+<td>把缓存区内容写入磁盘</td>
+</tr>
+<tr>
+<td>close</td>
+<td>关闭文件</td>
+</tr>
+<tr>
+<td>read(5)</td>
+<td>读取文件中读取5个字节的内容作为字符串返回</td>
+</tr>
+<tr>
+<td>readline()</td>
+<td>读取1行作为字符串返回，readlines(2)表示每行每次读取两个字节，直到行的末尾</td>
+</tr>
+<tr>
+<td>readlines()</td>
+<td>读取每行的内容存储在列表中返回</td>
+</tr>
+<tr>
+<td>seek(offset, whence)</td>
+<td>把文件指针移动到1个新的位置，offset是相对于whence的位置，whence为0从文件开始的位置计算，为1表示从当前位置计算，为2表示从文件末尾位置计算</td>
+</tr>
+<tr>
+<td>tell()</td>
+<td>返回文件指针的位置</td>
+</tr>
+<tr>
+<td>next()</td>
+<td>返回下一行的内容，并将文件的指针移动到下一行</td>
+</tr>
+<tr>
+<td>truncate(size)</td>
+<td>删除size个字节的内容</td>
+</tr>
+<tr>
+<td>write(str)</td>
+<td>将字符串str的内容写入文件</td>
+</tr>
+<tr>
+<td>writelines(str)</td>
+<td>将字符串序列的内容写入文件</td>
+</tr>
+</tbody>
+</table></p>
+            <p class="article-more-link">
+                <a href="/2016/10/11/Python开发3(控制语句和文件操作)/#more">查看更多</a>
+            </p>
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://yoursite.com/2016/10/11/Python开发3(控制语句和文件操作)/" data-id="civ2az6zw00071wb02pa1i467" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://yoursite.com/2016/10/11/Python开发3(控制语句和文件操作)/#comments" class="article-comment-link ds-thread-count" data-thread-key="http://yoursite.com/2016/10/11/Python开发3(控制语句和文件操作)/">评论</a>
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
+    <article id="post-python网络采集1" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2016/10/01/python网络采集1/">python网络数据采集1</a>
+        </h1>
+    
+
+                <div class="article-meta">
+                    
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2016/10/01/python网络采集1/">
+            <time datetime="2016-10-01T07:17:31.137Z" itemprop="datePublished">2016-10-01</time>
+        </a>
+    </div>
+
+
+                    
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/python/">python</a>
+    </div>
+
+                    
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/python网络数据采集/">python网络数据采集</a>
+    </div>
+
+                </div>
+            </header>
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <p><p><a href="https://github.com/REMitchell/python-scraping">python网络数据采集代码(github)</a></p>
+<p><img src="http://img.hb.aicdn.com/bc0acb2f96d7314b03e5d59527587275e362a75c128f8-sD64Th_fw658" alt=""></p>
+<blockquote>
+<p>python代码简洁，拥有高级数据结构，能够以简单高效的方式执行面向对象编程，<strong>但是它的运行效率受人诟病</strong>，所以python经常作为一种“胶水语言”，把耗时的核心部分使用C/C++等效率更高的语言编写，然后再由python粘和。事实上，在大多数数据任务上，python的运行效率已经可以媲美C/C++.</p>
+</blockquote>
+<p>在大数据深入人心的时代，网络数据采集作为网络、数据库、和机器学习等领域的交汇点，成为满足个性化网络数据需求的最佳实践。网络数据采集技术可以进一步精炼数据，把网络上杂乱无章的的数据聚合成规范的形式，方便分析和挖掘。</p>
+<p>工作中经常会遇到各种数据，比如几百页的数据，或者在数据杂乱无章的网站中充满着带有陷阱的表单和坑爹的验证码，甚至需要的数据保存在网页版的PDF和网络图片中。你需要了解常用的数据采集手段和网络表单安全措施。</p>
+<p>网络数据采集可以使用多种语言，比如：python, java ,php, C#, Go都可以。Python拥有简洁轻松的语法，开箱可用的模块，强大快乐的社区，总可以快速构建出简单高效的解决方案。</p>
+<p><strong>网络数据采集是涉及多个领域的：</strong></p>
+<blockquote>
+<p>Python数据采集的模块有：urllib, BeautifulSoup, lxml, Scrapy, PdfMiner, Requests, Selenium, NLTK, Pillow, unittest,Pysocks等<br>还有一些知名网站的API，MySQL数据库，OpenRefine数据分析工具，PhanthomJS无头浏览器以及Tor代理服务器等内容。</p>
+</blockquote>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">如果需要了解python多进程(multiprocessing)，并发(concurrency)，集群(cluster)等高性能和多核编程，可以移步python高性能、多核编程、设计模式的书籍。</span><br></pre></td></tr></table></figure>
+<p><strong>进行网络数据采集时，要控制网络数据采集的速度，降低被采集网站服务器的负担。</strong></p>
+<h4 id="什么是网络数据采集"><a href="#什么是网络数据采集" class="headerlink" title="什么是网络数据采集"></a>什么是网络数据采集</h4><p>网络数据采集也称 网页抓屏(screen scraping),数据挖掘(data mining), 网络收割(Web harvesting),或者网络机器人(bots)。<br>网络数据采集是通过多种手段收集网络数据的方式，涉及数据库，网络服务器，HTTP协议，HTML语言，网络安全，图像处理，数据科学等。<br>网络数据采集不光是通过与API交互(或者与浏览器进行交互)的方式，还需要处理js，多媒体和cookie的新式网站。最常用的方法是写一个自动化程序向网络服务器请求数据(通常是HTML表单或其他网页文件)，然后对数据进行解析，提取需要的信息。</p>
+<blockquote>
+<p><strong>网络数据挖掘流程：</strong>采集数据   -&gt;    数据清洗    -&gt;挖掘模型构建    -&gt;    归类展示(可视化)<br><strong>数据采集的可视化</strong>; 爬取数据    -&gt;存入数据库     -&gt;调用数据库将数据可视化</p>
+</blockquote>
+<p>网络爬虫可以完成传统搜索引擎不能做的事情，搜索引擎不能填写表单，比如爬取大量网站的数据查询出航班价格随时间变化的图表，爬虫可以一次可以成千上百万个网页。</p>
+<p>存在各种API(Twitter或者维基百科的API)，可以向用户提供服务器中格式完好的数据，而且一个API提供了不同的数据类型，在某些时候API是比爬虫获取数据更加方便。但是在：</p>
+<ul>
+<li>你收集的数据来自不同的网站，没有一个API能够综合多个网站的数据。</li>
+<li>你采取的数据非常小众，网站不会为你单独做一个api</li>
+<li>一些网站没有基础设施或者技术能力去建API</li>
+<li>即使API存在，有时候还会有请求内容和次数限制，API提供的数据类型或者数据格式也可能无法满足需求</li>
+</ul>
+<p>大多数的应用场景都会用到这样毫无阻碍获取数据的手段：市场预测，机器语言翻译，甚至医疗诊断领域，通过对新闻网站、文章以及健康论坛中的数据进行采集和分析，也可以获取很多好处。无论处于哪个领域，网络数据采集都会让你的工作更加高效，提升生产力，甚至开创一个全新的领域。<br></p>
+            <p class="article-more-link">
+                <a href="/2016/10/01/python网络采集1/#more">查看更多</a>
+            </p>
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://yoursite.com/2016/10/01/python网络采集1/" data-id="civ2az716000p1wb0rn2xl8v5" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://yoursite.com/2016/10/01/python网络采集1/#comments" class="article-comment-link ds-thread-count" data-thread-key="http://yoursite.com/2016/10/01/python网络采集1/">评论</a>
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
     <article id="post-All is Acting" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
@@ -257,35 +684,21 @@
         
         <div class="article-entry" itemprop="articleBody">
         
-            
-            <h3 id="值得浏览的网站"><a href="#值得浏览的网站" class="headerlink" title="值得浏览的网站:"></a>值得浏览的网站:</h3><p>　　　　　　　　　　　　　<strong>　思考有时候比机械的code重要</strong><br><img src="http://o9pxg8pv5.bkt.clouddn.com/zuozhu.jpg" alt=""></p>
-<p>95%<a href="http://blog.csdn.net/holybin/article/details/36180941" target="_blank" rel="external">CSDN解析CTCI</a></p>
+            <p><h3 id="值得浏览的网站"><a href="#值得浏览的网站" class="headerlink" title="值得浏览的网站:"></a>值得浏览的网站:</h3><p>　　　　　　　　　　　　　<strong>　思考有时候比机械的code重要</strong><br><img src="http://o9pxg8pv5.bkt.clouddn.com/zuozhu.jpg" alt=""></p>
+<p>95%<a href="http://blog.csdn.net/holybin/article/details/36180941">CSDN解析CTCI</a></p>
 <blockquote>
 <p>CSDN还是要多看看的，不管机器学习还是数据挖掘(分析)，上面的干货多。</p>
 </blockquote>
-<p>95%<a href="http://www.cocoachina.com/programmer/20140904/9524.html" target="_blank" rel="external">对菜鸟开发者的叮咛</a><br>90%<a href="http://mp.weixin.qq.com/s?__biz=MjM5OTMxMzA4NQ==&amp;mid=2655932796&amp;idx=1&amp;sn=edc70a72d8864b6e041c0d134d2b2913&amp;chksm=bc879aae8bf013b8b663726c18829508065ecdae7e332879f71772095259a84c11e38e4b185d&amp;scene=0#rd" target="_blank" rel="external">每个优秀程序员必须具备的技术技能</a><br>95%<a href="https://book.douban.com/subject/10436668/" target="_blank" rel="external">豆瓣读书</a><br><a href="https://book.douban.com/subject/25753386/" target="_blank" rel="external">程序员面试金典（第5版)</a></p>
+<p>95%<a href="http://www.cocoachina.com/programmer/20140904/9524.html">对菜鸟开发者的叮咛</a><br>90%<a href="http://mp.weixin.qq.com/s?__biz=MjM5OTMxMzA4NQ==&amp;mid=2655932796&amp;idx=1&amp;sn=edc70a72d8864b6e041c0d134d2b2913&amp;chksm=bc879aae8bf013b8b663726c18829508065ecdae7e332879f71772095259a84c11e38e4b185d&amp;scene=0#rd">每个优秀程序员必须具备的技术技能</a><br>95%<a href="https://book.douban.com/subject/10436668/">豆瓣读书</a><br><a href="https://book.douban.com/subject/25753386/">程序员面试金典（第5版)</a></p>
 <blockquote>
 <p>豆瓣上书书评，算法，面试的书籍、豆列都是极好的</p>
 </blockquote>
-<p>80%<a href="http://www.cricode.com/category/program-language/python/pythonlevel1" target="_blank" rel="external">快客网</a></p>
+<p>80%<a href="http://www.cricode.com/category/program-language/python/pythonlevel1">快客网</a></p>
 <h5 id="2016-9-25-下午2-00-我打算写完睡一会"><a href="#2016-9-25-下午2-00-我打算写完睡一会" class="headerlink" title="2016.9.25  下午2:00 我打算写完睡一会"></a>2016.9.25  下午2:00 我打算写完睡一会</h5><p>最近我很少更新博客和简书了，有很多方面的原因吧。开学将近一个月了，我也不知道上的是什么，发生了什么我也记不太清了，连诉说的人也越来越少，我不是抱怨因为不起作用了只能默默接受，毕竟事实就是这样。</p>
-<p>爸妈之前一直电话微信问我怎么样，我不愿意他们担心太多也不愿意去骗他们，只能说还好，具体哪里好哪里不好我也懒得说，也说不清。我的身体越来越不好，连一点免疫力都没有，有时候我在想这他妈该死的日子能不能发生点转机，结果真的没有。我连续好几天的做噩梦，后来才知道我爸心脏可能有些不舒服了，跟我爷爷一起在医院里治疗。之前总想着玩，家里还有我爸呢，现在我爸身体不好了，我觉得我应该做些什么了，最让我沮丧的是我什么也做不了，我没有找到一份工作哪怕挣一点钱，我妈总是说你回来吧(不知道她是心大还是太溺爱我)，为着一个不知道怎样的结局而走着，我不想因为我个人的事情破坏大家的心情，所以我一直以为我与这个世界是格格不入的。</p>
-<p>我一直在跟都哥、表妹说我会回上海的，可是我知道这个概率很小，是的我想回到你们身边，我没想挣多少钱，我就想上上班能跟你们一起开开玩笑吃吃饭，找一个相爱的人在喜欢的城市呆着就够了。时间都会让我们发生改变，都哥不用费太大力气就有一份好工作毕竟兔哥你们都是名校毕业的，星哥表妹也都在为自己的事情而做着。不是我不够努力，也许就是差一点运气还有我那该死的身体和杂念。我来北京一直蒙七爷、慧姐、阿磊他们照顾，他们都在上班，曾经我想通过上研究生发生点变化，然而事与愿违，我看不到方向，看不清未来的样子，爸妈的老去以及各种压力让我难过。</p>
-<p>我不知道我花了几个晚上才写了一点点python笔记有没有什么作用，我极其讨厌那种理论上的东西，结果上课发现全是的，我只能自己多看点书，学习专业课和多多编程练习。</p>
-<h5 id="2016-9-30-晚上9-30-发完我应该会去跑步"><a href="#2016-9-30-晚上9-30-发完我应该会去跑步" class="headerlink" title="2016.9.30 晚上9:30  发完我应该会去跑步"></a>2016.9.30 晚上9:30  发完我应该会去跑步</h5><p><img src="http://o9pxg8pv5.bkt.clouddn.com/IMAG1459.jpg" alt=""><br><br><br>(MD,等我尽快把python基础看完，一定要写个程序上传图片到七牛返回外链，天天网页打开太麻烦了)<br>前两天因为一些小事搞得自己心情不好，可能我太在意某些东西比如mx情节了，周三那么忙的一天都挺过来了，现在想想确实也没什么，<strong>任何事情都不能阻止你美丽的活着不是吗</strong>，今天也在上面的<a href="http://www.cocoachina.com/programmer/20140904/9524.html" target="_blank" rel="external">对菜鸟开发者的叮咛</a>中读到一句话一句话: </p>
-<blockquote>
-<p>别再和他人比较，而是与自己比较<br>当人开始不断地和他人比较的时，很容易陷入复杂的情绪。</p>
-<p>与其想着别人有多好、多厉害，专注于自身的独特点，思考什么对你来说是重要的事情，设定目标，并且花心思找寻方法来一一达成，这才是最实际也最重要的。</p>
-<p> 比如说，不妨想想，现在的自己跟一年前的自己有什么不同？看看成长了多少、进步了多少，一年后，你想成为怎样的人？自觉，会渐渐地改变你，会更凸显出你的个人特质，无形中让你越来越好。</p>
-</blockquote>
-<p>英语老师好像每节课都会看我写的东西对我说good，我好像从开学开始就一直坐在最后一排，可能我想安静的看书吧或者我怕老师问我问题，事实上我是不怎么喜欢多说话的这是个沟通的问题我可能要慢慢改掉，我4月份在南京的时候大姨说我小时后很聪明很喜欢说话，现在长大了说话越来越少了，我当时吃了一惊，小时候的事情一点也不记得了，居然与现在有这么大不同，不过我从小到大都是面瘫脸好像(∩_∩)。</p>
-<p>我总是如此的反复，现在心情会好一些，不再去多想事情，早上爸妈7,8点给我发微信，我一直睡到10点结果下午看完电影回来还是困成狗真不知道为啥，晚上我妈又用微信视频告诉我去北京医院看看，我这辈子最讨厌去医院，合肥，南京，石家庄的医院快去全了，我就很生气把我妈一顿说气呼呼给挂了，现在想想挺后悔的，我妈太啰嗦太容易夸大事实，所以我总把她当成出气的对象，当我难过伤心无能为力还是只能打给她。她不会做饭衣服也洗不干净从来不打扮，但她是我妈，这就值得我爱她了。以后还是克制吧，毕竟陪父母，爷爷的时间也没那么多了。</p>
-<p>下来一个多小时书都没打开，查查东西，听听歌就10点了，算了十一才刚刚开始，说不定明天还要去医院，谁能拯救我脆弱的小身板啊。</p>
-<blockquote>
-<p>如果没有学软件，我一定会是个很好的写手，作家谈不上，我总是会有奇奇怪怪的想法，现在后悔也晚了，谁让上了贼船了呢，不过我发现我能做一些事情的时候也没那么讨厌软件了，还是要略微拼命学习啊（身体不好不能太拼(∩_∩)），跟其他朋友还是差了点，不过我要养家糊口不是吗。</p>
-</blockquote>
-<p><strong>Over, have a good night everybody.</strong></p>
-
+<p>爸妈之前一直电话微信问我怎么样，我不愿意他们担心太多也不愿意去骗他们，只能说还好，具体哪里好哪里不好我也懒得说，也说不清。我的身体越来越不好，连一点免疫力都没有，有时候我在想这他妈该死的日子能不能发生点转机，结果真的没有。我连续好几天的做噩梦，后来才知道我爸心脏可能有些不舒服了，跟我爷爷一起在医院里治疗。之前总想着玩，家里还有我爸呢，现在我爸身体不好了，我觉得我应该做些什么了，最让我沮丧的是我什么也做不了，我没有找到一份工作哪怕挣一点钱，我妈总是说你回来吧(不知道她是心大还是太溺爱我)，为着一个不知道怎样的结局而走着，我不想因为我个人的事情破坏大家的心情，所以我一直以为我与这个世界是格格不入的。<br></p>
+            <p class="article-more-link">
+                <a href="/2016/09/25/All is Acting/#more">查看更多</a>
+            </p>
         
         </div>
         <footer class="article-footer">
@@ -295,7 +708,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2016/09/25/All is Acting/" data-id="citpw45ca0000dkb0g1ndcx73" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yoursite.com/2016/09/25/All is Acting/" data-id="civ2az6y900001wb00ywypivf" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -483,7 +896,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2016/08/20/数据库概论基础知识—-1/" data-id="citpw45gx000xdkb0d1im2a6p" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yoursite.com/2016/08/20/数据库概论基础知识—-1/" data-id="civ2az70x000j1wb0yijfbh7k" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -698,7 +1111,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2016/08/20/Mysql数据库基础/" data-id="citpw45du000adkb02hmj2mcf" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yoursite.com/2016/08/20/Mysql数据库基础/" data-id="civ2az6zp00061wb0rimnr6ss" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -928,7 +1341,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2016/08/20/Mysql数据类型/" data-id="citpw45e6000cdkb0r0l0i5cc" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yoursite.com/2016/08/20/Mysql数据类型/" data-id="civ2az70a000c1wb0u5a5mqlr" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1006,321 +1419,6 @@
 
 
 
-    <article id="post-Markdown高阶语法手册2" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2016/08/17/Markdown高阶语法手册2/">Markdown高阶语法手册2</a>
-        </h1>
-    
-
-                <div class="article-meta">
-                    
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2016/08/17/Markdown高阶语法手册2/">
-            <time datetime="2016-08-17T07:40:27.296Z" itemprop="datePublished">2016-08-17</time>
-        </a>
-    </div>
-
-
-                    
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/Markdown语法/">Markdown语法</a>
-    </div>
-
-                    
-                </div>
-            </header>
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            <p><h1 id="Cmd-Markdown-高阶语法手册"><a href="#Cmd-Markdown-高阶语法手册" class="headerlink" title="Cmd Markdown 高阶语法手册"></a>Cmd Markdown 高阶语法手册</h1><p><img src="http://o9pxg8pv5.bkt.clouddn.com/markdownicon.jpg" alt=""></p>
-<h3 id="1-内容目录"><a href="#1-内容目录" class="headerlink" title="1. 内容目录"></a>1. 内容目录</h3><p>在段落中填写 <code>[TOC]</code> 以显示全文内容的目录结构。</p>
-<p>[TOC]</p>
-<h3 id="2-标签分类"><a href="#2-标签分类" class="headerlink" title="2. 标签分类"></a>2. 标签分类</h3><p>在编辑区任意行的列首位置输入以下代码给文稿标签：</p>
-<p>标签： 数学 英语 Markdown</p>
-<p>或者</p>
-<p>Tags： 数学 英语 Markdown</p>
-<h3 id="3-删除线"><a href="#3-删除线" class="headerlink" title="3. 删除线"></a>3. 删除线</h3><p>使用 ~~ 表示删除线。</p>
-<p><del>这是一段错误的文本。</del></p>
-<h3 id="4-注脚"><a href="#4-注脚" class="headerlink" title="4. 注脚"></a>4. 注脚</h3><p>使用 [^keyword] 表示注脚。</p>
-<p>这是一个注脚[^footnote]的样例。</p>
-<p>这是第二个注脚[^footnote2]的样例。</p>
-<h3 id="5-LaTeX-公式"><a href="#5-LaTeX-公式" class="headerlink" title="5. LaTeX 公式"></a>5. LaTeX 公式</h3><p>$ 表示行内公式：</p>
-<p>质能守恒方程可以用一个很简洁的方程式 $E=mc^2$ 来表达。</p>
-<p>$$ 表示整行公式：</p>
-<p>$$\sum_{i=1}^n a_i=0$$</p>
-<p>$$f(x_1,x_x,\ldots,x_n) = x_1^2 + x_2^2 + \cdots + x_n^2 $$</p>
-<p>$$\sum^{j-1}<em>{k=0}{\widehat{\gamma}</em>{kj} z_k}$$</p>
-<p>访问 <a href="http://meta.math.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference">MathJax</a> 参考更多使用方法。</p>
-<h3 id="6-加强的代码块"><a href="#6-加强的代码块" class="headerlink" title="6. 加强的代码块"></a>6. 加强的代码块</h3><p>支持四十一种编程语言的语法高亮的显示，行号显示。</p>
-<p>非代码示例：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get install vim-gnome</span><br></pre></td></tr></table></figure>
-<p>Python 示例：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@requires_authorization</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">somefunc</span><span class="params">(param1=<span class="string">''</span>, param2=<span class="number">0</span>)</span>:</span></span><br><span class="line">    <span class="string">'''A docstring'''</span></span><br><span class="line">    <span class="keyword">if</span> param1 &gt; param2: <span class="comment"># interesting</span></span><br><span class="line">        <span class="keyword">print</span> <span class="string">'Greater'</span></span><br><span class="line">    <span class="keyword">return</span> (param2 - param1 + <span class="number">1</span>) <span class="keyword">or</span> <span class="keyword">None</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SomeClass</span>:</span></span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>message = <span class="string">'''interpreter</span><br><span class="line"><span class="meta">... </span>prompt'''</span></span><br></pre></td></tr></table></figure>
-<p>JavaScript 示例：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line">* nth element in the fibonacci series.</span><br><span class="line">* @param n &gt;= 0</span><br><span class="line">* @return the nth element, &gt;= 0.</span><br><span class="line">*/</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fib</span>(<span class="params">n</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> a = <span class="number">1</span>, b = <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">var</span> tmp;</span><br><span class="line">  <span class="keyword">while</span> (--n &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">    tmp = a;</span><br><span class="line">    a += b;</span><br><span class="line">    b = tmp;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> a;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">document</span>.write(fib(<span class="number">10</span>));</span><br></pre></td></tr></table></figure></p>
-            <p class="article-more-link">
-                <a href="/2016/08/17/Markdown高阶语法手册2/#more">查看更多</a>
-            </p>
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://yoursite.com/2016/08/17/Markdown高阶语法手册2/" data-id="citpw45dk0006dkb0nj5mjdce" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-        <a href="http://yoursite.com/2016/08/17/Markdown高阶语法手册2/#comments" class="article-comment-link ds-thread-count" data-thread-key="http://yoursite.com/2016/08/17/Markdown高阶语法手册2/">评论</a>
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
-    <article id="post-Markdown简明语法手册1" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2016/08/17/Markdown简明语法手册1/">Markdown简明语法手册1</a>
-        </h1>
-    
-
-                <div class="article-meta">
-                    
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2016/08/17/Markdown简明语法手册1/">
-            <time datetime="2016-08-17T02:55:22.052Z" itemprop="datePublished">2016-08-17</time>
-        </a>
-    </div>
-
-
-                    
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/Markdown语法/">Markdown语法</a>
-    </div>
-
-                    
-                </div>
-            </header>
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            
-            <h1 id="Cmd-Markdown-简明语法手册"><a href="#Cmd-Markdown-简明语法手册" class="headerlink" title="Cmd Markdown 简明语法手册"></a>Cmd Markdown 简明语法手册</h1><p>标签： Cmd-Markdown</p>
-<hr>
-<h3 id="1-斜体和粗体"><a href="#1-斜体和粗体" class="headerlink" title="1. 斜体和粗体"></a>1. 斜体和粗体</h3><p>使用 <em> 和 *</em> 表示斜体和粗体。</p>
-<p>示例：</p>
-<p>这是 <em>斜体</em>，这是 <strong>粗体</strong>。</p>
-<h3 id="2-分级标题"><a href="#2-分级标题" class="headerlink" title="2. 分级标题"></a>2. 分级标题</h3><p>使用 === 表示一级标题，使用 — 表示二级标题。</p>
-<p>示例：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">这是一个一级标题</span><br><span class="line">============================</span><br><span class="line"></span><br><span class="line">这是一个二级标题</span><br><span class="line">--------------------------------------------------</span><br><span class="line"></span><br><span class="line">### 这是一个三级标题</span><br></pre></td></tr></table></figure>
-<p>你也可以选择在行首加井号表示不同级别的标题 (H1-H6)，例如：# H1, ## H2, ### H3，#### H4。</p>
-<h3 id="3-外链接"><a href="#3-外链接" class="headerlink" title="3. 外链接"></a>3. 外链接</h3><p>使用 [描述](链接地址) 为文字增加外链接。</p>
-<p>示例：</p>
-<p>这是去往 <a href="http://ghosertblog.github.com" target="_blank" rel="external">本人博客</a> 的链接。</p>
-<h3 id="4-无序列表"><a href="#4-无序列表" class="headerlink" title="4. 无序列表"></a>4. 无序列表</h3><p>使用 *，+，- 表示无序列表。</p>
-<p>示例：</p>
-<ul>
-<li>无序列表项 一</li>
-<li>无序列表项 二</li>
-<li>无序列表项 三</li>
-</ul>
-<h3 id="5-有序列表"><a href="#5-有序列表" class="headerlink" title="5. 有序列表"></a>5. 有序列表</h3><p>使用数字和点表示有序列表。</p>
-<p>示例：</p>
-<ol>
-<li>有序列表项 一</li>
-<li>有序列表项 二</li>
-<li>有序列表项 三</li>
-</ol>
-<h3 id="6-文字引用"><a href="#6-文字引用" class="headerlink" title="6. 文字引用"></a>6. 文字引用</h3><p>使用 &gt; 表示文字引用。</p>
-<p>示例：</p>
-<blockquote>
-<p>野火烧不尽，春风吹又生。</p>
-</blockquote>
-<h3 id="7-行内代码块"><a href="#7-行内代码块" class="headerlink" title="7. 行内代码块"></a>7. 行内代码块</h3><p>使用 `代码` 表示行内代码块。</p>
-<p>示例：</p>
-<p>让我们聊聊 <code>html</code>。</p>
-<h3 id="8-代码块"><a href="#8-代码块" class="headerlink" title="8.  代码块"></a>8.  代码块</h3><p>使用 四个缩进空格 表示代码块。</p>
-<p>示例：</p>
-<pre><code>这是一个代码块，此行左侧有四个不可见的空格。
-</code></pre><h3 id="9-插入图像"><a href="#9-插入图像" class="headerlink" title="9.  插入图像"></a>9.  插入图像</h3><p>使用 ![描述](图片链接地址) 插入图像。</p>
-<p>示例：</p>
-<p><img src="https://www.zybuluo.com/static/img/my_head.jpg" alt="我的头像"></p>
-
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://yoursite.com/2016/08/17/Markdown简明语法手册1/" data-id="citpw45cr0001dkb0y80gtn80" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-        <a href="http://yoursite.com/2016/08/17/Markdown简明语法手册1/#comments" class="article-comment-link ds-thread-count" data-thread-key="http://yoursite.com/2016/08/17/Markdown简明语法手册1/">评论</a>
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
     <nav id="page-nav">
         <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">下一页 &raquo;</a>
     </nav>
@@ -1333,6 +1431,44 @@
         <h3 class="widget-title">最新文章</h3>
         <div class="widget">
             <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/10/11/Python开发3(控制语句和文件操作)/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://huaban.com/go/?pin_id=436154113)" alt="Python开发3(控制语句和文件操作)" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/python/">python</a></p>
+                            <p class="item-title"><a href="/2016/10/11/Python开发3(控制语句和文件操作)/" class="title">Python开发3(控制语句和文件操作)</a></p>
+                            <p class="item-date"><time datetime="2016-10-11T01:06:30.797Z" itemprop="datePublished">2016-10-11</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/10/01/python网络采集1/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://img.hb.aicdn.com/bc0acb2f96d7314b03e5d59527587275e362a75c128f8-sD64Th_fw658)" alt="python网络数据采集1" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/python/">python</a></p>
+                            <p class="item-title"><a href="/2016/10/01/python网络采集1/" class="title">python网络数据采集1</a></p>
+                            <p class="item-date"><time datetime="2016-10-01T07:17:31.137Z" itemprop="datePublished">2016-10-01</time></p>
+                        </div>
+                    </li>
                 
                     <li>
                         
@@ -1391,44 +1527,6 @@
                         </div>
                     </li>
                 
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2016/08/20/Mysql数据类型/" class="thumbnail">
-    
-    
-        <span style="background-image:url(http://c.hiphotos.baidu.com/baike/w%3D268%3Bg%3D0/sign=e35e494a6159252da3171a020ca06406/ac6eddc451da81cb037c289d5366d016082431c3.jpg)" alt="Mysql等数据类型的使用" class="thumbnail-image"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/数据库概论/">数据库概论</a></p>
-                            <p class="item-title"><a href="/2016/08/20/Mysql数据类型/" class="title">Mysql等数据类型的使用</a></p>
-                            <p class="item-date"><time datetime="2016-08-20T00:29:22.634Z" itemprop="datePublished">2016-08-20</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2016/08/17/Markdown高阶语法手册2/" class="thumbnail">
-    
-    
-        <span style="background-image:url(http://o9pxg8pv5.bkt.clouddn.com/markdownicon.jpg)" alt="Markdown高阶语法手册2" class="thumbnail-image"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Markdown语法/">Markdown语法</a></p>
-                            <p class="item-title"><a href="/2016/08/17/Markdown高阶语法手册2/" class="title">Markdown高阶语法手册2</a></p>
-                            <p class="item-date"><time datetime="2016-08-17T07:40:27.296Z" itemprop="datePublished">2016-08-17</time></p>
-                        </div>
-                    </li>
-                
             </ul>
         </div>
     </div>
@@ -1452,7 +1550,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">分类</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux学习/">Linux学习</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Markdown语法/">Markdown语法</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/hexo/">hexo</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据库概论/">数据库概论</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/读书和生活/">读书和生活</a><span class="category-list-count">1</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux学习/">Linux学习</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/hexo/">hexo</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据库概论/">数据库概论</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/读书和生活/">读书和生活</a><span class="category-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -1461,7 +1559,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">归档</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">1</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -1470,7 +1568,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">标签</h3>
         <div class="widget">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android优化/">Android优化</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OOM/">OOM</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/something/">something</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/正则表达式/">正则表达式</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/生活/">生活</a><span class="tag-list-count">1</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android优化/">Android优化</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python基础/">python基础</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python网络数据采集/">python网络数据采集</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/something/">something</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/正则表达式/">正则表达式</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/生活/">生活</a><span class="tag-list-count">1</span></li></ul>
         </div>
     </div>
 

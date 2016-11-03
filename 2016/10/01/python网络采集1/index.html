@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <meta charset="utf-8">
+    
+    <title>python网络数据采集1 | walsky&#39;s blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="python网络数据采集代码(github)
+
+
+python代码简洁，拥有高级数据结构，能够以简单高效的方式执行面向对象编程，但是它的运行效率受人诟病，所以python经常作为一种“胶水语言”，把耗时的核心部分使用C/C++等效率更高的语言编写，然后再由python粘和。事实上，在大多数数据任务上，python的运行效率已经可以媲美C/C++.
+
+在大数据深入人心的时代，网络数据采集作为网络、数">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python网络数据采集1">
+<meta property="og:url" content="http://yoursite.com/2016/10/01/python网络采集1/index.html">
+<meta property="og:site_name" content="walsky's blog">
+<meta property="og:description" content="python网络数据采集代码(github)
+
+
+python代码简洁，拥有高级数据结构，能够以简单高效的方式执行面向对象编程，但是它的运行效率受人诟病，所以python经常作为一种“胶水语言”，把耗时的核心部分使用C/C++等效率更高的语言编写，然后再由python粘和。事实上，在大多数数据任务上，python的运行效率已经可以媲美C/C++.
+
+在大数据深入人心的时代，网络数据采集作为网络、数">
+<meta property="og:image" content="http://img.hb.aicdn.com/bc0acb2f96d7314b03e5d59527587275e362a75c128f8-sD64Th_fw658">
+<meta property="og:updated_time" content="2016-11-03T12:12:34.717Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="python网络数据采集1">
+<meta name="twitter:description" content="python网络数据采集代码(github)
+
+
+python代码简洁，拥有高级数据结构，能够以简单高效的方式执行面向对象编程，但是它的运行效率受人诟病，所以python经常作为一种“胶水语言”，把耗时的核心部分使用C/C++等效率更高的语言编写，然后再由python粘和。事实上，在大多数数据任务上，python的运行效率已经可以媲美C/C++.
+
+在大数据深入人心的时代，网络数据采集作为网络、数">
+<meta name="twitter:image" content="http://img.hb.aicdn.com/bc0acb2f96d7314b03e5d59527587275e362a75c128f8-sD64Th_fw658">
+    
+
+    
+
+    
+
+    <link rel="stylesheet" href="/vendor/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/vendor/open-sans/styles.css">
+    <link rel="stylesheet" href="/vendor/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/vendor/jquery/2.1.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/vendor/fancybox/jquery.fancybox.css">
+    
+    
+    
+    
+
+</head>
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo" style="background-image: url(css/images/mylogo.gif)"></i>
+                <span class="site-title">walsky&#39;s blog</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">
+
+                     <i class="fa fa-home"></i>
+                   Home</a>
+                
+                    <a class="main-nav-link" href="/archives">
+
+                     <i class="fa fa-lightbulb-o"></i>
+                   Archives</a>
+                
+                    <a class="main-nav-link" href="/categories">
+
+                     <i class="fa fa-sort-alpha-asc"></i>
+                   Categories</a>
+                
+                    <a class="main-nav-link" href="/tags">
+
+                     <i class="fa fa-tag"></i>
+                   Tags</a>
+                
+                    <a class="main-nav-link" href="/about">
+
+                     <i class="fa fa-paper-plane"></i>
+                   About</a>
+                
+            </nav>
+            
+                
+                <nav id="sub-nav">
+                    <div class="profile" id="profile-nav">
+                        <a id="profile-anchor" href="javascript:;">
+                            <img class="avatar" src="/css/images/avatar.jpg" />
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                    </div>
+                </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">Home</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">Categories</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">Tags</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">About</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+                
+
+<aside id="profile">
+    <div class="inner profile-inner">
+        <div class="base-info profile-block">
+            <img id="avatar" src="/css/images/avatar.jpg" />
+            <h2 id="name">Laiwei</h2>
+            <h3 id="title">Developer &amp; life loving</h3>
+            <span id="location"><i class="fa fa-map-marker"></i>Beijing, China</span>
+            <a id="follow" target="_blank" href="https://github.com/wal139491/">关注我</a>
+        </div>
+        <div class="article-info profile-block">
+            <div class="article-info-block">
+                12
+                <span>文章</span>
+            </div>
+            <div class="article-info-block">
+                6
+                <span>标签</span>
+            </div>
+        </div>
+        
+        <div class="profile-block social-links">
+            <table>
+                <tr>
+                    
+                    
+                    <td>
+                        <a href="http://github.com/wal139491/" target="_blank" title="github" class=tooltip>
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="http://weibo.com/walsky" target="_blank" title="weibo" class=tooltip>
+                            <i class="fa fa-weibo"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="http://www.jianshu.com/users/de17c721f02a/latest_articles" target="_blank" title="jianshu" class=tooltip>
+                            <i class="fa fa-jianshu"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="dribbble" class=tooltip>
+                            <i class="fa fa-dribbble"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/atom.xml" target="_blank" title="rss" class=tooltip>
+                            <i class="fa fa-rss"></i>
+                        </a>
+                    </td>
+                    
+                </tr>
+            </table>
+        </div>
+        
+    </div>
+</aside>
+
+            
+            <section id="main"><article id="post-python网络采集1" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            python网络数据采集1
+        </h1>
+    
+
+                <div class="article-meta">
+                    
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2016/10/01/python网络采集1/">
+            <time datetime="2016-10-01T07:17:31.137Z" itemprop="datePublished">2016-10-01</time>
+        </a>
+    </div>
+
+
+                    
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/python/">python</a>
+    </div>
+
+                    
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/python网络数据采集/">python网络数据采集</a>
+    </div>
+
+                </div>
+            </header>
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+                <div id="toc" class="toc-article">
+                <strong class="toc-title">文章目录</strong>
+                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#什么是网络数据采集"><span class="toc-number">1.</span> <span class="toc-text">什么是网络数据采集</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#初见网络爬虫"><span class="toc-number">2.</span> <span class="toc-text">初见网络爬虫</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#网络连接"><span class="toc-number">2.1.</span> <span class="toc-text">网络连接</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#get-post请求的区别"><span class="toc-number">2.1.1.</span> <span class="toc-text">get,post请求的区别</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#SSL和SSH"><span class="toc-number">2.1.2.</span> <span class="toc-text">SSL和SSH</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#关于url中-amp-的作用："><span class="toc-number">2.1.3.</span> <span class="toc-text">关于url中# #! ? &的作用：</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#GET方法向服务器请求数据的过程"><span class="toc-number">2.1.4.</span> <span class="toc-text">GET方法向服务器请求数据的过程</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#BeautifulSoup"><span class="toc-number">2.2.</span> <span class="toc-text">BeautifulSoup</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#网络数据采集添加-异常处理-Important"><span class="toc-number">2.3.</span> <span class="toc-text">网络数据采集添加   异常处理 (Important)</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#复杂HTML解析-使用爬虫的几种方式"><span class="toc-number">3.</span> <span class="toc-text">复杂HTML解析 + 使用爬虫的几种方式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#添加异常捕获"><span class="toc-number">4.</span> <span class="toc-text">添加异常捕获</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#BeautifulSoup-1"><span class="toc-number">5.</span> <span class="toc-text">BeautifulSoup</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#具体使用方法"><span class="toc-number">6.</span> <span class="toc-text">具体使用方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#导航树"><span class="toc-number">7.</span> <span class="toc-text">导航树</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#正则和BeautifulSoup的结合"><span class="toc-number">8.</span> <span class="toc-text">正则和BeautifulSoup的结合</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#使用lambda函数替代正则"><span class="toc-number">9.</span> <span class="toc-text">使用lambda函数替代正则</span></a></li></ol>
+                </div>
+            
+            <p><a href="https://github.com/REMitchell/python-scraping" target="_blank" rel="external">python网络数据采集代码(github)</a></p>
+<p><img src="http://img.hb.aicdn.com/bc0acb2f96d7314b03e5d59527587275e362a75c128f8-sD64Th_fw658" alt=""></p>
+<blockquote>
+<p>python代码简洁，拥有高级数据结构，能够以简单高效的方式执行面向对象编程，<strong>但是它的运行效率受人诟病</strong>，所以python经常作为一种“胶水语言”，把耗时的核心部分使用C/C++等效率更高的语言编写，然后再由python粘和。事实上，在大多数数据任务上，python的运行效率已经可以媲美C/C++.</p>
+</blockquote>
+<p>在大数据深入人心的时代，网络数据采集作为网络、数据库、和机器学习等领域的交汇点，成为满足个性化网络数据需求的最佳实践。网络数据采集技术可以进一步精炼数据，把网络上杂乱无章的的数据聚合成规范的形式，方便分析和挖掘。</p>
+<p>工作中经常会遇到各种数据，比如几百页的数据，或者在数据杂乱无章的网站中充满着带有陷阱的表单和坑爹的验证码，甚至需要的数据保存在网页版的PDF和网络图片中。你需要了解常用的数据采集手段和网络表单安全措施。</p>
+<p>网络数据采集可以使用多种语言，比如：python, java ,php, C#, Go都可以。Python拥有简洁轻松的语法，开箱可用的模块，强大快乐的社区，总可以快速构建出简单高效的解决方案。</p>
+<p><strong>网络数据采集是涉及多个领域的：</strong></p>
+<blockquote>
+<p>Python数据采集的模块有：urllib, BeautifulSoup, lxml, Scrapy, PdfMiner, Requests, Selenium, NLTK, Pillow, unittest,Pysocks等<br>还有一些知名网站的API，MySQL数据库，OpenRefine数据分析工具，PhanthomJS无头浏览器以及Tor代理服务器等内容。</p>
+</blockquote>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">如果需要了解python多进程(multiprocessing)，并发(concurrency)，集群(cluster)等高性能和多核编程，可以移步python高性能、多核编程、设计模式的书籍。</span><br></pre></td></tr></table></figure>
+<p><strong>进行网络数据采集时，要控制网络数据采集的速度，降低被采集网站服务器的负担。</strong></p>
+<h4 id="什么是网络数据采集"><a href="#什么是网络数据采集" class="headerlink" title="什么是网络数据采集"></a>什么是网络数据采集</h4><p>网络数据采集也称 网页抓屏(screen scraping),数据挖掘(data mining), 网络收割(Web harvesting),或者网络机器人(bots)。<br>网络数据采集是通过多种手段收集网络数据的方式，涉及数据库，网络服务器，HTTP协议，HTML语言，网络安全，图像处理，数据科学等。<br>网络数据采集不光是通过与API交互(或者与浏览器进行交互)的方式，还需要处理js，多媒体和cookie的新式网站。最常用的方法是写一个自动化程序向网络服务器请求数据(通常是HTML表单或其他网页文件)，然后对数据进行解析，提取需要的信息。</p>
+<blockquote>
+<p><strong>网络数据挖掘流程：</strong>采集数据   -&gt;    数据清洗    -&gt;挖掘模型构建    -&gt;    归类展示(可视化)<br><strong>数据采集的可视化</strong>; 爬取数据    -&gt;存入数据库     -&gt;调用数据库将数据可视化</p>
+</blockquote>
+<p>网络爬虫可以完成传统搜索引擎不能做的事情，搜索引擎不能填写表单，比如爬取大量网站的数据查询出航班价格随时间变化的图表，爬虫可以一次可以成千上百万个网页。</p>
+<p>存在各种API(Twitter或者维基百科的API)，可以向用户提供服务器中格式完好的数据，而且一个API提供了不同的数据类型，在某些时候API是比爬虫获取数据更加方便。但是在：</p>
+<ul>
+<li>你收集的数据来自不同的网站，没有一个API能够综合多个网站的数据。</li>
+<li>你采取的数据非常小众，网站不会为你单独做一个api</li>
+<li>一些网站没有基础设施或者技术能力去建API</li>
+<li>即使API存在，有时候还会有请求内容和次数限制，API提供的数据类型或者数据格式也可能无法满足需求</li>
+</ul>
+<p>大多数的应用场景都会用到这样毫无阻碍获取数据的手段：市场预测，机器语言翻译，甚至医疗诊断领域，通过对新闻网站、文章以及健康论坛中的数据进行采集和分析，也可以获取很多好处。无论处于哪个领域，网络数据采集都会让你的工作更加高效，提升生产力，甚至开创一个全新的领域。<br><a id="more"></a></p>
+<h4 id="初见网络爬虫"><a href="#初见网络爬虫" class="headerlink" title="初见网络爬虫"></a>初见网络爬虫</h4><p>基本原理：如何利用Python从服务器请求信息，如何对服务器的响应进行基本处理，如何利用自动化手段与网站进行交互。最终你将创建出具有域名切换、信息收集、信息存储功能的爬虫。<br>爬虫的基本想法：</p>
+<ul>
+<li>通过域名获取网站HTML数据</li>
+<li>根据目标信息解析数据</li>
+<li>存储目标信息</li>
+<li>如果需求，移动到下一个页面重复这个过程</li>
+</ul>
+<h5 id="网络连接"><a href="#网络连接" class="headerlink" title="网络连接"></a>网络连接</h5><h6 id="get-post请求的区别"><a href="#get-post请求的区别" class="headerlink" title="get,post请求的区别"></a>get,post请求的区别</h6><p>HTTP从网络服务获取信息有4种方式：</p>
+<ul>
+<li><strong>GET</strong>: 一般指在浏览器中输入url（不含参数），服务器返回信息的方式</li>
+<li><strong> POST</strong>：当你填写表单或者提交信息到网络服务器后端程序时使用。比如：你登录网站时，就是通过用户名和密码(有可能通过加密)发起一个POST请求。</li>
+<li><strong>PUT</strong>: 在网站交互的过程中不常用，在API请求有时使用。PUT请求用来更新一个对象或信息。比如：更新一个老用户的邮箱。现在好多API更新信息都使用POST替代PUT，这取决与API请求本身是如何构建的。</li>
+<li><strong>DELETE</strong>：用于删除一个对象。比如我们向<code>http://myapi.com/user/23</code>发起一个DELETE请求，就会删除ID号是23的用户。DELETE在公用API不常用，不能随便让一个用户删除数据库的信息。</li>
+</ul>
+<hr>
+<h6 id="SSL和SSH"><a href="#SSL和SSH" class="headerlink" title="SSL和SSH"></a>SSL和SSH</h6><p><a href="http://www.open-open.com/lib/view/open1422417444048.html" target="_blank" rel="external">++SSH外链++</a><br>SSH：安全外壳协议（SSH）是一种在<strong>不安全网络上</strong>提供<strong>安全远程登录</strong>及其它<strong>安全网络服务</strong>的协议。Secure Shell，又可记为SSH</p>
+<p><a href="http://www.oschina.net/translate/everything-you-ever-wanted-to-know-about-ssl?cmp" target="_blank" rel="external">++SSL外链++</a><br><a href="http://blog.csdn.net/wm_1991/article/details/51954571" target="_blank" rel="external">++SSL外链2++</a><br>OpenSSL 是一个强大的安全套接字层密码库，Apache 使用它加密 HTTPS，OpenSSH 使用它加密SSH，但是，你不应该只将其作为一个库来使用，它还是一个多用途的、跨平台的密码工具。</p>
+<p><strong>多多使用知乎，google，百度是个坑</strong><br><a href="https://www.zhihu.com/question/19577317" target="_blank" rel="external">http 和 https 有何区别？如何灵活使用？</a></p>
+<hr>
+<h6 id="关于url中-amp-的作用："><a href="#关于url中-amp-的作用：" class="headerlink" title="关于url中# #! ? &amp;的作用："></a>关于url中<code># #! ? &amp;</code>的作用：</h6><p><code>#</code> 代表锚点，可以跳转到页面指定的位置，<code>#</code>后面的内容称为hashtag, hashtag多用于AJAX请求获取数据。<br>如果进行url请求，修改<code>#</code>后面的内容，浏览器不会向服务器重新加载index.html,既<strong>不会重新加载</strong>，但是会在浏览器中<strong>增加一条历史记录</strong>。<br><code>window.location.hash</code>读取hashtag,这是一个可读可写的变量，用于判断网页状态是否改变，增加一条访问记录。</p>
+<p><code>AJAX = JAVASCRIPT + XML</code><br><strong>AJAX</strong>是一种用于<strong>创建快速动态网页的技术</strong>。</p>
+<p><code>?</code>在url中有两种作用：</p>
+<ol>
+<li>连接作用,<strong>连接网址和参数</strong>，比如：<code>http://www.baidu.com/?userid=walkk&amp;password=123456</code></li>
+<li>清楚缓存： index.html?test123123,表示不调用缓存，认为是新地址重新加载。</li>
+</ol>
+<p><code>&amp;</code>就是上文中的，间隔参数的作用</p>
+<h6 id="GET方法向服务器请求数据的过程"><a href="#GET方法向服务器请求数据的过程" class="headerlink" title="GET方法向服务器请求数据的过程"></a>GET方法向服务器请求数据的过程</h6><ol>
+<li>A电脑发送一串0、1的比特值，这些比特构成了一种信息，包括<strong>请求头和消息体</strong>。请求头包括了A本地路由的MAC地址和服务器B的IP地址，消息体包含了A对B服务器的请求内容。</li>
+<li>A的路由器收到所有0、1比特值，把它理解成一个数据包(package)，从A的MAC地址寄到B的IP的地址，A的路由器将数据包加上自己的IP地址作为“发件地址”，然后通过互联网发出去</li>
+<li>A的数据包经过了一些中介服务器，沿着正确的物理/电路路径前进，到达了B的服务器</li>
+<li>B的服务器收取到数据包，解析请求头里面的目标端口(通常是网络应用的80端口，IP地址相当于街道地址，端口相当于房间号)，把数据包传到网络服务器对应的应用上。</li>
+<li>服务器应用从服务器处理器器收到一串数据，<ul>
+<li>这是一个GET请求</li>
+<li>请求文件Indx.html</li>
+</ul>
+</li>
+<li>网络服务器应用找到对应的HTML文件，把它打成数据包，通过本地的路由器回传到B服务器上。</li>
+</ol>
+<h5 id="BeautifulSoup"><a href="#BeautifulSoup" class="headerlink" title="BeautifulSoup"></a>BeautifulSoup</h5><p>使用urlopen()获取HTML数据，然后把HTML数据传到BeautifulSoup对象，转换成(树型的类似XML结构)下面的结构：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">**html**            -&gt;    <span class="tag">&lt;<span class="name">html</span>&gt;</span><span class="tag">&lt;<span class="name">head</span>&gt;</span>.....<span class="tag">&lt;/<span class="name">head</span>&gt;</span><span class="tag">&lt;<span class="name">body</span>&gt;</span><span class="tag">&lt;/<span class="name">body</span>&gt;</span><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br><span class="line">**head**           -&gt;    <span class="tag">&lt;<span class="name">head</span>&gt;</span><span class="tag">&lt;<span class="name">title</span>&gt;</span>....<span class="tag">&lt;/<span class="name">title</span>&gt;</span><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"></span><br><span class="line">**body**          -&gt;   <span class="tag">&lt;<span class="name">body</span>&gt;</span><span class="tag">&lt;<span class="name">h1</span>&gt;</span>An Int...<span class="tag">&lt;/<span class="name">h1</span>&gt;</span><span class="tag">&lt;<span class="name">div</span>&gt;</span>Loren ip....<span class="tag">&lt;/<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> urllib.request <span class="keyword">import</span> urlopen</span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSop</span><br><span class="line"></span><br><span class="line">url = <span class="string">"www.baidu.com"</span></span><br><span class="line">html = urlopen(url)</span><br><span class="line">bsobj = BeautifulSop(html.read())</span><br><span class="line">print(bsobj.h1)</span><br><span class="line"><span class="string">'''</span><br><span class="line">这里访问的是html下body中第一个h1</span><br><span class="line">bsobj.h1  通过对象名获取节点属性</span><br><span class="line">bsobj.h1 = bsobj.html.h1 = bsobj.body.h1</span><br><span class="line">一般很少使用，使用正则或Beautiful中的find(),findAll()过滤标签</span><br><span class="line">'''</span></span><br></pre></td></tr></table></figure>
+<h5 id="网络数据采集添加-异常处理-Important"><a href="#网络数据采集添加-异常处理-Important" class="headerlink" title="网络数据采集添加   异常处理 (Important)"></a>网络数据采集添加   <em>异常处理</em> (Important)</h5><p>网络数据采集会遇到：网页数据格式不友好，网站服务器怠机，目标数据的标签找不到等等问题，添加<strong>异常处理try….. except</strong>防止程序奔溃，死循环，增加健壮性。</p>
+<p><code>html = ulropen(&quot;www.jianshu.com&quot;)</code><br>就像请求数据会出现两种异常：</p>
+<ul>
+<li>目标网页在服务器上不存在(或获取页面的过程中出错)</li>
+<li>服务器不存在</li>
+</ul>
+<p>第一种异常发 生, 会返回HTTP错误，比如<code>404 Page Not Found, 500 Internal Server Error</code>,所有类似的异常，urlopen都会返回<code>HTTPError</code><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    html = urlopen(<span class="string">"www.jianshu.com"</span>)</span><br><span class="line"><span class="keyword">except</span> HTTPError <span class="keyword">as</span> e:</span><br><span class="line">    print(e)</span><br><span class="line">    <span class="comment"># 添加代码，返回空值，中断程序，或者执行另一个方案</span></span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="comment">#程序继续，如果在上面的try...except捕捉异常中返回或</span></span><br><span class="line">    <span class="comment">#break中断，不需要else语句，else内容也不执行</span></span><br></pre></td></tr></table></figure></p>
+<p>第二种情况，服务器不存在（url不存在或者写错了），urlopen会返回一个<em>None对象</em><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> html <span class="keyword">is</span> <span class="keyword">None</span>:       <span class="comment"># 注意是urlopen返回的None对象</span></span><br><span class="line">	print(<span class="string">"URL Not Found"</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">	程序继续</span><br></pre></td></tr></table></figure></p>
+<p>如果调用Beautiful对象标签，增加一个判断条件判断标签是否存在，不存在返回None对象。但是如果继续访问<strong>None</strong>对象下面的子标签就会返回一个<strong>AttributeError</strong><br>如何对这两种情形做出检查：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    badcontent = bsobj.nonExistingTag.subTag</span><br><span class="line"><span class="keyword">except</span> AttributeError <span class="keyword">as</span> e:</span><br><span class="line">    print(<span class="string">"Tag not Found"</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="keyword">if</span> badcontent <span class="keyword">is</span> <span class="keyword">None</span>:</span><br><span class="line">        print(<span class="string">"Tag not Found"</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        print(badcontent)</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>写爬虫的时候，<strong>思考代码总体格局</strong>，既容易捕捉异常，又方便阅读。<br>为了重用代码：多写getSiteHtml(),和getTitle()这种通用函数(具有周密的异常处理功能，修改函数内容别人就可以调用)，进行快速稳定的网络采集。</p>
+</blockquote>
+<h4 id="复杂HTML解析-使用爬虫的几种方式"><a href="#复杂HTML解析-使用爬虫的几种方式" class="headerlink" title="复杂HTML解析 + 使用爬虫的几种方式"></a>复杂HTML解析 + 使用爬虫的几种方式</h4><p>解决复杂HTML页面需要考虑的问题：</p>
+<ul>
+<li>寻找是否有HTML页面样式更加友好的移动版</li>
+<li>寻找隐藏在JS中的内容</li>
+<li>URL链接有时候能直接提取出title标题</li>
+<li>寻求多个数据源看是否有相同数据</li>
+</ul>
+<p>在面对埋藏很深或格式不友好的数据，千万不要不经过思考就写代码。</p>
+<h4 id="添加异常捕获"><a href="#添加异常捕获" class="headerlink" title="添加异常捕获"></a>添加异常捕获</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> urllib.request <span class="keyword">import</span> urlopen</span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"></span><br><span class="line"><span class="string">'''</span><br><span class="line">__title__ = ''</span><br><span class="line">__author__ = 'walsky'</span><br><span class="line">__mtime__ = '2016.10.30'</span><br><span class="line">__email__ = 'wal139491@163.com'</span><br><span class="line"># code is far away from bugs with the god animal protecting</span><br><span class="line">    I love animals. They taste delicious.</span><br><span class="line">              ┏┓      ┏┓</span><br><span class="line">            ┏┛┻━━━┛┻┓</span><br><span class="line">            ┃      ☃      ┃</span><br><span class="line">            ┃  ┳┛  ┗┳  ┃</span><br><span class="line">            ┃      ┻      ┃</span><br><span class="line">            ┗━┓      ┏━┛</span><br><span class="line">                ┃      ┗━━━┓</span><br><span class="line">                ┃  神兽保佑    ┣┓</span><br><span class="line">                ┃　永无BUG！   ┏┛</span><br><span class="line">                ┗┓┓┏━┳┓┏┛</span><br><span class="line">                  ┃┫┫  ┃┫┫</span><br><span class="line">                  ┗┻┛  ┗┻┛</span><br><span class="line">'''</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">getSiteHtml</span><span class="params">(Url)</span>:</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        html = urlopen(url)</span><br><span class="line">    <span class="keyword">except</span> HttPError <span class="keyword">as</span> e:</span><br><span class="line">        print(e)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        getTitle(html)</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">getTitle</span><span class="params">(html)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> html <span class="keyword">is</span> <span class="keyword">None</span>:</span><br><span class="line">        print(<span class="string">"Url Not Found"</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            bsobj = BeautifulSoup(html)</span><br><span class="line">            title = bsobj.html.title</span><br><span class="line">        <span class="keyword">except</span> AttributeError <span class="keyword">as</span> e:</span><br><span class="line">            print(<span class="string">"Title not found"</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">if</span> title <span class="keyword">is</span> <span class="keyword">None</span>:</span><br><span class="line">                print(<span class="string">"title not found"</span>)</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                print(title)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    getSiteHtml(<span class="string">"www.jianshu.com"</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="BeautifulSoup-1"><a href="#BeautifulSoup-1" class="headerlink" title="BeautifulSoup"></a>BeautifulSoup</h4><p>BeautifulSoup有四个对象:<br><strong>Tag</strong>（标签里面有name,attrs）<br>获取标签name, attrs[]<br>bsobj.p.name       bsobj.p.attrs[]<br>单独获得某个属性值 :<br><code>bsobj.a[&#39;href&#39;]     bsobj.a.get(&#39;href&#39;)</code></p>
+<p><strong>BeautifulSoup对象</strong>（bsobj）<br>bsobj = BeautifulSoup(html)</p>
+<p><strong>NavigableString</strong><br>(标签中的文字比如<code>&lt;p&gt;</code>标签中的文字<code>&lt;/p&gt;</code>)<br><code>p.string</code>  就可以获得标签中的文字</p>
+<p><strong>Comment </strong>获得html的注释内容   <code>&lt;!--注释--&gt;</code><br><code>&lt;a class=&quot;sister&quot; href=&quot;http://example.com/elsie&quot; id=&quot;link1&quot;&gt;&lt;!-- Elsie --&gt;&lt;/a&gt;</code><br>利用 .string 来输出它的内容，它已经把注释符号去掉了，我们获取其中内容需要做一下判断：<br><code>if type(soup.a.string)==bs4.element.Comment:
+    print soup.a.string</code></p>
+<h4 id="具体使用方法"><a href="#具体使用方法" class="headerlink" title="具体使用方法"></a>具体使用方法</h4><ol>
+<li><p><code>bsobj.h1  bsobj.a   bsobj.p</code><br>查找的是在所有内容中的第一个符合要求的标签</p>
+</li>
+<li><p>bsobj.find()  和bsobj.findall() 方法<br>find()和findAll(),都有过滤标签作用，最后返回的一个<strong>标签列表</strong>，就像<code>&lt;a class=&quot;sister&quot; href=&quot;http://example.com/elsie&quot; id=&quot;link1&quot;&gt;Elsie&lt;/a&gt;</code> 完整的标签</p>
+</li>
+</ol>
+<blockquote>
+<p>由于返回的是一个列表，要想得到其中内容1.使用for 循环遍历列表2.使用<strong>get_text()</strong>方法去除<strong>html</strong>的标签<br>nameList = bsobj.findAll(“span”,{“class”:{“red”,”blue”}})<br>for content in nameList:<br>       content.get_text()</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"> findAll(tag, attributes, recursive, text, limit, keywords)</span><br><span class="line"></span><br><span class="line"> <span class="comment"># tag 传入一个标签名，或多个标签名组成的列表</span></span><br><span class="line"> findAll(<span class="string">"h1"</span>) 或 findAll(&#123;<span class="string">"h1"</span>,<span class="string">"h2"</span>,<span class="string">"p"</span>,<span class="string">"a"</span>&#125;)</span><br><span class="line"> 最后以列表返回 h1,h1,p,a 的多个标签</span><br><span class="line"> <span class="comment"># attributes 用Python字典封装若干 属性+属性值</span></span><br><span class="line"> findAll(<span class="string">"span"</span>,&#123;<span class="string">"class"</span>:<span class="string">"red"</span>,<span class="string">"green"</span>&#125;)</span><br><span class="line"><span class="comment"># recursive 布尔变量，ture查找所有子标签，false只查找一级子标签</span></span><br><span class="line">  一般不需要设置</span><br><span class="line"><span class="comment"># text 使用标签中的内容进行匹配 &lt;p&gt;这是标签内容&lt;/p&gt;</span></span><br><span class="line">nameList =bsobj.findAll(text=<span class="string">"i love python"</span>)</span><br><span class="line">print(len(nameList))</span><br><span class="line"><span class="comment"># limit  限制列表的获取几项</span></span><br><span class="line"> findAll(<span class="string">"p"</span>,limit =<span class="number">7</span>)</span><br><span class="line"> <span class="comment"># keyword 也就是使用'=' 指定标签的具体属性</span></span><br><span class="line"> content = findAll(id=<span class="string">"content"</span>)</span><br><span class="line"> print(content[<span class="number">0</span>].get_text())</span><br><span class="line"> <span class="string">'''其实:findAll(id="foot") = findAll("",&#123;"id" : "foot"&#125;) #不指定标签名</span><br><span class="line">   但你不能使用：findAll(class="green") 因为class是python的保留字</span><br><span class="line">可以：findAll(_class="green") 或findAll("",&#123;"class":"green"&#125;)</span><br><span class="line"> '''</span></span><br></pre></td></tr></table></figure>
+<p>find(tag, attributes, recursive, text, limit, keywords)少了limit属性，基本使用方法相同</p>
+<h4 id="导航树"><a href="#导航树" class="headerlink" title="导航树"></a>导航树</h4><p><a href="http://cuiqingcai.com/1319.html" target="_blank" rel="external">++参考外链++</a><br>其实就是使用文档结构获取：<br>tr是table标签的<strong>子标签</strong>，  children<br>tr,th,td,img,span是table标签的<strong>后代标签</strong>   descendants<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> child <span class="keyword">in</span> bsobj.findAll(<span class="string">"table"</span>,&#123;<span class="string">"id"</span>:<span class="string">"giftshit"</span>&#125;).children():</span><br><span class="line">	print(child)</span><br><span class="line">	<span class="comment">#就会打出giftshift表格的所有数据行</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> child <span class="keyword">in</span> bsobj.findAll(<span class="string">"table"</span>,&#123;<span class="string">"id"</span>:<span class="string">"giftshit"</span>&#125;).tr.next_siblings:</span><br><span class="line">	print(child)</span><br><span class="line">	<span class="comment">#就会打出giftshift表格的除了第一行所有数据行</span></span><br><span class="line">	<span class="comment">#或者使用previous_siblings</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="正则和BeautifulSoup的结合"><a href="#正则和BeautifulSoup的结合" class="headerlink" title="正则和BeautifulSoup的结合"></a>正则和BeautifulSoup的结合</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"><span class="keyword">from</span> urllib.request <span class="keyword">import</span> urlopen</span><br><span class="line"></span><br><span class="line">html = urlopen(<span class="string">"www.jianshu.com"</span>)</span><br><span class="line">bsobj = BeautifulSoup(html)</span><br><span class="line">imgs = bsobj.findAll(<span class="string">"img"</span>,&#123;<span class="string">"src"</span>:re.compile(<span class="string">"\.\.\/img\img.*\.jpg"</span>)&#125;)</span><br><span class="line"><span class="string">'''</span><br><span class="line">查找a标签，都在id为bodyContent的div中，都以"/wiki/"开头</span><br><span class="line">url链接中不含":"</span><br><span class="line">'''</span></span><br><span class="line">links = bsobj.find(<span class="string">"div"</span>,&#123;<span class="string">"id"</span>:<span class="string">"bodyContent"</span>&#125;).findAll(<span class="string">"a"</span>,&#123;<span class="string">"href"</span>:re.compile(</span><br><span class="line">    <span class="string">"^(/wiki/)((?!:).)*$"</span>)&#125;)</span><br><span class="line"><span class="comment">#((?!.)*)括号编组这样就任何地方都不会出现:</span></span><br><span class="line"><span class="keyword">for</span> img <span class="keyword">in</span> imgs:</span><br><span class="line">    print(img[<span class="string">"src"</span>]) <span class="comment">#使用attrs获取图片的相对路径,获取属性</span></span><br><span class="line">    print(img.get_text()) <span class="comment">#使用get_text获取img的内容</span></span><br><span class="line"><span class="string">'''</span><br><span class="line">&lt;a class="sister" href="http://example.com/elsie" id="link1"&gt;&lt;!-- Elsie --&gt;&lt;/a&gt;</span><br><span class="line">如果提取&lt;a 标签属性&gt;，a.attrs["herf"]或a["href"]都行</span><br><span class="line">如果提取&lt;a&gt;标签内容，a.get_text()</span><br><span class="line">'''</span></span><br></pre></td></tr></table></figure>
+<h4 id="使用lambda函数替代正则"><a href="#使用lambda函数替代正则" class="headerlink" title="使用lambda函数替代正则"></a>使用lambda函数替代正则</h4><p>Beautiful允许我们把lambda函数作为findAll()的参数，<strong>限制条件是：</strong></p>
+<ol>
+<li>必须把一个标签作为参数</li>
+<li>返回结果是bool形式</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">bsobj.findAll(<span class="keyword">lambda</span> tag: len(tag.attrs == <span class="number">2</span>))</span><br><span class="line"><span class="comment"># 返回只有两个属性的标签列表</span></span><br><span class="line"><span class="comment"># 考虑使用，简洁快速最重要</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>关于python的html解析库：</p>
+<ul>
+<li>BeautifulSoup不用介绍了</li>
+<li>lxml,这个库可以用来解析Html和XML文档，大部分源码用C实现，以非常底层的实现而闻名。虽然学习需要花一些时间，但在处理大多数HTML文档速度都比较快。</li>
+<li>HTML parser 这是Python自带的解析库</li>
+</ul>
+</blockquote>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://yoursite.com/2016/10/01/python网络采集1/" data-id="civ2az716000p1wb0rn2xl8v5" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://yoursite.com/2016/10/01/python网络采集1/#comments" class="article-comment-link ds-thread-count" data-thread-key="http://yoursite.com/2016/10/01/python网络采集1/">评论</a>
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2016/10/11/Python开发3(控制语句和文件操作)/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">上一篇</strong>
+            <div class="article-nav-title">
+                
+                    Python开发3(控制语句和文件操作)
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2016/09/25/All is Acting/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">下一篇</strong>
+            <div class="article-nav-title">我该如何Act</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    <section id="comments">
+    
+        
+    <div class="ds-thread" data-thread-key="2016/10/01/python网络采集1/" data-title="python网络数据采集1" data-url="http://yoursite.com/2016/10/01/python网络采集1/"></div>
+    <style>
+        #ds-thread #ds-reset .ds-textarea-wrapper {
+            background: none;
+        }
+        #ds-reset .ds-avatar img {
+            box-shadow: none;
+        }
+        #ds-reset .ds-gradient-bg {
+            background: #f7f7f7;
+        }
+        #ds-thread #ds-reset li.ds-tab a {
+            border-radius: 3px;
+        }
+        #ds-thread #ds-reset .ds-post-button {
+            color: white;
+            border: none;
+            box-shadow: none;
+            background: #d32;
+            text-shadow: none;
+            font-weight: normal;
+            font-family: 'Microsoft Yahei';
+        }
+        #ds-thread #ds-reset .ds-post-button:hover {
+            color: white;
+            background: #DE594C;
+        }
+        #ds-thread #ds-reset .ds-post-button:active {
+            background: #d32;
+        }
+        #ds-smilies-tooltip ul.ds-smilies-tabs li a.ds-current {
+            color: white;
+            background: #d32;
+            box-shadow: none;
+            text-shadow: none;
+            font-weight: normal;
+        }
+    </style>
+
+    
+    </section>
+
+</section>
+            
+                <aside id="sidebar">
+   
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">最新文章</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/10/11/Python开发3(控制语句和文件操作)/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://huaban.com/go/?pin_id=436154113)" alt="Python开发3(控制语句和文件操作)" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/python/">python</a></p>
+                            <p class="item-title"><a href="/2016/10/11/Python开发3(控制语句和文件操作)/" class="title">Python开发3(控制语句和文件操作)</a></p>
+                            <p class="item-date"><time datetime="2016-10-11T01:06:30.797Z" itemprop="datePublished">2016-10-11</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/10/01/python网络采集1/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://img.hb.aicdn.com/bc0acb2f96d7314b03e5d59527587275e362a75c128f8-sD64Th_fw658)" alt="python网络数据采集1" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/python/">python</a></p>
+                            <p class="item-title"><a href="/2016/10/01/python网络采集1/" class="title">python网络数据采集1</a></p>
+                            <p class="item-date"><time datetime="2016-10-01T07:17:31.137Z" itemprop="datePublished">2016-10-01</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/09/25/All is Acting/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://o9pxg8pv5.bkt.clouddn.com/zuozhu.jpg)" alt="我该如何Act" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/读书和生活/">读书和生活</a></p>
+                            <p class="item-title"><a href="/2016/09/25/All is Acting/" class="title">我该如何Act</a></p>
+                            <p class="item-date"><time datetime="2016-09-25T05:56:18.054Z" itemprop="datePublished">2016-09-25</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/08/20/数据库概论基础知识—-1/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://hbimg.b0.upaiyun.com/f65de72a8e926773cde52778b9e00aea489080651521f-gCW2W4_fw658)" alt="数据库概论基础知识—-1" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/数据库概论/">数据库概论</a></p>
+                            <p class="item-title"><a href="/2016/08/20/数据库概论基础知识—-1/" class="title">数据库概论基础知识—-1</a></p>
+                            <p class="item-date"><time datetime="2016-08-20T09:11:06.850Z" itemprop="datePublished">2016-08-20</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/08/20/Mysql数据库基础/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://d.hiphotos.baidu.com/baike/c0%3Dbaike92%2C5%2C5%2C92%2C30/sign=96e2f04307087bf469e15fbb93ba3c49/8435e5dde71190effdb15dd7cb1b9d16fdfa6074.jpg)" alt="Mysql数据库基础" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/数据库概论/">数据库概论</a></p>
+                            <p class="item-title"><a href="/2016/08/20/Mysql数据库基础/" class="title">Mysql数据库基础</a></p>
+                            <p class="item-date"><time datetime="2016-08-20T02:22:42.938Z" itemprop="datePublished">2016-08-20</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">虾米播播</h3>
+        <div class="widget tagcloud">
+           <ul>
+           <h5>
+           <embed src="https://www.xiami.com/widget/160864150_188998912_200_280_4DB653_009609_0/collectPlayer.swf" type="application/x-shockwave-flash" width="200" height="280" wmode="opaque"></embed>
+           </h5>
+           </ul>
+        </div>
+    </div>
+
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">分类</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux学习/">Linux学习</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/hexo/">hexo</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据库概论/">数据库概论</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/读书和生活/">读书和生活</a><span class="category-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">归档</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">标签</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android优化/">Android优化</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python基础/">python基础</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python网络数据采集/">python网络数据采集</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/something/">something</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/正则表达式/">正则表达式</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/生活/">生活</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+        <div class="widget tag">
+<h3 class="title">友情链接</h3>
+<ul class="entry">
+<li><a href="https://www.google.ae/" title="google">Google</a></li>
+<li><a href="http://www.jianshu.com/users/de17c721f02a/latest_articles" title="jianshu">简书</a></li>
+<li><a href="https://blog.jamespan.me/" title="James Pan's Blog">James Pan's Blog </a></li>
+<li><a href="http://ibruce.info/" title="icruce">不如</a></li>
+<li><a href="http://rocko.xyz/2016/06/14/ADB-Issue-2/" title="rocko">Rocko</a></li>
+
+
+</ul>
+</div>
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2016 laiwei<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
+            &nbsp&nbsp&nbsp&nbsp
+            <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+             </script>
+            <span id="busuanzi_container_site_pv" >本站有<span id="busuanzi_value_site_pv" style="color:#ef7522"></span>个小伙伴留下脚印</span>
+
+        </div>
+    </div>
+</footer>
+
+        
+    
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:'walsky'};
+    (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script>
+
+
+
+    
+        <script src="/vendor/fancybox/jquery.fancybox.pack.js"></script>
+    
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>
