@@ -1,0 +1,1035 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <meta charset="utf-8">
+    
+    <title>mathjax的使用 | walsky&#39;s blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="Mathjax与LaTex公式简介(英文)mathjax使用
+csdn_Mathjax基本使用方法简书Haroopad使用
+
+显示目录使用空行+[toc] 如下面显示的那样
+
+Haroopad的额外使用haroopad插入音频视频
+
+[toc]
+Tasklist
+[x] Be happy everyday, silme, and talk more
+[x] 2016.12.1 学习mathjax">
+<meta property="og:type" content="article">
+<meta property="og:title" content="mathjax的使用">
+<meta property="og:url" content="http://yoursite.com/2016/12/13/mathjax的使用/index.html">
+<meta property="og:site_name" content="walsky's blog">
+<meta property="og:description" content="Mathjax与LaTex公式简介(英文)mathjax使用
+csdn_Mathjax基本使用方法简书Haroopad使用
+
+显示目录使用空行+[toc] 如下面显示的那样
+
+Haroopad的额外使用haroopad插入音频视频
+
+[toc]
+Tasklist
+[x] Be happy everyday, silme, and talk more
+[x] 2016.12.1 学习mathjax">
+<meta property="og:image" content="http://img.hb.aicdn.com/d79e605eeeafd49f7a0809e6fe685f5fce78f3a6260c9-I5x4D0_fw658">
+<meta property="og:updated_time" content="2016-12-13T12:10:30.542Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="mathjax的使用">
+<meta name="twitter:description" content="Mathjax与LaTex公式简介(英文)mathjax使用
+csdn_Mathjax基本使用方法简书Haroopad使用
+
+显示目录使用空行+[toc] 如下面显示的那样
+
+Haroopad的额外使用haroopad插入音频视频
+
+[toc]
+Tasklist
+[x] Be happy everyday, silme, and talk more
+[x] 2016.12.1 学习mathjax">
+<meta name="twitter:image" content="http://img.hb.aicdn.com/d79e605eeeafd49f7a0809e6fe685f5fce78f3a6260c9-I5x4D0_fw658">
+    
+
+    
+
+    
+
+    <link rel="stylesheet" href="/vendor/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/vendor/open-sans/styles.css">
+    <link rel="stylesheet" href="/vendor/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/vendor/jquery/2.1.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/vendor/fancybox/jquery.fancybox.css">
+    
+    
+    
+    
+
+</head>
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo" style="background-image: url(css/images/mylogo.gif)"></i>
+                <span class="site-title">walsky&#39;s blog</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">
+
+                     <i class="fa fa-home"></i>
+                   Home</a>
+                
+                    <a class="main-nav-link" href="/archives">
+
+                     <i class="fa fa-lightbulb-o"></i>
+                   Archives</a>
+                
+                    <a class="main-nav-link" href="/categories">
+
+                     <i class="fa fa-sort-alpha-asc"></i>
+                   Categories</a>
+                
+                    <a class="main-nav-link" href="/tags">
+
+                     <i class="fa fa-tag"></i>
+                   Tags</a>
+                
+                    <a class="main-nav-link" href="/about">
+
+                     <i class="fa fa-paper-plane"></i>
+                   About</a>
+                
+            </nav>
+            
+                
+                <nav id="sub-nav">
+                    <div class="profile" id="profile-nav">
+                        <a id="profile-anchor" href="javascript:;">
+                            <img class="avatar" src="/css/images/avatar.jpg" />
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                    </div>
+                </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">Home</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">Categories</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">Tags</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">About</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+                
+
+<aside id="profile">
+    <div class="inner profile-inner">
+        <div class="base-info profile-block">
+            <img id="avatar" src="/css/images/avatar.jpg" />
+            <h2 id="name">Laiwei</h2>
+            <h3 id="title">Developer &amp; life loving</h3>
+            <span id="location"><i class="fa fa-map-marker"></i>Beijing, China</span>
+            <a id="follow" target="_blank" href="https://github.com/wal139491/">关注我</a>
+        </div>
+        <div class="article-info profile-block">
+            <div class="article-info-block">
+                13
+                <span>文章</span>
+            </div>
+            <div class="article-info-block">
+                6
+                <span>标签</span>
+            </div>
+        </div>
+        
+        <div class="profile-block social-links">
+            <table>
+                <tr>
+                    
+                    
+                    <td>
+                        <a href="http://github.com/wal139491/" target="_blank" title="github" class=tooltip>
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="http://weibo.com/walsky" target="_blank" title="weibo" class=tooltip>
+                            <i class="fa fa-weibo"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="http://www.jianshu.com/users/de17c721f02a/latest_articles" target="_blank" title="jianshu" class=tooltip>
+                            <i class="fa fa-jianshu"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="dribbble" class=tooltip>
+                            <i class="fa fa-dribbble"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/atom.xml" target="_blank" title="rss" class=tooltip>
+                            <i class="fa fa-rss"></i>
+                        </a>
+                    </td>
+                    
+                </tr>
+            </table>
+        </div>
+        
+    </div>
+</aside>
+
+            
+            <section id="main"><article id="post-mathjax的使用" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            mathjax的使用
+        </h1>
+    
+
+                <div class="article-meta">
+                    
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2016/12/13/mathjax的使用/">
+            <time datetime="2016-12-13T12:03:11.973Z" itemprop="datePublished">2016-12-13</time>
+        </a>
+    </div>
+
+
+                    
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/hexo/">hexo</a>
+    </div>
+
+                    
+                </div>
+            </header>
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+                <div id="toc" class="toc-article">
+                <strong class="toc-title">文章目录</strong>
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Haroopad的额外使用"><span class="toc-number">1.</span> <span class="toc-text">Haroopad的额外使用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#haroopad插入音频视频"><span class="toc-number">1.1.</span> <span class="toc-text">haroopad插入音频视频</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Tasklist"><span class="toc-number">1.2.</span> <span class="toc-text">Tasklist</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#视图-Presentation-mode"><span class="toc-number">1.3.</span> <span class="toc-text">视图 Presentation mode</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Mathjax"><span class="toc-number">2.</span> <span class="toc-text">Mathjax</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#希腊字母-大小写"><span class="toc-number">2.1.</span> <span class="toc-text">希腊字母(大小写)</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#括号的使用"><span class="toc-number">3.</span> <span class="toc-text">括号的使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#运算符（大合唱来啦）"><span class="toc-number">4.</span> <span class="toc-text">运算符（大合唱来啦）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#关系比较符号"><span class="toc-number">4.1.</span> <span class="toc-text">关系比较符号</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#运算符号"><span class="toc-number">4.2.</span> <span class="toc-text">运算符号</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#集合符号"><span class="toc-number">4.3.</span> <span class="toc-text">集合符号</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#特殊符号"><span class="toc-number">4.4.</span> <span class="toc-text">特殊符号</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#箭头"><span class="toc-number">4.5.</span> <span class="toc-text">箭头</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#字体"><span class="toc-number">4.6.</span> <span class="toc-text">字体</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#顶部符号"><span class="toc-number">4.7.</span> <span class="toc-text">顶部符号</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#表格"><span class="toc-number">4.8.</span> <span class="toc-text">表格</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#矩阵"><span class="toc-number">4.9.</span> <span class="toc-text">矩阵</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#分情况表达式"><span class="toc-number">4.10.</span> <span class="toc-text">分情况表达式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#标记与引用"><span class="toc-number">4.11.</span> <span class="toc-text">标记与引用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#绝对值和模"><span class="toc-number">4.12.</span> <span class="toc-text">绝对值和模</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#高亮显示"><span class="toc-number">4.13.</span> <span class="toc-text">高亮显示</span></a></li></ol></li></ol>
+                </div>
+            
+            <p><img src="http://img.hb.aicdn.com/d79e605eeeafd49f7a0809e6fe685f5fce78f3a6260c9-I5x4D0_fw658" alt=""></p>
+<p><a href="http://meta.math.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference" target="_blank" rel="external">Mathjax与LaTex公式简介(英文)</a><br><a href="http://m.blog.csdn.net/article/details?id=48900483" target="_blank" rel="external">mathjax使用</a></p>
+<p><a href="http://blog.csdn.net/u010945683/article/details/46757757" target="_blank" rel="external">csdn_Mathjax基本使用方法</a><br><a href="http://www.jianshu.com/p/1ff6e833e2e6" target="_blank" rel="external">简书Haroopad使用</a></p>
+<blockquote>
+<p>显示目录使用空行+<code>[toc]</code> 如下面显示的那样</p>
+</blockquote>
+<h3 id="Haroopad的额外使用"><a href="#Haroopad的额外使用" class="headerlink" title="Haroopad的额外使用"></a>Haroopad的额外使用</h3><h4 id="haroopad插入音频视频"><a href="#haroopad插入音频视频" class="headerlink" title="haroopad插入音频视频"></a>haroopad插入音频视频</h4><p><img src="C:\Users\LW\Desktop\python笔记\林宥嘉-成全 .mp3" alt="audio"></p>
+<p><img src="G:\运动\麦迪3对3.mp4" alt="video"></p>
+<p>[toc]</p>
+<h4 id="Tasklist"><a href="#Tasklist" class="headerlink" title="Tasklist"></a>Tasklist</h4><ul>
+<li>[x] Be happy everyday, silme, and talk more</li>
+<li>[x] 2016.12.1 学习mathjax语法</li>
+<li>[x] ng Linear Regression</li>
+<li>[x] 每天进步一点就够了，Do not make youself terid and unhappy</li>
+</ul>
+<hr>
+<h4 id="视图-Presentation-mode"><a href="#视图-Presentation-mode" class="headerlink" title="视图 Presentation mode"></a>视图 Presentation mode</h4><p>Haroopad支持直接撰写PPT。<br>使用<code>***</code>作为每一个PPT的分页，这样显示的就是一个独立的一页，如果需要使用Haroopad做PPT的话</p>
+<hr>
+<h3 id="Mathjax"><a href="#Mathjax" class="headerlink" title="Mathjax"></a>Mathjax</h3><p>MathJax是一款运行在浏览器中的开源的数学符号渲染引擎，使用MathJax可以方便的在浏览器中显示数学公式，不需要使用图片。可以解析LaTex、MathML和ASCIIMathMl的标记语言。</p>
+<blockquote>
+<p><code>\</code>  右斜杠大法好， 一般都是右斜杠+字母</p>
+</blockquote>
+<p>有两种公式显示形式:</p>
+<ul>
+<li>行内的公式，写在<code>$...$</code>内</li>
+<li>单独展示的公式，使用<code>$$...$$</code>。<br>这两种方式的渲染效果不同，如下所示：<figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">\sum_&#123;i=0&#125;^n i^<span class="number">2</span> = \frac&#123;(n^2+n)(2n+1)&#125;<span class="number">6</span>\tag&#123;inline&#125;</span><br><span class="line">\sum_&#123;i=0&#125;^n i^<span class="number">2</span> = \frac&#123;(n^2+n)(2n+1)&#125;<span class="number">6</span>\tag&#123;displayed&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>$\sum_{i=0}^n i^2 = \frac{(n^2+n)(2n+1)}6\tag{inline}$</p>
+<p>$$\sum_{i=0}^n i^2 = \frac{(n^2+n)(2n+1)}6\tag{displayed}<br>$$</p>
+<p>####上标与下标：<br><code>x_i^2</code> 　　　  $x_i^2$</p>
+<blockquote>
+<p>一般都是先写下标再写上标</p>
+</blockquote>
+<p><code>x^{yz}</code> 　　　  $x^{yz}$<br><code>x^{y^z}</code> 　　　  $x^{y^z}$<br><code>x_{i^2}</code> 　　　  $x_{i^2}$</p>
+<h4 id="希腊字母-大小写"><a href="#希腊字母-大小写" class="headerlink" title="希腊字母(大小写)"></a>希腊字母(大小写)</h4><p>比如用：使用<code>\Gamma, \Delta, ...,\Omega</code>表示大写的希腊字母：<br>$\Gamma$ ,$\Delta$, $\Omega$</p>
+<p>使用<code>\alpha,\beta,\gamma,epsilon</code>表示希腊小写字母<br>$\alpha$,$\beta$,$\gamma$,$\epsilon$</p>
+<p>　　　　　　详情看下表：<br><img src="http://o9pxg8pv5.bkt.clouddn.com/mathjax1.png" alt=""><br><a id="more"></a></p>
+<h3 id="括号的使用"><a href="#括号的使用" class="headerlink" title="括号的使用"></a>括号的使用</h3><ul>
+<li>小括号与方括号：使用原始的( )，<code>[ ]</code>即可，如<code>(2+3)[4+4]</code>：(2+3)[4+4]</li>
+<li>大括号：时由于大括号{}被用来分组，  $ {a*b}$ 来表示括号</li>
+<li>尖括号：$\langle x*y \rangle$</li>
+<li>上取整：$\lceil 2.5 \rceil$</li>
+<li>下取整：$\lfloor 2.5 \rfloor$<blockquote>
+<p>需要注意的是，原始符号并不会随着公式大小缩放。可以使用\left(…\right)来自适应的调整括号大小。如下，</p>
+</blockquote>
+</li>
+</ul>
+<p>$${\sum_{i=0}^n i^2 = {(n^2+n)(2n+1) \over 6}}$$</p>
+<p>这个是括号增大版，使用比较麻烦<code>\left(     \right)</code><br>$$<br>\left(\sum_{i=0}^n i^2 = {(n^2+n)(2n+1) \over 6}\right)<br>$$</p>
+<h3 id="运算符（大合唱来啦）"><a href="#运算符（大合唱来啦）" class="headerlink" title="运算符（大合唱来啦）"></a>运算符（大合唱来啦）</h3><blockquote>
+<p>特别需要注意的是，如果上下标不是单个字符时需要使用花括号{…}进行分组</p>
+</blockquote>
+<p>求和 ： <code>\sum</code>    　　　　 $\sum_i^n$</p>
+<p>复杂方式求和 ： <code>\sum_{i=0}^{\infty} i^2</code>    　　　　 $\sum_{i=0}^{\infty} i^2$</p>
+<p>求积分 ： <code>\int</code>    　　　　 $\int_{i+1}^{i+100}$</p>
+<p>求双重积分 ： <code>\iint</code>    　　　　 $\iint$</p>
+<p>求积 ： <code>\prod</code>    　　　　 $\prod$</p>
+<p>并集符 ： <code>bigcup</code>    　　　　 $\bigcup$</p>
+<p>交集符 ： <code>bigcap</code>    　　　　 $\bigcap$</p>
+<p>分数(两种方式) ： <code>$\frac {a+1}{b+1}$</code>    　　　　 $\frac {a+1}{b+1}$</p>
+<p>(更常见)： 　<code>{a+1} \over {b+1}</code>　　${a+1} \over {b+1}$</p>
+<p>开根号 ： <code>\sqrt{x^3}</code>    　　　　 $\sqrt{x^3}$</p>
+<p>或者： <code>\sqrt[3]{\frac xy}</code>    　　　　 $\sqrt[3]{\frac xy}$<br> 或者： <code>{\frac {x*2}{x+y}}^{1/5}</code>    　　　　 ${\frac {x*2}{x+y}}^{1/5}$</p>
+<p>开根号 ： <code>\lim\limits_{n \to \infty}</code><br> 单独行：可以用<strong>\lim_</strong> 　　　 <code>\lim_{n\to\infty}</code><br>$\lim\limits_{n \to \infty}$</p>
+<p><code>\lim\limits_{n \to 0}</code>    　　　　 $\lim\limits_{n \to 0}$</p>
+<h4 id="关系比较符号"><a href="#关系比较符号" class="headerlink" title="关系比较符号"></a>关系比较符号</h4><table>
+<thead>
+<tr>
+<th>表示</th>
+<th>符号</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>\lt</code></td>
+<td>$\lt$</td>
+</tr>
+<tr>
+<td><code>\gt</code></td>
+<td>$\gt$</td>
+</tr>
+<tr>
+<td><code>\le</code></td>
+<td>$\le$</td>
+</tr>
+<tr>
+<td><code>\ge</code></td>
+<td>$\ge$</td>
+</tr>
+<tr>
+<td><code>\neq</code></td>
+<td>$\neq$</td>
+</tr>
+</tbody>
+</table>
+<h4 id="运算符号"><a href="#运算符号" class="headerlink" title="运算符号"></a>运算符号</h4><table>
+<thead>
+<tr>
+<th>表示</th>
+<th>符号</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>+</code></td>
+<td>$+$</td>
+</tr>
+<tr>
+<td><code>-</code></td>
+<td>$-$</td>
+</tr>
+<tr>
+<td><code>\times</code></td>
+<td>$\times$</td>
+</tr>
+<tr>
+<td><code>\div</code></td>
+<td>$\div$</td>
+</tr>
+<tr>
+<td><code>\pm</code></td>
+<td>$\pm$</td>
+</tr>
+<tr>
+<td><code>mp</code></td>
+<td>$\mp$</td>
+</tr>
+<tr>
+<td><code>\cdot</code></td>
+<td>$\cdot$</td>
+</tr>
+</tbody>
+</table>
+<h4 id="集合符号"><a href="#集合符号" class="headerlink" title="集合符号"></a>集合符号</h4><table>
+<thead>
+<tr>
+<th>表示</th>
+<th>符号</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>\cup</code></td>
+<td>$\cup$</td>
+</tr>
+<tr>
+<td><code>\cap</code></td>
+<td>$\cap$</td>
+</tr>
+<tr>
+<td><code>\setminus</code></td>
+<td>$\setminus$</td>
+</tr>
+<tr>
+<td><code>\subset</code></td>
+<td>$\subset$</td>
+</tr>
+<tr>
+<td><code>\subseteq</code></td>
+<td>$\subseteq$</td>
+</tr>
+<tr>
+<td><code>\subsetneq</code></td>
+<td>$\subsetneq$</td>
+</tr>
+<tr>
+<td><code>\supset</code></td>
+<td>$\supset$</td>
+</tr>
+<tr>
+<td><code>\in</code></td>
+<td>$\in$</td>
+</tr>
+<tr>
+<td><code>\notin</code></td>
+<td>$\notin$</td>
+</tr>
+<tr>
+<td><code>\emptyset</code></td>
+<td>$\emptyset$</td>
+</tr>
+<tr>
+<td><code>\varnothing</code></td>
+<td>$\varnothing$</td>
+</tr>
+</tbody>
+</table>
+<h4 id="特殊符号"><a href="#特殊符号" class="headerlink" title="特殊符号"></a>特殊符号</h4><table>
+<thead>
+<tr>
+<th>表示</th>
+<th>符号</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>\infty</code></td>
+<td>$\infty$</td>
+</tr>
+<tr>
+<td><code>\nabla</code></td>
+<td>$\nabla$</td>
+</tr>
+<tr>
+<td><code>\partial</code></td>
+<td>$\partial$</td>
+</tr>
+<tr>
+<td><code>\approx</code></td>
+<td>$\approx$</td>
+</tr>
+<tr>
+<td><code>\sim</code></td>
+<td>$\sim$</td>
+</tr>
+<tr>
+<td><code>\simeq</code></td>
+<td>$\simeq$</td>
+</tr>
+<tr>
+<td><code>\equiv</code></td>
+<td>$\equiv$</td>
+</tr>
+<tr>
+<td><code>\cong</code></td>
+<td>$\cong$</td>
+</tr>
+<tr>
+<td><code>{n+1 \choose 2k}</code></td>
+<td>${n+1 \choose 2k}$</td>
+</tr>
+<tr>
+<td><code>\forall</code></td>
+<td>$\forall$</td>
+</tr>
+<tr>
+<td><code>\exists</code></td>
+<td>$\exists$</td>
+</tr>
+<tr>
+<td><code>额外</code></td>
+<td><strong>看外链吧</strong></td>
+</tr>
+</tbody>
+</table>
+<h4 id="箭头"><a href="#箭头" class="headerlink" title="箭头"></a>箭头</h4><table>
+<thead>
+<tr>
+<th>表示</th>
+<th>符号</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>\to</code></td>
+<td>$\to$</td>
+</tr>
+<tr>
+<td><code>\leftarrow</code></td>
+<td>$\leftarrow$</td>
+</tr>
+<tr>
+<td><code>\rightarrow</code></td>
+<td>$\rightarrow$</td>
+</tr>
+<tr>
+<td><code>\Leftarrow</code></td>
+<td>$\Leftarrow$</td>
+</tr>
+<tr>
+<td><code>\Rightarrow</code></td>
+<td>$\Rightarrow$</td>
+</tr>
+<tr>
+<td><code>\mapsto</code></td>
+<td>$\mapsto$</td>
+</tr>
+<tr>
+<td><code>\uparrow</code></td>
+<td>$\uparrow$</td>
+</tr>
+<tr>
+<td><code>\downarrow</code></td>
+<td>$\downarrow$</td>
+</tr>
+<tr>
+<td><code>\Uparrow</code></td>
+<td>$\Uparrow$</td>
+</tr>
+<tr>
+<td><code>\Downarrow</code></td>
+<td>$\Downarrow$</td>
+</tr>
+</tbody>
+</table>
+<h4 id="字体"><a href="#字体" class="headerlink" title="字体"></a>字体</h4><ul>
+<li>使用\mathbb或\Bbb来显示黑板粗体字<br>$\mathbb {laiwei}$</li>
+<li>使用\mathbf来显示粗体字，<br>$\mathbf {walsky}$</li>
+<li>使用\mathtt来显示打印式字体<br>$\mathtt {walsky}$</li>
+<li>使用\mathrm来显示罗马字体，<br>$\mathrm {laiwei}$</li>
+<li>使用\mathcal来显示手写字体<br>$\mathcal {walsky}$</li>
+<li>使用\mathscr来显示剧本字体，ABCDabcd<br>$\mathscr {walsky}$</li>
+<li>使用\mathfrak来显示Fraktur字母(一种旧的德国字体)，<br>$\mathfrak {laiwei}$<br>$\mathfrak {Tracy McGrady}$</li>
+</ul>
+<h4 id="顶部符号"><a href="#顶部符号" class="headerlink" title="顶部符号"></a>顶部符号</h4><table>
+<thead>
+<tr>
+<th>表示</th>
+<th>符号</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>\hat x</code></td>
+<td>$\hat x$</td>
+</tr>
+<tr>
+<td><code>\widehat {xy}</code></td>
+<td>$\widehat {xy}$</td>
+</tr>
+<tr>
+<td><code>\overline {xyz}</code></td>
+<td>$\overline {xyz}$</td>
+</tr>
+<tr>
+<td><code>\vec {ab}</code>  {向量最多两个元素}</td>
+<td>$\vec {ab}$</td>
+</tr>
+<tr>
+<td><code>\overrightarrow {abcd}</code></td>
+<td>$\overrightarrow {abcd}$</td>
+</tr>
+<tr>
+<td><code>\dot a</code></td>
+<td>$\dot a$</td>
+</tr>
+<tr>
+<td><code>\ddot {ab}</code></td>
+<td>$\ddot {ab}$</td>
+</tr>
+</tbody>
+</table>
+<h4 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h4><p>在MathJax中插入表格需要<code>$$\begin{array}{列格式}…\end{array}$$</code>，在<code>\begin{array}</code>后需要表明每列的格式：<code>c</code>表示居中；<code>l</code>表示左对齐；<code>r</code>表示右对齐；<code>|</code>表示列分割线。每一行末用<code>\\</code>结束，用<code>&amp;</code>分隔矩阵元素。用<code>\hline</code>表示行分割线。</p>
+<figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">\begin&#123;array&#125;&#123;c|lcr&#125;</span><br><span class="line">n&amp; \text &#123;First&#125; &amp; \text &#123;Second&#125; &amp; \text&#123;Third&#125; \\</span><br><span class="line">\hline</span><br><span class="line"><span class="number">1</span>&amp;<span class="number">19</span>&amp;<span class="number">24</span>&amp;a+b \\</span><br><span class="line"><span class="number">15</span>&amp;<span class="number">64</span>&amp;<span class="number">12</span>&amp;d*c \\</span><br><span class="line"><span class="number">78</span>&amp;<span class="number">45</span>&amp;<span class="number">52</span>&amp;<span class="number">1</span>+<span class="number">10</span>i</span><br><span class="line">\end&#123;array&#125;</span><br></pre></td></tr></table></figure>
+<p><br></p>
+<p>$$<br>\begin{array}{c|lcr}<br>n&amp; \text {First} &amp; \text {Second} &amp; \text{Third} \<br>\hline<br>1&amp;19&amp;24&amp;a+b \<br>15&amp;64&amp;12&amp;d*c \<br>78&amp;45&amp;52&amp;1+10i<br>\end{array}<br>$$</p>
+<h4 id="矩阵"><a href="#矩阵" class="headerlink" title="矩阵"></a>矩阵</h4><p>使用<code>$$\begin{matrix}…\end{matrix}$$</code>，每一行末用<code>\\</code>结束，用<code>&amp;</code>分隔矩阵元素。<br><figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">\begin&#123;matrix&#125;</span><br><span class="line"><span class="number">1</span> &amp; <span class="number">2</span> &amp; <span class="number">3</span> \\</span><br><span class="line"><span class="number">4</span> &amp; <span class="number">5</span> &amp; <span class="number">6</span> \\</span><br><span class="line"><span class="number">7</span> &amp; <span class="number">8</span> &amp; <span class="number">9</span> \\</span><br><span class="line">\end&#123;matrix&#125;</span><br></pre></td></tr></table></figure></p>
+<p><br><br>$$<br>\begin{matrix}<br>1 &amp; 2 &amp; 3 \<br>4 &amp; 5 &amp; 6 \<br>7 &amp; 8 &amp; 9 \<br>\end{matrix}<br>$$</p>
+<blockquote>
+<p>样也可以使用<code>\left \right</code> 使括号对齐<br>或者：</p>
+<ol>
+<li><code>\begin{matrix}...\end{matrix}</code><br>$<br>\begin{pmatrix}<br>1 &amp; 2 &amp; 3 \<br>4 &amp; 5 &amp; 6 \<br>7 &amp; 8 &amp; 9 \<br>\end{pmatrix}<br>$</li>
+<li><code>\begin{batrix}...\end{batrix}</code><br>$<br>\begin{bmatrix}<br>1 &amp; 2 &amp; 3 \<br>4 &amp; 5 &amp; 6 \<br>7 &amp; 8 &amp; 9 \<br>\end{bmatrix}<br>$</li>
+<li><code>\begin{Batrix}...\end{Batrix}</code><br>$<br>\begin{Bmatrix}<br>1 &amp; 2 &amp; 3 \<br>4 &amp; 5 &amp; 6 \<br>7 &amp; 8 &amp; 9 \<br>\end{Bmatrix}<br>$</li>
+<li><code>\begin{vmatrix}...\end{vmatrix}</code><br>$<br>\begin{vmatrix}<br>1 &amp; 2 &amp; 3 \<br>4 &amp; 5 &amp; 6 \<br>7 &amp; 8 &amp; 9 \<br>\end{vmatrix}<br>$</li>
+<li><code>\begin{Vmatrix}...\end{Vmatrix}</code><br>$<br>\begin{Vmatrix}<br>1 &amp; 2 &amp; 3 \<br>4 &amp; 5 &amp; 6 \<br>7 &amp; 8 &amp; 9 \<br>\end{Vmatrix}<br>$</li>
+</ol>
+</blockquote>
+<p><br></p>
+<blockquote>
+<p><strong>如果你想省略一些项，可以使用<code>\cdots ⋯</code>，<code>\ddots，⋱</code>，<code>\vdots  ⋮</code>。 </strong></p>
+</blockquote>
+<figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">\begin&#123;bmatrix&#125;</span><br><span class="line"><span class="number">1</span> &amp; a_1 &amp; a_1^<span class="number">2</span> &amp; \cdots &amp; a_1^n \\</span><br><span class="line"><span class="number">1</span> &amp; a_2 &amp; a_1^<span class="number">2</span> &amp; \cdots &amp; a_2^n \\</span><br><span class="line">\vdots &amp; \vdots &amp; \ddots &amp; \vdots &amp; \vdots \\</span><br><span class="line"><span class="number">1</span> &amp; a_n &amp; a_n^<span class="number">2</span> &amp; \cdots &amp; a_n^n</span><br><span class="line">\end&#123;bmatrix&#125;</span><br></pre></td></tr></table></figure>
+<p>$$<br>\begin{bmatrix}<br>1 &amp; a_1 &amp; a_1^2 &amp; \cdots &amp; a_1^n \<br>1 &amp; a_2 &amp; a_1^2 &amp; \cdots &amp; a_2^n \<br>\vdots &amp; \vdots &amp; \ddots &amp; \vdots &amp; \vdots \<br>1 &amp; a_n &amp; a_n^2 &amp; \cdots &amp; a_n^n<br>\end{bmatrix}<br>$$<br><br></p>
+<blockquote>
+<p>增广矩阵的创建跟表格创建类似</p>
+</blockquote>
+<figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">\left[</span><br><span class="line">\begin&#123;array&#125;&#123;cc|c&#125;</span><br><span class="line"><span class="number">1</span> &amp; <span class="number">2</span> &amp; <span class="number">3</span> \\</span><br><span class="line"><span class="number">4</span> &amp; <span class="number">5</span> &amp; <span class="number">6</span></span><br><span class="line">\end&#123;array&#125;</span><br><span class="line">\right]</span><br></pre></td></tr></table></figure>
+<p>$$<br>\left[<br>\begin{array}{cc|c}<br>1 &amp; 2 &amp; 3 \<br>4 &amp; 5 &amp; 6<br>\end{array}<br>\right]<br>$$</p>
+<p><br></p>
+<blockquote>
+<p>文本段内使用矩阵，则需要用<code>\bigl(\begin{smallmatrix} ... \end{smallmatrix}\bigr)</code></p>
+</blockquote>
+<p>这个是插入在文本中的 <strong>小矩阵</strong> $\bigl( \begin{smallmatrix} a &amp; b \ c &amp; d   \end{smallmatrix} \bigr)$</p>
+<h4 id="分情况表达式"><a href="#分情况表达式" class="headerlink" title="分情况表达式"></a>分情况表达式</h4><p>使用\begin{cases}…\end{cases}，每种情况开始前用&amp;，用\结束<br><figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">f(n) =</span><br><span class="line">\begin&#123;cases&#125;</span><br><span class="line">n/<span class="number">2</span>, &amp; \text&#123;if $n$ is even&#125; \\</span><br><span class="line"><span class="number">3</span>n+<span class="number">1</span>, &amp; \text&#123;if $n$ is odd&#125; \\</span><br><span class="line">\end&#123;cases&#125;</span><br></pre></td></tr></table></figure></p>
+<p>$$<br>f(n) =<br>\begin{cases}<br>n/2, &amp; \text{if $n$ is even} \<br>3n+1, &amp; \text{if $n$ is odd} \<br>\end{cases}<br>$$</p>
+<blockquote>
+<p>如果想要更多的竖直空间，行末尾用<code>\\[2ex]</code>代替<code>\\</code>。</p>
+</blockquote>
+<p>$$<br>f(n)=<br>\begin{cases}<br>\frac n2,  　　\text{if $n$ is even} \[2ex]<br>3n+1,  \text{if $n$ is odd}<br>\end{cases}<br>$$</p>
+<h4 id="标记与引用"><a href="#标记与引用" class="headerlink" title="标记与引用"></a>标记与引用</h4><p>为了方便在文章中标记等式，通常使用<code>tag{yourtag}</code>,如果想在后面引用这个等式，就使用<code>\label{somelabel}</code> ，且放在tag的后面</p>
+<p>$x=y+a\sin x \tag{<em>} $<br>为了在接下来引用这个式子，使用<code>\eqref{somelabel}</code>，例：<br>$x-\sin x \stackrel{\eqref{</em>}}=y$</p>
+<h4 id="绝对值和模"><a href="#绝对值和模" class="headerlink" title="绝对值和模"></a>绝对值和模</h4><p>绝对值可以使用<br><code>\lvert x \rvert</code>  　　$\lvert x \rvert$</p>
+<p>对于向量的模长<br><code>\lVert x \rVert</code>  　　$\lVert x \rVert$</p>
+<h4 id="高亮显示"><a href="#高亮显示" class="headerlink" title="高亮显示"></a>高亮显示</h4><p>为了显著表示某等式，可以使用<code>\bbox</code><br><figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">\bbox[yellow]</span><br><span class="line">&#123;</span><br><span class="line">e^x = \lim_&#123;n \to \infty&#125;\left( &#123;1 + \frac xn&#125; \right)^n</span><br><span class="line">\qquad (<span class="number">1</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>$$<br>\bbox[yellow]<br>{<br>e^x = \lim<em>{n \to \infty}\left( {1 + \frac xn} \right)^n<br>\qquad (1)<br>}<br>$$<br><br><br>$$<br>\bbox[border:2px solid red]<br>{<br>e^x =\lim</em>{n \to \infty} \left( 1 + \frac xn \right)^n<br>}<br>$$</p>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://yoursite.com/2016/12/13/mathjax的使用/" data-id="ciwngv5fg0009xkb0cn6bctce" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://yoursite.com/2016/12/13/mathjax的使用/#comments" class="article-comment-link ds-thread-count" data-thread-key="http://yoursite.com/2016/12/13/mathjax的使用/">评论</a>
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/2016/10/11/Python开发3(控制语句和文件操作)/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">下一篇</strong>
+            <div class="article-nav-title">Python开发3(控制语句和文件操作)</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    <section id="comments">
+    
+        
+    <div class="ds-thread" data-thread-key="2016/12/13/mathjax的使用/" data-title="mathjax的使用" data-url="http://yoursite.com/2016/12/13/mathjax的使用/"></div>
+    <style>
+        #ds-thread #ds-reset .ds-textarea-wrapper {
+            background: none;
+        }
+        #ds-reset .ds-avatar img {
+            box-shadow: none;
+        }
+        #ds-reset .ds-gradient-bg {
+            background: #f7f7f7;
+        }
+        #ds-thread #ds-reset li.ds-tab a {
+            border-radius: 3px;
+        }
+        #ds-thread #ds-reset .ds-post-button {
+            color: white;
+            border: none;
+            box-shadow: none;
+            background: #d32;
+            text-shadow: none;
+            font-weight: normal;
+            font-family: 'Microsoft Yahei';
+        }
+        #ds-thread #ds-reset .ds-post-button:hover {
+            color: white;
+            background: #DE594C;
+        }
+        #ds-thread #ds-reset .ds-post-button:active {
+            background: #d32;
+        }
+        #ds-smilies-tooltip ul.ds-smilies-tabs li a.ds-current {
+            color: white;
+            background: #d32;
+            box-shadow: none;
+            text-shadow: none;
+            font-weight: normal;
+        }
+    </style>
+
+    
+    </section>
+
+</section>
+            
+                <aside id="sidebar">
+   
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">最新文章</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/12/13/mathjax的使用/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://img.hb.aicdn.com/d79e605eeeafd49f7a0809e6fe685f5fce78f3a6260c9-I5x4D0_fw658)" alt="mathjax的使用" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/hexo/">hexo</a></p>
+                            <p class="item-title"><a href="/2016/12/13/mathjax的使用/" class="title">mathjax的使用</a></p>
+                            <p class="item-date"><time datetime="2016-12-13T12:03:11.973Z" itemprop="datePublished">2016-12-13</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/10/11/Python开发3(控制语句和文件操作)/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://img.hb.aicdn.com/caa47fa9beba2011138b444e7a1adf59996cadc9b825-Kf2Aum_fw658)" alt="Python开发3(控制语句和文件操作)" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/python/">python</a></p>
+                            <p class="item-title"><a href="/2016/10/11/Python开发3(控制语句和文件操作)/" class="title">Python开发3(控制语句和文件操作)</a></p>
+                            <p class="item-date"><time datetime="2016-10-11T01:06:30.797Z" itemprop="datePublished">2016-10-11</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/10/01/python网络采集1/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://img.hb.aicdn.com/bc0acb2f96d7314b03e5d59527587275e362a75c128f8-sD64Th_fw658)" alt="python网络数据采集1" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/python/">python</a></p>
+                            <p class="item-title"><a href="/2016/10/01/python网络采集1/" class="title">python网络数据采集1</a></p>
+                            <p class="item-date"><time datetime="2016-10-01T07:17:31.137Z" itemprop="datePublished">2016-10-01</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/09/25/All is Acting/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://o9pxg8pv5.bkt.clouddn.com/zuozhu.jpg)" alt="我该如何Act" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/读书和生活/">读书和生活</a></p>
+                            <p class="item-title"><a href="/2016/09/25/All is Acting/" class="title">我该如何Act</a></p>
+                            <p class="item-date"><time datetime="2016-09-25T05:56:18.054Z" itemprop="datePublished">2016-09-25</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/08/20/数据库概论基础知识—-1/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://hbimg.b0.upaiyun.com/f65de72a8e926773cde52778b9e00aea489080651521f-gCW2W4_fw658)" alt="数据库概论基础知识—-1" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/数据库概论/">数据库概论</a></p>
+                            <p class="item-title"><a href="/2016/08/20/数据库概论基础知识—-1/" class="title">数据库概论基础知识—-1</a></p>
+                            <p class="item-date"><time datetime="2016-08-20T09:11:06.850Z" itemprop="datePublished">2016-08-20</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">虾米播播</h3>
+        <div class="widget tagcloud">
+           <ul>
+           <h5>
+           <embed src="https://www.xiami.com/widget/160864150_188998912_200_280_4DB653_009609_0/collectPlayer.swf" type="application/x-shockwave-flash" width="200" height="280" wmode="opaque"></embed>
+           </h5>
+           </ul>
+        </div>
+    </div>
+
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">分类</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux学习/">Linux学习</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/hexo/">hexo</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据库概论/">数据库概论</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/读书和生活/">读书和生活</a><span class="category-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">归档</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">标签</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android优化/">Android优化</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python基础/">python基础</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python网络数据采集/">python网络数据采集</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/something/">something</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/正则表达式/">正则表达式</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/生活/">生活</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+        <div class="widget tag">
+<h3 class="title">友情链接</h3>
+<ul class="entry">
+<li><a href="https://www.google.ae/" title="google">Google</a></li>
+<li><a href="http://www.jianshu.com/users/de17c721f02a/latest_articles" title="jianshu">简书</a></li>
+<li><a href="https://blog.jamespan.me/" title="James Pan's Blog">James Pan's Blog </a></li>
+<li><a href="http://ibruce.info/" title="icruce">不如</a></li>
+<li><a href="http://rocko.xyz/2016/06/14/ADB-Issue-2/" title="rocko">Rocko</a></li>
+
+
+</ul>
+</div>
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2016 laiwei<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
+            &nbsp&nbsp&nbsp&nbsp
+            <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+             </script>
+            <span id="busuanzi_container_site_pv" >本站有<span id="busuanzi_value_site_pv" style="color:#ef7522"></span>个小伙伴留下脚印</span>
+
+        </div>
+    </div>
+</footer>
+
+        
+    
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:'walsky'};
+    (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script>
+
+
+
+    
+        <script src="/vendor/fancybox/jquery.fancybox.pack.js"></script>
+    
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>

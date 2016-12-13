@@ -164,7 +164,7 @@
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                12
+                13
                 <span>文章</span>
             </div>
             <div class="article-info-block">
@@ -217,6 +217,169 @@
 
             
             <section id="main">
+    <article id="post-mathjax的使用" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2016/12/13/mathjax的使用/">mathjax的使用</a>
+        </h1>
+    
+
+                <div class="article-meta">
+                    
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2016/12/13/mathjax的使用/">
+            <time datetime="2016-12-13T12:03:11.973Z" itemprop="datePublished">2016-12-13</time>
+        </a>
+    </div>
+
+
+                    
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/hexo/">hexo</a>
+    </div>
+
+                    
+                </div>
+            </header>
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <p><p><img src="http://img.hb.aicdn.com/d79e605eeeafd49f7a0809e6fe685f5fce78f3a6260c9-I5x4D0_fw658" alt=""></p>
+<p><a href="http://meta.math.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference">Mathjax与LaTex公式简介(英文)</a><br><a href="http://m.blog.csdn.net/article/details?id=48900483">mathjax使用</a></p>
+<p><a href="http://blog.csdn.net/u010945683/article/details/46757757">csdn_Mathjax基本使用方法</a><br><a href="http://www.jianshu.com/p/1ff6e833e2e6">简书Haroopad使用</a></p>
+<blockquote>
+<p>显示目录使用空行+<code>[toc]</code> 如下面显示的那样</p>
+</blockquote>
+<h3 id="Haroopad的额外使用"><a href="#Haroopad的额外使用" class="headerlink" title="Haroopad的额外使用"></a>Haroopad的额外使用</h3><h4 id="haroopad插入音频视频"><a href="#haroopad插入音频视频" class="headerlink" title="haroopad插入音频视频"></a>haroopad插入音频视频</h4><p><img src="C:\Users\LW\Desktop\python笔记\林宥嘉-成全 .mp3" alt="audio"></p>
+<p><img src="G:\运动\麦迪3对3.mp4" alt="video"></p>
+<p>[toc]</p>
+<h4 id="Tasklist"><a href="#Tasklist" class="headerlink" title="Tasklist"></a>Tasklist</h4><ul>
+<li>[x] Be happy everyday, silme, and talk more</li>
+<li>[x] 2016.12.1 学习mathjax语法</li>
+<li>[x] ng Linear Regression</li>
+<li>[x] 每天进步一点就够了，Do not make youself terid and unhappy</li>
+</ul>
+<hr>
+<h4 id="视图-Presentation-mode"><a href="#视图-Presentation-mode" class="headerlink" title="视图 Presentation mode"></a>视图 Presentation mode</h4><p>Haroopad支持直接撰写PPT。<br>使用<code>***</code>作为每一个PPT的分页，这样显示的就是一个独立的一页，如果需要使用Haroopad做PPT的话</p>
+<hr>
+<h3 id="Mathjax"><a href="#Mathjax" class="headerlink" title="Mathjax"></a>Mathjax</h3><p>MathJax是一款运行在浏览器中的开源的数学符号渲染引擎，使用MathJax可以方便的在浏览器中显示数学公式，不需要使用图片。可以解析LaTex、MathML和ASCIIMathMl的标记语言。</p>
+<blockquote>
+<p><code>\</code>  右斜杠大法好， 一般都是右斜杠+字母</p>
+</blockquote>
+<p>有两种公式显示形式:</p>
+<ul>
+<li>行内的公式，写在<code>$...$</code>内</li>
+<li>单独展示的公式，使用<code>$$...$$</code>。<br>这两种方式的渲染效果不同，如下所示：<figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">\sum_&#123;i=0&#125;^n i^<span class="number">2</span> = \frac&#123;(n^2+n)(2n+1)&#125;<span class="number">6</span>\tag&#123;inline&#125;</span><br><span class="line">\sum_&#123;i=0&#125;^n i^<span class="number">2</span> = \frac&#123;(n^2+n)(2n+1)&#125;<span class="number">6</span>\tag&#123;displayed&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>$\sum_{i=0}^n i^2 = \frac{(n^2+n)(2n+1)}6\tag{inline}$</p>
+<p>$$\sum_{i=0}^n i^2 = \frac{(n^2+n)(2n+1)}6\tag{displayed}<br>$$</p>
+<p>####上标与下标：<br><code>x_i^2</code> 　　　  $x_i^2$</p>
+<blockquote>
+<p>一般都是先写下标再写上标</p>
+</blockquote>
+<p><code>x^{yz}</code> 　　　  $x^{yz}$<br><code>x^{y^z}</code> 　　　  $x^{y^z}$<br><code>x_{i^2}</code> 　　　  $x_{i^2}$</p>
+<h4 id="希腊字母-大小写"><a href="#希腊字母-大小写" class="headerlink" title="希腊字母(大小写)"></a>希腊字母(大小写)</h4><p>比如用：使用<code>\Gamma, \Delta, ...,\Omega</code>表示大写的希腊字母：<br>$\Gamma$ ,$\Delta$, $\Omega$</p>
+<p>使用<code>\alpha,\beta,\gamma,epsilon</code>表示希腊小写字母<br>$\alpha$,$\beta$,$\gamma$,$\epsilon$</p>
+<p>　　　　　　详情看下表：<br><img src="http://o9pxg8pv5.bkt.clouddn.com/mathjax1.png" alt=""><br></p>
+            <p class="article-more-link">
+                <a href="/2016/12/13/mathjax的使用/#more">查看更多</a>
+            </p>
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://yoursite.com/2016/12/13/mathjax的使用/" data-id="ciwngv5fg0009xkb0cn6bctce" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://yoursite.com/2016/12/13/mathjax的使用/#comments" class="article-comment-link ds-thread-count" data-thread-key="http://yoursite.com/2016/12/13/mathjax的使用/">评论</a>
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
     <article id="post-Python开发3(控制语句和文件操作)" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
@@ -257,7 +420,7 @@
         
         <div class="article-entry" itemprop="articleBody">
         
-            <p><p><img src="http://huaban.com/go/?pin_id=436154113" alt=""></p>
+            <p><p><img src="http://img.hb.aicdn.com/caa47fa9beba2011138b444e7a1adf59996cadc9b825-Kf2Aum_fw658" alt=""></p>
 <h5 id="python的控制语句"><a href="#python的控制语句" class="headerlink" title="python的控制语句"></a>python的控制语句</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">x = input(<span class="string">"x:"</span>)</span><br><span class="line"><span class="comment"># input支持用户输入数字和表达式，最后返回数字类型，表达式会自动计算</span></span><br><span class="line">print(x)</span><br><span class="line">x = raw_imput(<span class="string">"x:"</span>)</span><br><span class="line"><span class="comment"># raw_input捕获原始输入，返回的是字符串类型</span></span><br><span class="line">x = int(x) <span class="comment"># 如果需要使用数字类型,转换位数字类型</span></span><br><span class="line">x = x+<span class="number">1</span></span><br></pre></td></tr></table></figure>
 <p>####### switch语句</p>
 <blockquote>
@@ -409,7 +572,7 @@ while x &lt; 5:
 
 </div>
 
-    <a data-url="http://yoursite.com/2016/10/11/Python开发3(控制语句和文件操作)/" data-id="civ2az6zw00071wb02pa1i467" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yoursite.com/2016/10/11/Python开发3(控制语句和文件操作)/" data-id="ciwngv5f60006xkb0onzux6st" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -566,7 +729,7 @@ while x &lt; 5:
 
 </div>
 
-    <a data-url="http://yoursite.com/2016/10/01/python网络采集1/" data-id="civ2az716000p1wb0rn2xl8v5" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yoursite.com/2016/10/01/python网络采集1/" data-id="ciwngv5gv000txkb0uyka14du" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -708,7 +871,7 @@ while x &lt; 5:
 
 </div>
 
-    <a data-url="http://yoursite.com/2016/09/25/All is Acting/" data-id="civ2az6y900001wb00ywypivf" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yoursite.com/2016/09/25/All is Acting/" data-id="ciwngv5eg0000xkb0oyoogvgd" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -896,7 +1059,7 @@ while x &lt; 5:
 
 </div>
 
-    <a data-url="http://yoursite.com/2016/08/20/数据库概论基础知识—-1/" data-id="civ2az70x000j1wb0yijfbh7k" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yoursite.com/2016/08/20/数据库概论基础知识—-1/" data-id="ciwngv5gc000jxkb0dayg6zqf" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1111,7 +1274,7 @@ while x &lt; 5:
 
 </div>
 
-    <a data-url="http://yoursite.com/2016/08/20/Mysql数据库基础/" data-id="civ2az6zp00061wb0rimnr6ss" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yoursite.com/2016/08/20/Mysql数据库基础/" data-id="ciwngv5fl000cxkb0kt6elnoh" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1189,238 +1352,8 @@ while x &lt; 5:
 
 
 
-    <article id="post-Mysql数据类型" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2016/08/20/Mysql数据类型/">Mysql等数据类型的使用</a>
-        </h1>
-    
-
-                <div class="article-meta">
-                    
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2016/08/20/Mysql数据类型/">
-            <time datetime="2016-08-20T00:29:22.634Z" itemprop="datePublished">2016-08-20</time>
-        </a>
-    </div>
-
-
-                    
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/数据库概论/">数据库概论</a>
-    </div>
-
-                    
-                </div>
-            </header>
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            <p><p>###MySQL 数据类型<br><img src="http://c.hiphotos.baidu.com/baike/w%3D268%3Bg%3D0/sign=e35e494a6159252da3171a020ca06406/ac6eddc451da81cb037c289d5366d016082431c3.jpg" alt=""><br>在 MySQL 中，有三种主要的类型：文本、数字和日期/时间类型。</p>
-<table>
-<thead>
-<tr>
-<th>Text类型</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>数据类型</td>
-<td>方法</td>
-</tr>
-<tr>
-<td>CHAR(size)</td>
-<td>保存固定长度的字符串（可包含字母、数字以及特殊字符）。在括号中指定字符串的长度。最多 255 个字符。</td>
-</tr>
-<tr>
-<td>VARCHAR(size)</td>
-<td>保存可变长度的字符串（可包含字母、数字以及特殊字符）。在括号中指定字符串的最大长度。最多 255 个字符。 (注释：如果值的长度大于 255，则被转换为 TEXT 类型。)</td>
-</tr>
-<tr>
-<td>TINYTEXT</td>
-<td>存放最大长度为 255 个字符的字符串。</td>
-</tr>
-<tr>
-<td>TEXT</td>
-<td>存放最大长度为 65,535 个字符的字符串。</td>
-</tr>
-<tr>
-<td>BLOB</td>
-<td>用于 BLOBs (Binary Large OBjects)。存放最多 65,535 字节的数据。</td>
-</tr>
-<tr>
-<td>MEDIUMTEXT</td>
-<td>存放最大长度为 16,777,215 个字符的字符串。</td>
-</tr>
-<tr>
-<td>MEDIUMBLOB</td>
-<td>用于 BLOBs (Binary Large OBjects)。存放最多 16,777,215 字节的数据。</td>
-</tr>
-<tr>
-<td>LONGTEXT</td>
-<td>存放最大长度为 4,294,967,295 个字符的字符串。</td>
-</tr>
-<tr>
-<td>LONGBLOB</td>
-<td>用于 BLOBs (Binary Large OBjects)。存放最多 4,294,967,295 字节的数据。</td>
-</tr>
-<tr>
-<td>ENUM(x,y,z,etc.)</td>
-<td>允许你输入可能值的列表。可以在 ENUM 列表中列出最大 65535 个值。如果列表中不存在插入的值，则插入空值。(注释：这些值是按照你输入的顺序存储的。)可以按照此格式输入可能的值：ENUM(‘X’,’Y’,’Z’)</td>
-</tr>
-<tr>
-<td>SET</td>
-<td>与 ENUM 类似，SET 最多只能包含 64 个列表项，不过 SET 可存储一个以上的值。</td>
-</tr>
-</tbody>
-</table>
-<table>
-<thead>
-<tr>
-<th>Number类型</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>数据类型</td>
-<td>方法</td>
-</tr>
-<tr>
-<td>TINYINT(size)</td>
-<td>-128 到 127 常规。0 到 255 无符号*。在括号中规定最大位数。</td>
-</tr>
-<tr>
-<td>SMALLINT(size)</td>
-<td>-32768 到 32767 常规。0 到 65535 无符号*。在括号中规定最大位数。</td>
-</tr>
-<tr>
-<td>MEDIUMINT(size)</td>
-<td>-8388608 到 8388607 普通。0 to 16777215 无符号*。在括号中规定最大位数。</td>
-</tr>
-<tr>
-<td>INT(size)</td>
-<td>-2147483648 到 2147483647 常规。0 到 4294967295 无符号*。在括号中规定最大位数。</td>
-</tr>
-<tr>
-<td>BIGINT(size)</td>
-<td>-9223372036854775808 到 9223372036854775807 常规。0 到 18446744073709551615 无符号*。在括号中规定最大位数。</td>
-</tr>
-<tr>
-<td>FLOAT(size,d)</td>
-<td>带有浮动小数点的小数字。在括号中规定最大位数。在 d 参数中规定小数点右侧的最大位数。</td>
-</tr>
-<tr>
-<td>DOUBLE(size,d)</td>
-<td>带有浮动小数点的大数字。在括号中规定最大位数。在 d 参数中规定小数点右侧的最大位数。</td>
-</tr>
-<tr>
-<td>DECIMAL(size,d)</td>
-<td>作为字符串存储的 DOUBLE 类型，允许固定的小数点。(* 这些整数类型拥有额外的选项 UNSIGNED。通常，整数可以是负数或正数。如果添加 UNSIGNED 属性，那么范围将从 0 开始，而不是某个负数。)</td>
-</tr>
-</tbody>
-</table></p>
-            <p class="article-more-link">
-                <a href="/2016/08/20/Mysql数据类型/#more">查看更多</a>
-            </p>
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://yoursite.com/2016/08/20/Mysql数据类型/" data-id="civ2az70a000c1wb0u5a5mqlr" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-        <a href="http://yoursite.com/2016/08/20/Mysql数据类型/#comments" class="article-comment-link ds-thread-count" data-thread-key="http://yoursite.com/2016/08/20/Mysql数据类型/">评论</a>
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
     <nav id="page-nav">
-        <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">下一页 &raquo;</a>
+        <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">下一页 &raquo;</a>
     </nav>
 </section>
             
@@ -1435,10 +1368,29 @@ while x &lt; 5:
                     <li>
                         
                         <div class="item-thumbnail">
+                            <a href="/2016/12/13/mathjax的使用/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://img.hb.aicdn.com/d79e605eeeafd49f7a0809e6fe685f5fce78f3a6260c9-I5x4D0_fw658)" alt="mathjax的使用" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/hexo/">hexo</a></p>
+                            <p class="item-title"><a href="/2016/12/13/mathjax的使用/" class="title">mathjax的使用</a></p>
+                            <p class="item-date"><time datetime="2016-12-13T12:03:11.973Z" itemprop="datePublished">2016-12-13</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
                             <a href="/2016/10/11/Python开发3(控制语句和文件操作)/" class="thumbnail">
     
     
-        <span style="background-image:url(http://huaban.com/go/?pin_id=436154113)" alt="Python开发3(控制语句和文件操作)" class="thumbnail-image"></span>
+        <span style="background-image:url(http://img.hb.aicdn.com/caa47fa9beba2011138b444e7a1adf59996cadc9b825-Kf2Aum_fw658)" alt="Python开发3(控制语句和文件操作)" class="thumbnail-image"></span>
     
 </a>
 
@@ -1508,25 +1460,6 @@ while x &lt; 5:
                         </div>
                     </li>
                 
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2016/08/20/Mysql数据库基础/" class="thumbnail">
-    
-    
-        <span style="background-image:url(http://d.hiphotos.baidu.com/baike/c0%3Dbaike92%2C5%2C5%2C92%2C30/sign=96e2f04307087bf469e15fbb93ba3c49/8435e5dde71190effdb15dd7cb1b9d16fdfa6074.jpg)" alt="Mysql数据库基础" class="thumbnail-image"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/数据库概论/">数据库概论</a></p>
-                            <p class="item-title"><a href="/2016/08/20/Mysql数据库基础/" class="title">Mysql数据库基础</a></p>
-                            <p class="item-date"><time datetime="2016-08-20T02:22:42.938Z" itemprop="datePublished">2016-08-20</time></p>
-                        </div>
-                    </li>
-                
             </ul>
         </div>
     </div>
@@ -1550,7 +1483,7 @@ while x &lt; 5:
     <div class="widget-wrap">
         <h3 class="widget-title">分类</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux学习/">Linux学习</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/hexo/">hexo</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据库概论/">数据库概论</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/读书和生活/">读书和生活</a><span class="category-list-count">1</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux学习/">Linux学习</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/hexo/">hexo</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据库概论/">数据库概论</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/读书和生活/">读书和生活</a><span class="category-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -1559,7 +1492,7 @@ while x &lt; 5:
     <div class="widget-wrap">
         <h3 class="widget-title">归档</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">1</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">1</span></li></ul>
         </div>
     </div>
 
