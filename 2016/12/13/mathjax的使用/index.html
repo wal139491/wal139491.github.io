@@ -32,7 +32,7 @@ Tasklist
 [x] Be happy everyday, silme, and talk more
 [x] 2016.12.1 学习mathjax">
 <meta property="og:image" content="http://img.hb.aicdn.com/d79e605eeeafd49f7a0809e6fe685f5fce78f3a6260c9-I5x4D0_fw658">
-<meta property="og:updated_time" content="2016-12-13T12:10:30.542Z">
+<meta property="og:updated_time" content="2017-01-02T08:36:11.316Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="mathjax的使用">
 <meta name="twitter:description" content="Mathjax与LaTex公式简介(英文)mathjax使用
@@ -224,13 +224,7 @@ Tasklist
                     </td>
                     
                     <td>
-                        <a href="http://www.jianshu.com/users/de17c721f02a/latest_articles" target="_blank" title="jianshu" class=tooltip>
-                            <i class="fa fa-jianshu"></i>
-                        </a>
-                    </td>
-                    
-                    <td>
-                        <a href="/" target="_blank" title="dribbble" class=tooltip>
+                        <a href="http://www.jianshu.com/users/de17c721f02a/latest_articles" target="_blank" title="dribbble" class=tooltip>
                             <i class="fa fa-dribbble"></i>
                         </a>
                     </td>
@@ -315,7 +309,7 @@ Tasklist
 <p>有两种公式显示形式:</p>
 <ul>
 <li>行内的公式，写在<code>$...$</code>内</li>
-<li>单独展示的公式，使用<code>$$...$$</code>。<br>这两种方式的渲染效果不同，如下所示：<figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">\sum_&#123;i=0&#125;^n i^<span class="number">2</span> = \frac&#123;(n^2+n)(2n+1)&#125;<span class="number">6</span>\tag&#123;inline&#125;</span><br><span class="line">\sum_&#123;i=0&#125;^n i^<span class="number">2</span> = \frac&#123;(n^2+n)(2n+1)&#125;<span class="number">6</span>\tag&#123;displayed&#125;</span><br></pre></td></tr></table></figure>
+<li>单独展示的公式，使用<code>$$...$$</code>。<br>这两种方式的渲染效果不同，如下所示：<figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$\sum_&#123;i=0&#125;^n i^<span class="number">2</span> = \frac&#123;(n^2+n)(2n+1)&#125;<span class="number">6</span>\tag&#123;inline&#125;$</span><br><span class="line">$$\sum_&#123;i=0&#125;^n i^<span class="number">2</span> = \frac&#123;(n^2+n)(2n+1)&#125;<span class="number">6</span>\tag&#123;displayed&#125;$$</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <p>$\sum_{i=0}^n i^2 = \frac{(n^2+n)(2n+1)}6\tag{inline}$</p>
@@ -633,50 +627,49 @@ Tasklist
 </tr>
 </tbody>
 </table>
+<blockquote>
+<p>一旦涉及到<code>\\</code>换行时，一律使用(3个)<code>\\\</code>替换，因为markdown会把多行公式结尾的<code>\\</code>转义成<code>\</code></p>
+</blockquote>
 <h4 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h4><p>在MathJax中插入表格需要<code>$$\begin{array}{列格式}…\end{array}$$</code>，在<code>\begin{array}</code>后需要表明每列的格式：<code>c</code>表示居中；<code>l</code>表示左对齐；<code>r</code>表示右对齐；<code>|</code>表示列分割线。每一行末用<code>\\</code>结束，用<code>&amp;</code>分隔矩阵元素。用<code>\hline</code>表示行分割线。</p>
-<figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">\begin&#123;array&#125;&#123;c|lcr&#125;</span><br><span class="line">n&amp; \text &#123;First&#125; &amp; \text &#123;Second&#125; &amp; \text&#123;Third&#125; \\</span><br><span class="line">\hline</span><br><span class="line"><span class="number">1</span>&amp;<span class="number">19</span>&amp;<span class="number">24</span>&amp;a+b \\</span><br><span class="line"><span class="number">15</span>&amp;<span class="number">64</span>&amp;<span class="number">12</span>&amp;d*c \\</span><br><span class="line"><span class="number">78</span>&amp;<span class="number">45</span>&amp;<span class="number">52</span>&amp;<span class="number">1</span>+<span class="number">10</span>i</span><br><span class="line">\end&#123;array&#125;</span><br></pre></td></tr></table></figure>
-<p><br></p>
-<p>$$<br>\begin{array}{c|lcr}<br>n&amp; \text {First} &amp; \text {Second} &amp; \text{Third} \<br>\hline<br>1&amp;19&amp;24&amp;a+b \<br>15&amp;64&amp;12&amp;d*c \<br>78&amp;45&amp;52&amp;1+10i<br>\end{array}<br>$$</p>
-<h4 id="矩阵"><a href="#矩阵" class="headerlink" title="矩阵"></a>矩阵</h4><p>使用<code>$$\begin{matrix}…\end{matrix}$$</code>，每一行末用<code>\\</code>结束，用<code>&amp;</code>分隔矩阵元素。<br><figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">\begin&#123;matrix&#125;</span><br><span class="line"><span class="number">1</span> &amp; <span class="number">2</span> &amp; <span class="number">3</span> \\</span><br><span class="line"><span class="number">4</span> &amp; <span class="number">5</span> &amp; <span class="number">6</span> \\</span><br><span class="line"><span class="number">7</span> &amp; <span class="number">8</span> &amp; <span class="number">9</span> \\</span><br><span class="line">\end&#123;matrix&#125;</span><br></pre></td></tr></table></figure></p>
-<p><br><br>$$<br>\begin{matrix}<br>1 &amp; 2 &amp; 3 \<br>4 &amp; 5 &amp; 6 \<br>7 &amp; 8 &amp; 9 \<br>\end{matrix}<br>$$</p>
+<figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">\begin&#123;array&#125;&#123;c|lcr&#125;</span><br><span class="line">n&amp; \text &#123;First&#125; &amp; \text &#123;Second&#125; &amp; \text&#123;Third&#125; \\\</span><br><span class="line">\hline</span><br><span class="line"><span class="number">1</span>&amp;<span class="number">19</span>&amp;<span class="number">24</span>&amp;a+b \\\</span><br><span class="line"><span class="number">15</span>&amp;<span class="number">64</span>&amp;<span class="number">12</span>&amp;d*c \\\</span><br><span class="line"><span class="number">78</span>&amp;<span class="number">45</span>&amp;<span class="number">52</span>&amp;<span class="number">1</span>+<span class="number">10</span>i</span><br><span class="line">\end&#123;array&#125;</span><br></pre></td></tr></table></figure>
+<p>$$<br>\begin{array}{c|lcr}<br>n&amp; \text {First} &amp; \text {Second} &amp; \text{Third} \\<br>\hline<br>1&amp;19&amp;24&amp;a+b \\<br>15&amp;64&amp;12&amp;d*c \\<br>78&amp;45&amp;52&amp;1+10i<br>\end{array}<br>$$</p>
+<h4 id="矩阵"><a href="#矩阵" class="headerlink" title="矩阵"></a>矩阵</h4><p>使用<code>$$\begin{matrix}…\end{matrix}$$</code>，每一行末用<code>\\</code>结束，用<code>&amp;</code>分隔矩阵元素。<br><figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">\begin&#123;matrix&#125;</span><br><span class="line"><span class="number">1</span> &amp; <span class="number">2</span> &amp; <span class="number">3</span> \\\</span><br><span class="line"><span class="number">4</span> &amp; <span class="number">5</span> &amp; <span class="number">6</span> \\\</span><br><span class="line"><span class="number">7</span> &amp; <span class="number">8</span> &amp; <span class="number">9</span> \\\</span><br><span class="line">\end&#123;matrix&#125;</span><br></pre></td></tr></table></figure></p>
+<p>$\begin{matrix}<br>1 &amp; 2 &amp; 3 \\<br>4 &amp; 5 &amp; 6 \\<br>7 &amp; 8 &amp; 9 \\<br>\end{matrix}$</p>
 <blockquote>
 <p>样也可以使用<code>\left \right</code> 使括号对齐<br>或者：</p>
 <ol>
-<li><code>\begin{matrix}...\end{matrix}</code><br>$<br>\begin{pmatrix}<br>1 &amp; 2 &amp; 3 \<br>4 &amp; 5 &amp; 6 \<br>7 &amp; 8 &amp; 9 \<br>\end{pmatrix}<br>$</li>
-<li><code>\begin{batrix}...\end{batrix}</code><br>$<br>\begin{bmatrix}<br>1 &amp; 2 &amp; 3 \<br>4 &amp; 5 &amp; 6 \<br>7 &amp; 8 &amp; 9 \<br>\end{bmatrix}<br>$</li>
-<li><code>\begin{Batrix}...\end{Batrix}</code><br>$<br>\begin{Bmatrix}<br>1 &amp; 2 &amp; 3 \<br>4 &amp; 5 &amp; 6 \<br>7 &amp; 8 &amp; 9 \<br>\end{Bmatrix}<br>$</li>
-<li><code>\begin{vmatrix}...\end{vmatrix}</code><br>$<br>\begin{vmatrix}<br>1 &amp; 2 &amp; 3 \<br>4 &amp; 5 &amp; 6 \<br>7 &amp; 8 &amp; 9 \<br>\end{vmatrix}<br>$</li>
-<li><code>\begin{Vmatrix}...\end{Vmatrix}</code><br>$<br>\begin{Vmatrix}<br>1 &amp; 2 &amp; 3 \<br>4 &amp; 5 &amp; 6 \<br>7 &amp; 8 &amp; 9 \<br>\end{Vmatrix}<br>$</li>
+<li><code>\begin{pmatrix}...\end{pmatrix}</code><br>$\begin{pmatrix}<br>1 &amp; 2 &amp; 3 \\<br>4 &amp; 5 &amp; 6 \\<br>7 &amp; 8 &amp; 9 \\<br>\end{pmatrix}$</li>
+<li><code>\begin{batrix}...\end{batrix}</code><br>$<br>\begin{bmatrix}<br>1 &amp; 2 &amp; 3 \\<br>4 &amp; 5 &amp; 6 \\<br>7 &amp; 8 &amp; 9 \\<br>\end{bmatrix}<br>$</li>
+<li><code>\begin{Batrix}...\end{Batrix}</code><br>$<br>\begin{Bmatrix}<br>1 &amp; 2 &amp; 3 \\<br>4 &amp; 5 &amp; 6 \\<br>7 &amp; 8 &amp; 9 \\<br>\end{Bmatrix}<br>$</li>
+<li><code>\begin{vmatrix}...\end{vmatrix}</code><br>$<br>\begin{vmatrix}<br>1 &amp; 2 &amp; 3 \\<br>4 &amp; 5 &amp; 6 \\<br>7 &amp; 8 &amp; 9 \\<br>\end{vmatrix}<br>$</li>
+<li><code>\begin{Vmatrix}...\end{Vmatrix}</code><br>$<br>\begin{Vmatrix}<br>1 &amp; 2 &amp; 3 \\<br>4 &amp; 5 &amp; 6 \\<br>7 &amp; 8 &amp; 9 \\<br>\end{Vmatrix}<br>$</li>
 </ol>
-</blockquote>
-<p><br></p>
-<blockquote>
 <p><strong>如果你想省略一些项，可以使用<code>\cdots ⋯</code>，<code>\ddots，⋱</code>，<code>\vdots  ⋮</code>。 </strong></p>
 </blockquote>
-<figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">\begin&#123;bmatrix&#125;</span><br><span class="line"><span class="number">1</span> &amp; a_1 &amp; a_1^<span class="number">2</span> &amp; \cdots &amp; a_1^n \\</span><br><span class="line"><span class="number">1</span> &amp; a_2 &amp; a_1^<span class="number">2</span> &amp; \cdots &amp; a_2^n \\</span><br><span class="line">\vdots &amp; \vdots &amp; \ddots &amp; \vdots &amp; \vdots \\</span><br><span class="line"><span class="number">1</span> &amp; a_n &amp; a_n^<span class="number">2</span> &amp; \cdots &amp; a_n^n</span><br><span class="line">\end&#123;bmatrix&#125;</span><br></pre></td></tr></table></figure>
-<p>$$<br>\begin{bmatrix}<br>1 &amp; a_1 &amp; a_1^2 &amp; \cdots &amp; a_1^n \<br>1 &amp; a_2 &amp; a_1^2 &amp; \cdots &amp; a_2^n \<br>\vdots &amp; \vdots &amp; \ddots &amp; \vdots &amp; \vdots \<br>1 &amp; a_n &amp; a_n^2 &amp; \cdots &amp; a_n^n<br>\end{bmatrix}<br>$$<br><br></p>
+<figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">\begin&#123;bmatrix&#125;</span><br><span class="line"><span class="number">1</span> &amp; a_1 &amp; a_1^<span class="number">2</span> &amp; \cdots &amp; a_1^n \\\</span><br><span class="line"><span class="number">1</span> &amp; a_2 &amp; a_1^<span class="number">2</span> &amp; \cdots &amp; a_2^n \\\</span><br><span class="line">\vdots &amp; \vdots &amp; \ddots &amp; \vdots &amp; \vdots \\\</span><br><span class="line"><span class="number">1</span> &amp; a_n &amp; a_n^<span class="number">2</span> &amp; \cdots &amp; a_n^n</span><br><span class="line">\end&#123;bmatrix&#125;</span><br></pre></td></tr></table></figure>
+<p>$$<br>\begin{bmatrix}<br>1 &amp; a_1 &amp; a_1^2 &amp; \cdots &amp; a_1^n \\<br>1 &amp; a_2 &amp; a_1^2 &amp; \cdots &amp; a_2^n \\<br>\vdots &amp; \vdots &amp; \ddots &amp; \vdots &amp; \vdots \\<br>1 &amp; a_n &amp; a_n^2 &amp; \cdots &amp; a_n^n<br>\end{bmatrix}<br>$$</p>
 <blockquote>
 <p>增广矩阵的创建跟表格创建类似</p>
 </blockquote>
-<figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">\left[</span><br><span class="line">\begin&#123;array&#125;&#123;cc|c&#125;</span><br><span class="line"><span class="number">1</span> &amp; <span class="number">2</span> &amp; <span class="number">3</span> \\</span><br><span class="line"><span class="number">4</span> &amp; <span class="number">5</span> &amp; <span class="number">6</span></span><br><span class="line">\end&#123;array&#125;</span><br><span class="line">\right]</span><br></pre></td></tr></table></figure>
-<p>$$<br>\left[<br>\begin{array}{cc|c}<br>1 &amp; 2 &amp; 3 \<br>4 &amp; 5 &amp; 6<br>\end{array}<br>\right]<br>$$</p>
-<p><br></p>
+<figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">\left[</span><br><span class="line">\begin&#123;array&#125;&#123;cc|c&#125;</span><br><span class="line"><span class="number">1</span> &amp; <span class="number">2</span> &amp; <span class="number">3</span> \\\</span><br><span class="line"><span class="number">4</span> &amp; <span class="number">5</span> &amp; <span class="number">6</span></span><br><span class="line">\end&#123;array&#125;</span><br><span class="line">\right]</span><br></pre></td></tr></table></figure>
+<p>$$<br>\left[<br>\begin{array}{cc|c}<br>1 &amp; 2 &amp; 3 \\<br>4 &amp; 5 &amp; 6<br>\end{array}<br>\right]<br>$$</p>
 <blockquote>
 <p>文本段内使用矩阵，则需要用<code>\bigl(\begin{smallmatrix} ... \end{smallmatrix}\bigr)</code></p>
 </blockquote>
-<p>这个是插入在文本中的 <strong>小矩阵</strong> $\bigl( \begin{smallmatrix} a &amp; b \ c &amp; d   \end{smallmatrix} \bigr)$</p>
-<h4 id="分情况表达式"><a href="#分情况表达式" class="headerlink" title="分情况表达式"></a>分情况表达式</h4><p>使用\begin{cases}…\end{cases}，每种情况开始前用&amp;，用\结束<br><figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">f(n) =</span><br><span class="line">\begin&#123;cases&#125;</span><br><span class="line">n/<span class="number">2</span>, &amp; \text&#123;if $n$ is even&#125; \\</span><br><span class="line"><span class="number">3</span>n+<span class="number">1</span>, &amp; \text&#123;if $n$ is odd&#125; \\</span><br><span class="line">\end&#123;cases&#125;</span><br></pre></td></tr></table></figure></p>
-<p>$$<br>f(n) =<br>\begin{cases}<br>n/2, &amp; \text{if $n$ is even} \<br>3n+1, &amp; \text{if $n$ is odd} \<br>\end{cases}<br>$$</p>
+<p>这个是插入在文本中的 <strong>小矩阵</strong> $\bigl( \begin{smallmatrix} a &amp; b \\ c &amp; d   \end{smallmatrix} \bigr)$</p>
+<h4 id="分情况表达式"><a href="#分情况表达式" class="headerlink" title="分情况表达式"></a>分情况表达式</h4><p>使用<code>\begin{cases}…\end{cases}</code>，每种情况开始前用&amp;，用\结束<br><figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">f(n) =</span><br><span class="line">\begin&#123;cases&#125;</span><br><span class="line">n/<span class="number">2</span>, &amp; \text&#123;if $n$ is even&#125; \\\</span><br><span class="line"><span class="number">3</span>n+<span class="number">1</span>, &amp; \text&#123;if $n$ is odd&#125; \\\</span><br><span class="line">\end&#123;cases&#125;</span><br></pre></td></tr></table></figure></p>
+<p>$$<br>f(n) =<br>\begin{cases}<br>n/2, &amp; \text{if $n$ is even} \\<br>3n+1, &amp; \text{if $n$ is odd} \\<br>\end{cases}<br>$$</p>
 <blockquote>
-<p>如果想要更多的竖直空间，行末尾用<code>\\[2ex]</code>代替<code>\\</code>。</p>
+<p>如果想要更多的竖直空间，行末尾用<code>\\\\[2ex]</code>代替<code>\\</code>。</p>
 </blockquote>
-<p>$$<br>f(n)=<br>\begin{cases}<br>\frac n2,  　　\text{if $n$ is even} \[2ex]<br>3n+1,  \text{if $n$ is odd}<br>\end{cases}<br>$$</p>
+<p>$$<br>f(n)=<br>\begin{cases}<br>\frac n2,  　　\text{if $n$ is even} \\[2ex]<br>3n+1,  \text{if $n$ is odd}<br>\end{cases}<br>$$</p>
 <h4 id="标记与引用"><a href="#标记与引用" class="headerlink" title="标记与引用"></a>标记与引用</h4><p>为了方便在文章中标记等式，通常使用<code>tag{yourtag}</code>,如果想在后面引用这个等式，就使用<code>\label{somelabel}</code> ，且放在tag的后面</p>
-<p>$x=y+a\sin x \tag{<em>} $<br>为了在接下来引用这个式子，使用<code>\eqref{somelabel}</code>，例：<br>$x-\sin x \stackrel{\eqref{</em>}}=y$</p>
+<p>$x=y+a\sin x \tag{*} $<br>为了在接下来引用这个式子，使用<code>\eqref{somelabel}</code>，例：<br>$x-\sin x \stackrel{\eqref{*}}=y$</p>
 <h4 id="绝对值和模"><a href="#绝对值和模" class="headerlink" title="绝对值和模"></a>绝对值和模</h4><p>绝对值可以使用<br><code>\lvert x \rvert</code>  　　$\lvert x \rvert$</p>
 <p>对于向量的模长<br><code>\lVert x \rVert</code>  　　$\lVert x \rVert$</p>
 <h4 id="高亮显示"><a href="#高亮显示" class="headerlink" title="高亮显示"></a>高亮显示</h4><p>为了显著表示某等式，可以使用<code>\bbox</code><br><figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">\bbox[yellow]</span><br><span class="line">&#123;</span><br><span class="line">e^x = \lim_&#123;n \to \infty&#125;\left( &#123;1 + \frac xn&#125; \right)^n</span><br><span class="line">\qquad (<span class="number">1</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>$$<br>\bbox[yellow]<br>{<br>e^x = \lim<em>{n \to \infty}\left( {1 + \frac xn} \right)^n<br>\qquad (1)<br>}<br>$$<br><br><br>$$<br>\bbox[border:2px solid red]<br>{<br>e^x =\lim</em>{n \to \infty} \left( 1 + \frac xn \right)^n<br>}<br>$$</p>
+<p>$$<br>\bbox[yellow]<br>{<br>e^x = \lim_{n \to \infty}\left( {1 + \frac xn} \right)^n<br>\qquad (1)<br>}<br>$$</p>
+<p>$$<br>\bbox[border:2px solid red]<br>{<br>e^x =\lim_{n \to \infty} \left( 1 + \frac xn \right)^n<br>}<br>$$</p>
 
         
         </div>
@@ -687,7 +680,7 @@ Tasklist
 
 </div>
 
-    <a data-url="http://yoursite.com/2016/12/13/mathjax的使用/" data-id="ciwnhmz7y000ifob02ez92fue" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yoursite.com/2016/12/13/mathjax的使用/" data-id="cixftqcxw000ipwb0u55al7wc" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -992,10 +985,30 @@ Tasklist
 </aside>
             
         </div>
-        <footer id="footer">
+        <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({"HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"], linebreaks: { automatic:true }, EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) },
+        tex2jax: { inlineMath: [ ["$", "$"], ["\\(","\\)"] ], processEscapes: true, ignoreClass: "tex2jax_ignore|dno",skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']},
+        TeX: {  noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "120%" } }, Macros: { href: "{}" } },
+        messageStyle: "none"
+    });
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<footer id="footer">
     <div class="outer">
         <div id="footer-info" class="inner">
-            &copy; 2016 laiwei<br>
+            &copy; 2017 laiwei<br>
             Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
             &nbsp&nbsp&nbsp&nbsp
             <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
@@ -1005,6 +1018,7 @@ Tasklist
         </div>
     </div>
 </footer>
+
 
         
     
