@@ -220,7 +220,7 @@
                 
     
         <h1 itemprop="name">
-            <a class="article-title" href="/2017/04/06/使用python和plotly可视化mysql数据库/">使用python和plotly可视化mysql数据库</a>
+            <a class="article-title" href="/2017/04/06/使用python和plotly可视化mysql数据库/">使用python和plotly分析可视化mysql数据库</a>
         </h1>
     
 
@@ -251,12 +251,20 @@
         
         <div class="article-entry" itemprop="articleBody">
         
-            
-            <h5 id="加载外部库"><a href="#加载外部库" class="headerlink" title="加载外部库"></a>加载外部库</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># plotly库</span></span><br><span class="line"><span class="keyword">import</span> pymysql.cursors</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> plotly.plotly <span class="keyword">as</span> py</span><br><span class="line"><span class="keyword">import</span> plotly</span><br><span class="line"><span class="keyword">from</span> plotly.graph_objs <span class="keyword">import</span> *</span><br><span class="line">plotly.tools.set_credentials_file(username=<span class="string">'walsky'</span>, api_key=<span class="string">'MAJewRCxpcPsovPrsBvU'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># pandas、nump、seaborn库</span></span><br><span class="line"><span class="keyword">from</span> pandas <span class="keyword">import</span> DataFrame, Series</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> numpy <span class="keyword">import</span> random</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line">%matplotlib inline</span><br><span class="line"><span class="keyword">import</span> seaborn <span class="keyword">as</span> sns</span><br><span class="line">sns.set_style(<span class="string">'whitegrid'</span>,&#123;<span class="string">'font.sans-serif'</span>:[<span class="string">'simhei'</span>,<span class="string">'Arial'</span>]&#125;)</span><br><span class="line"><span class="keyword">import</span> plotly.graph_objs <span class="keyword">as</span> go</span><br><span class="line">plotly.offline.init_notebook_mode()</span><br></pre></td></tr></table></figure>
-<center><embed src="https://plot.ly/~walsky/16.embed?share_key=cLLP6GjjuZAjHd3iZd6DLS" width="750" height="600"></center>
-
-<h5 id="显示每个州的人口占额比"><a href="#显示每个州的人口占额比" class="headerlink" title="显示每个州的人口占额比"></a>显示每个州的人口占额比</h5><center><embed src="https://plot.ly/~walsky/4.embed" width="600" height="600"></center>
-
+            <p><h3 id="在Mysql中创建world数据库"><a href="#在Mysql中创建world数据库" class="headerlink" title="在Mysql中创建world数据库"></a>在Mysql中创建world数据库</h3><p>将MySQL的“world”样例数据库导入到本地中。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">DATABASE</span> world;</span><br><span class="line"><span class="keyword">USE</span> world;</span><br><span class="line">SOURCE /Desktop/world.sql;</span><br></pre></td></tr></table></figure>
+<h3 id="分析可视化world数据"><a href="#分析可视化world数据" class="headerlink" title="分析可视化world数据"></a>分析可视化world数据</h3><h4 id="导入外部包"><a href="#导入外部包" class="headerlink" title="导入外部包"></a>导入外部包</h4><p>sns.set_style 为微软雅黑，才能在图表中正常显示中文</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># plotly库</span></span><br><span class="line"><span class="keyword">import</span> pymysql.cursors</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> plotly.plotly <span class="keyword">as</span> py</span><br><span class="line"><span class="keyword">import</span> plotly</span><br><span class="line"><span class="keyword">from</span> plotly.graph_objs <span class="keyword">import</span> *</span><br><span class="line">plotly.tools.set_credentials_file(username=<span class="string">'walsky'</span>, api_key=<span class="string">'...'</span>)</span><br><span class="line">py.sign_in(<span class="string">"walsky"</span>, <span class="string">"..."</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># pandas、nump、seaborn库</span></span><br><span class="line"><span class="keyword">from</span> pandas <span class="keyword">import</span> DataFrame, Series</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> numpy <span class="keyword">import</span> random</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line">%matplotlib inline</span><br><span class="line"><span class="keyword">import</span> seaborn <span class="keyword">as</span> sns</span><br><span class="line">sns.set_style(<span class="string">'whitegrid'</span>,&#123;<span class="string">'font.sans-serif'</span>:[<span class="string">'simhei'</span>,<span class="string">'Arial'</span>]&#125;)</span><br><span class="line"><span class="keyword">import</span> plotly.graph_objs <span class="keyword">as</span> go</span><br><span class="line">plotly.offline.init_notebook_mode()</span><br></pre></td></tr></table></figure>
+<h5 id="使用pymysql连接查询数据库"><a href="#使用pymysql连接查询数据库" class="headerlink" title="使用pymysql连接查询数据库"></a>使用pymysql连接查询数据库</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">connection = pymysql.connect(host = <span class="string">'localhost'</span>,</span><br><span class="line">                             user = <span class="string">'walsky'</span>,</span><br><span class="line">                             password = <span class="string">'wal139491007'</span>,</span><br><span class="line">                             db = <span class="string">'world'</span>,</span><br><span class="line">                             charset=<span class="string">'utf8mb4'</span>,</span><br><span class="line">                             cursorclass = pymysql.cursors.DictCursor</span><br><span class="line">                             )</span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    <span class="keyword">with</span> connection.cursor() <span class="keyword">as</span> cursor:</span><br><span class="line">        sql = <span class="string">'select Name, Continent, Population, LifeExpectancy, GNP from Country'</span></span><br><span class="line">        cursor.execute(sql)</span><br><span class="line">        result = cursor.fetchall()</span><br><span class="line"><span class="keyword">finally</span>:</span><br><span class="line">    connection.close()</span><br></pre></td></tr></table></figure>
+<h5 id="将查询的结果加载到DataFrame中"><a href="#将查询的结果加载到DataFrame中" class="headerlink" title="将查询的结果加载到DataFrame中"></a>将查询的结果加载到DataFrame中</h5><p>df1 按照原始查询到的数据生成的DataFrame</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">df1 = pd.DataFrame(result)</span><br><span class="line">df1.columns</span><br></pre></td></tr></table></figure>
+<p>df 是按照平均寿命升序排列的DataFrame<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">df = pd.DataFrame( result )</span><br><span class="line">df = df[[<span class="string">'Name'</span>,<span class="string">'Continent'</span>,<span class="string">'Population'</span>,<span class="string">'LifeExpectancy'</span>,<span class="string">'GNP'</span>]]</span><br><span class="line">df = df.sort_values([<span class="string">'LifeExpectancy'</span>],ascending=<span class="keyword">True</span>)</span><br></pre></td></tr></table></figure></p>
+<h5 id="计算汇总统计量"><a href="#计算汇总统计量" class="headerlink" title="计算汇总统计量"></a>计算汇总统计量</h5><p> 汇总统计量是 数字列的计算结果，包括非空值count数量，最大最小，中位数、均值等。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.describe()</span><br></pre></td></tr></table></figure></p>
+<p><img src="http://o9pxg8pv5.bkt.clouddn.com/plotly1.png" alt=""></p>
+<p>观测前五行数据和中国的数据：<br><img src="http://o9pxg8pv5.bkt.clouddn.com/plot_china.png" alt=""><br></p>
+            <p class="article-more-link">
+                <a href="/2017/04/06/使用python和plotly可视化mysql数据库/#more">查看更多</a>
+            </p>
         
         </div>
         <footer class="article-footer">
@@ -266,7 +274,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/04/06/使用python和plotly可视化mysql数据库/" data-id="cj164pxcb0000vgb038w89yx0" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yoursite.com/2017/04/06/使用python和plotly可视化mysql数据库/" data-id="cj16bk4qd000ewkb0rvr03p2i" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -429,7 +437,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2016/12/13/mathjax的使用/" data-id="cj164csvo000ip0b01h90p82f" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yoursite.com/2016/12/13/mathjax的使用/" data-id="cj16bk4t1000kwkb0ouyfv9jv" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -699,7 +707,7 @@ while x &lt; 5:
 
 </div>
 
-    <a data-url="http://yoursite.com/2016/10/11/Python开发3(控制语句和文件操作)/" data-id="cj164csv20009p0b0x417pekc" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yoursite.com/2016/10/11/Python开发3(控制语句和文件操作)/" data-id="cj16bk4wj000wwkb0et8uqsnh" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -856,7 +864,7 @@ while x &lt; 5:
 
 </div>
 
-    <a data-url="http://yoursite.com/2016/10/01/python网络采集1/" data-id="cj164csvz000np0b0i3vislr1" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yoursite.com/2016/10/01/python网络采集1/" data-id="cj16bk4ud000rwkb0xita9p99" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -953,7 +961,7 @@ while x &lt; 5:
                             <a href="/2017/04/06/使用python和plotly可视化mysql数据库/" class="thumbnail">
     
     
-        <span class="thumbnail-image thumbnail-none"></span>
+        <span style="background-image:url(http://o9pxg8pv5.bkt.clouddn.com/plotly1.png)" alt="使用python和plotly分析可视化mysql数据库" class="thumbnail-image"></span>
     
 </a>
 
@@ -961,7 +969,7 @@ while x &lt; 5:
                         
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/Python数据分析/">Python数据分析</a></p>
-                            <p class="item-title"><a href="/2017/04/06/使用python和plotly可视化mysql数据库/" class="title">使用python和plotly可视化mysql数据库</a></p>
+                            <p class="item-title"><a href="/2017/04/06/使用python和plotly可视化mysql数据库/" class="title">使用python和plotly分析可视化mysql数据库</a></p>
                             <p class="item-date"><time datetime="2017-04-06T07:28:33.065Z" itemprop="datePublished">2017-04-06</time></p>
                         </div>
                     </li>
