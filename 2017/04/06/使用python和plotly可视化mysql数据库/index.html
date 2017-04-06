@@ -3,17 +3,18 @@
 <head>
     <meta charset="utf-8">
     
-    <title>分类: Linux学习 | walsky&#39;s blog</title>
+    <title>使用python和plotly可视化mysql数据库 | walsky&#39;s blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="我转身，发现你们一直在身后，这就是我为什么坚持的原因">
-<meta property="og:type" content="website">
-<meta property="og:title" content="walsky's blog">
-<meta property="og:url" content="http://yoursite.com/categories/Linux学习/index.html">
+    <meta name="description" content="加载外部库123456789101112131415161718# plotly库import pymysql.cursorsimport pandas as pdimport plotly.plotly as pyimport plotlyfrom plotly.graph_objs import *plotly.tools.set_credentials_file(username=&apos;wals">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用python和plotly可视化mysql数据库">
+<meta property="og:url" content="http://yoursite.com/2017/04/06/使用python和plotly可视化mysql数据库/index.html">
 <meta property="og:site_name" content="walsky's blog">
-<meta property="og:description" content="我转身，发现你们一直在身后，这就是我为什么坚持的原因">
+<meta property="og:description" content="加载外部库123456789101112131415161718# plotly库import pymysql.cursorsimport pandas as pdimport plotly.plotly as pyimport plotlyfrom plotly.graph_objs import *plotly.tools.set_credentials_file(username=&apos;wals">
+<meta property="og:updated_time" content="2017-04-06T08:26:09.489Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="walsky's blog">
-<meta name="twitter:description" content="我转身，发现你们一直在身后，这就是我为什么坚持的原因">
+<meta name="twitter:title" content="使用python和plotly可视化mysql数据库">
+<meta name="twitter:description" content="加载外部库123456789101112131415161718# plotly库import pymysql.cursorsimport pandas as pdimport plotly.plotly as pyimport plotlyfrom plotly.graph_objs import *plotly.tools.set_credentials_file(username=&apos;wals">
     
 
     
@@ -210,20 +211,16 @@
 </aside>
 
             
-            <section id="main">
-<div class="timeline timeline-wrap">
-    <div class="timeline-row timeline-row-major">
-        <span class="node"><i class="fa fa-folder"></i></span>
-        <h1 class="title">Linux学习</h1>
-    </div>
-    
-        <div class="timeline-row">
-            <span class="node"></span>
-            <div class="content">
+            <section id="main"><article id="post-使用python和plotly可视化mysql数据库" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+        
+            <header class="article-header">
                 
     
-        <h1 itemprop="name">
-            <a class="timeline-article-title" href="/2016/08/13/Linux学习笔记1/">Linux学习笔记1</a>
+        <h1 class="article-title" itemprop="name">
+            使用python和plotly可视化mysql数据库
         </h1>
     
 
@@ -231,8 +228,8 @@
                     
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <a href="/2016/08/13/Linux学习笔记1/">
-            <time datetime="2016-08-13T13:04:33.039Z" itemprop="datePublished">2016-08-13</time>
+        <a href="/2017/04/06/使用python和plotly可视化mysql数据库/">
+            <time datetime="2017-04-06T07:28:33.065Z" itemprop="datePublished">2017-04-06</time>
         </a>
     </div>
 
@@ -240,15 +237,176 @@
                     
     <div class="article-category">
     	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/Linux学习/">Linux学习</a>
+        <a class="article-category-link" href="/categories/Python数据分析/">Python数据分析</a>
     </div>
 
                     
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/数据分析/">数据分析</a>
+    </div>
+
                 </div>
-            </div>
+            </header>
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+                <div id="toc" class="toc-article">
+                <strong class="toc-title">文章目录</strong>
+                    <ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#加载外部库"><span class="toc-number">1.</span> <span class="toc-text">加载外部库</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#显示每个州的人口占额比"><span class="toc-number">2.</span> <span class="toc-text">显示每个州的人口占额比</span></a></li></ol>
+                </div>
+            
+            <h5 id="加载外部库"><a href="#加载外部库" class="headerlink" title="加载外部库"></a>加载外部库</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># plotly库</span></span><br><span class="line"><span class="keyword">import</span> pymysql.cursors</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> plotly.plotly <span class="keyword">as</span> py</span><br><span class="line"><span class="keyword">import</span> plotly</span><br><span class="line"><span class="keyword">from</span> plotly.graph_objs <span class="keyword">import</span> *</span><br><span class="line">plotly.tools.set_credentials_file(username=<span class="string">'walsky'</span>, api_key=<span class="string">'MAJewRCxpcPsovPrsBvU'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># pandas、nump、seaborn库</span></span><br><span class="line"><span class="keyword">from</span> pandas <span class="keyword">import</span> DataFrame, Series</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> numpy <span class="keyword">import</span> random</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line">%matplotlib inline</span><br><span class="line"><span class="keyword">import</span> seaborn <span class="keyword">as</span> sns</span><br><span class="line">sns.set_style(<span class="string">'whitegrid'</span>,&#123;<span class="string">'font.sans-serif'</span>:[<span class="string">'simhei'</span>,<span class="string">'Arial'</span>]&#125;)</span><br><span class="line"><span class="keyword">import</span> plotly.graph_objs <span class="keyword">as</span> go</span><br><span class="line">plotly.offline.init_notebook_mode()</span><br></pre></td></tr></table></figure>
+<center><embed src="https://plot.ly/~walsky/16.embed?share_key=cLLP6GjjuZAjHd3iZd6DLS" width="750" height="600"></center>
+
+<h5 id="显示每个州的人口占额比"><a href="#显示每个州的人口占额比" class="headerlink" title="显示每个州的人口占额比"></a>显示每个州的人口占额比</h5><center><embed src="https://plot.ly/~walsky/4.embed" width="600" height="600"></center>
+
+        
         </div>
-    
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
 </div>
+
+    <a data-url="http://yoursite.com/2017/04/06/使用python和plotly可视化mysql数据库/" data-id="cj164pxcb0000vgb038w89yx0" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://yoursite.com/2017/04/06/使用python和plotly可视化mysql数据库/#comments" class="article-comment-link ds-thread-count" data-thread-key="http://yoursite.com/2017/04/06/使用python和plotly可视化mysql数据库/">评论</a>
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/2016/12/13/mathjax的使用/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">下一篇</strong>
+            <div class="article-nav-title">mathjax的使用</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    <section id="comments">
+    
+        
+    <div class="ds-thread" data-thread-key="2017/04/06/使用python和plotly可视化mysql数据库/" data-title="使用python和plotly可视化mysql数据库" data-url="http://yoursite.com/2017/04/06/使用python和plotly可视化mysql数据库/"></div>
+    <style>
+        #ds-thread #ds-reset .ds-textarea-wrapper {
+            background: none;
+        }
+        #ds-reset .ds-avatar img {
+            box-shadow: none;
+        }
+        #ds-reset .ds-gradient-bg {
+            background: #f7f7f7;
+        }
+        #ds-thread #ds-reset li.ds-tab a {
+            border-radius: 3px;
+        }
+        #ds-thread #ds-reset .ds-post-button {
+            color: white;
+            border: none;
+            box-shadow: none;
+            background: #d32;
+            text-shadow: none;
+            font-weight: normal;
+            font-family: 'Microsoft Yahei';
+        }
+        #ds-thread #ds-reset .ds-post-button:hover {
+            color: white;
+            background: #DE594C;
+        }
+        #ds-thread #ds-reset .ds-post-button:active {
+            background: #d32;
+        }
+        #ds-smilies-tooltip ul.ds-smilies-tabs li a.ds-current {
+            color: white;
+            background: #d32;
+            box-shadow: none;
+            text-shadow: none;
+            font-weight: normal;
+        }
+    </style>
+
+    
+    </section>
+
 </section>
             
                 <aside id="sidebar">

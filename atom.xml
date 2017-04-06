@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-01-02T08:36:11.316Z</updated>
+  <updated>2017-04-06T08:26:09.489Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>使用python和plotly可视化mysql数据库</title>
+    <link href="http://yoursite.com/2017/04/06/%E4%BD%BF%E7%94%A8python%E5%92%8Cplotly%E5%8F%AF%E8%A7%86%E5%8C%96mysql%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    <id>http://yoursite.com/2017/04/06/使用python和plotly可视化mysql数据库/</id>
+    <published>2017-04-06T07:28:33.065Z</published>
+    <updated>2017-04-06T08:26:09.489Z</updated>
+    
+    <content type="html">&lt;h5 id=&quot;加载外部库&quot;&gt;&lt;a href=&quot;#加载外部库&quot; class=&quot;headerlink&quot; title=&quot;加载外部库&quot;&gt;&lt;/a&gt;加载外部库&lt;/h5&gt;&lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# plotly库&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; pymysql.cursors&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; pandas &lt;span class=&quot;keyword&quot;&gt;as&lt;/span&gt; pd&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; plotly.plotly &lt;span class=&quot;keyword&quot;&gt;as&lt;/span&gt; py&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; plotly&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;from&lt;/span&gt; plotly.graph_objs &lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; *&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;plotly.tools.set_credentials_file(username=&lt;span class=&quot;string&quot;&gt;&#39;walsky&#39;&lt;/span&gt;, api_key=&lt;span class=&quot;string&quot;&gt;&#39;MAJewRCxpcPsovPrsBvU&#39;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# pandas、nump、seaborn库&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;from&lt;/span&gt; pandas &lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; DataFrame, Series&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; numpy &lt;span class=&quot;keyword&quot;&gt;as&lt;/span&gt; np&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;from&lt;/span&gt; numpy &lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; random&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; matplotlib.pyplot &lt;span class=&quot;keyword&quot;&gt;as&lt;/span&gt; plt&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;%matplotlib inline&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; seaborn &lt;span class=&quot;keyword&quot;&gt;as&lt;/span&gt; sns&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;sns.set_style(&lt;span class=&quot;string&quot;&gt;&#39;whitegrid&#39;&lt;/span&gt;,&amp;#123;&lt;span class=&quot;string&quot;&gt;&#39;font.sans-serif&#39;&lt;/span&gt;:[&lt;span class=&quot;string&quot;&gt;&#39;simhei&#39;&lt;/span&gt;,&lt;span class=&quot;string&quot;&gt;&#39;Arial&#39;&lt;/span&gt;]&amp;#125;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; plotly.graph_objs &lt;span class=&quot;keyword&quot;&gt;as&lt;/span&gt; go&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;plotly.offline.init_notebook_mode()&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;center&gt;&lt;embed src=&quot;https://plot.ly/~walsky/16.embed?share_key=cLLP6GjjuZAjHd3iZd6DLS&quot; width=&quot;750&quot; height=&quot;600&quot;&gt;&lt;/center&gt;
+
+&lt;h5 id=&quot;显示每个州的人口占额比&quot;&gt;&lt;a href=&quot;#显示每个州的人口占额比&quot; class=&quot;headerlink&quot; title=&quot;显示每个州的人口占额比&quot;&gt;&lt;/a&gt;显示每个州的人口占额比&lt;/h5&gt;&lt;center&gt;&lt;embed src=&quot;https://plot.ly/~walsky/4.embed&quot; width=&quot;600&quot; height=&quot;600&quot;&gt;&lt;/center&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h5 id=&quot;加载外部库&quot;&gt;&lt;a href=&quot;#加载外部库&quot; class=&quot;headerlink&quot; title=&quot;加载外部库&quot;&gt;&lt;/a&gt;加载外部库&lt;/h5&gt;&lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter
+    
+    </summary>
+    
+      <category term="Python数据分析" scheme="http://yoursite.com/categories/Python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/"/>
+    
+    
+      <category term="数据分析" scheme="http://yoursite.com/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/"/>
+    
+  </entry>
   
   <entry>
     <title>mathjax的使用</title>
