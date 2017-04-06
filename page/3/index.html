@@ -164,7 +164,7 @@
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                14
+                15
                 <span>文章</span>
             </div>
             <div class="article-info-block">
@@ -211,6 +211,236 @@
 
             
             <section id="main">
+    <article id="post-Mysql数据类型" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2016/08/20/Mysql数据类型/">Mysql等数据类型的使用</a>
+        </h1>
+    
+
+                <div class="article-meta">
+                    
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2016/08/20/Mysql数据类型/">
+            <time datetime="2016-08-20T00:29:22.634Z" itemprop="datePublished">2016-08-20</time>
+        </a>
+    </div>
+
+
+                    
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/数据库概论/">数据库概论</a>
+    </div>
+
+                    
+                </div>
+            </header>
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <p><p>###MySQL 数据类型<br><img src="http://c.hiphotos.baidu.com/baike/w%3D268%3Bg%3D0/sign=e35e494a6159252da3171a020ca06406/ac6eddc451da81cb037c289d5366d016082431c3.jpg" alt=""><br>在 MySQL 中，有三种主要的类型：文本、数字和日期/时间类型。</p>
+<table>
+<thead>
+<tr>
+<th>Text类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>数据类型</td>
+<td>方法</td>
+</tr>
+<tr>
+<td>CHAR(size)</td>
+<td>保存固定长度的字符串（可包含字母、数字以及特殊字符）。在括号中指定字符串的长度。最多 255 个字符。</td>
+</tr>
+<tr>
+<td>VARCHAR(size)</td>
+<td>保存可变长度的字符串（可包含字母、数字以及特殊字符）。在括号中指定字符串的最大长度。最多 255 个字符。 (注释：如果值的长度大于 255，则被转换为 TEXT 类型。)</td>
+</tr>
+<tr>
+<td>TINYTEXT</td>
+<td>存放最大长度为 255 个字符的字符串。</td>
+</tr>
+<tr>
+<td>TEXT</td>
+<td>存放最大长度为 65,535 个字符的字符串。</td>
+</tr>
+<tr>
+<td>BLOB</td>
+<td>用于 BLOBs (Binary Large OBjects)。存放最多 65,535 字节的数据。</td>
+</tr>
+<tr>
+<td>MEDIUMTEXT</td>
+<td>存放最大长度为 16,777,215 个字符的字符串。</td>
+</tr>
+<tr>
+<td>MEDIUMBLOB</td>
+<td>用于 BLOBs (Binary Large OBjects)。存放最多 16,777,215 字节的数据。</td>
+</tr>
+<tr>
+<td>LONGTEXT</td>
+<td>存放最大长度为 4,294,967,295 个字符的字符串。</td>
+</tr>
+<tr>
+<td>LONGBLOB</td>
+<td>用于 BLOBs (Binary Large OBjects)。存放最多 4,294,967,295 字节的数据。</td>
+</tr>
+<tr>
+<td>ENUM(x,y,z,etc.)</td>
+<td>允许你输入可能值的列表。可以在 ENUM 列表中列出最大 65535 个值。如果列表中不存在插入的值，则插入空值。(注释：这些值是按照你输入的顺序存储的。)可以按照此格式输入可能的值：ENUM(‘X’,’Y’,’Z’)</td>
+</tr>
+<tr>
+<td>SET</td>
+<td>与 ENUM 类似，SET 最多只能包含 64 个列表项，不过 SET 可存储一个以上的值。</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Number类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>数据类型</td>
+<td>方法</td>
+</tr>
+<tr>
+<td>TINYINT(size)</td>
+<td>-128 到 127 常规。0 到 255 无符号*。在括号中规定最大位数。</td>
+</tr>
+<tr>
+<td>SMALLINT(size)</td>
+<td>-32768 到 32767 常规。0 到 65535 无符号*。在括号中规定最大位数。</td>
+</tr>
+<tr>
+<td>MEDIUMINT(size)</td>
+<td>-8388608 到 8388607 普通。0 to 16777215 无符号*。在括号中规定最大位数。</td>
+</tr>
+<tr>
+<td>INT(size)</td>
+<td>-2147483648 到 2147483647 常规。0 到 4294967295 无符号*。在括号中规定最大位数。</td>
+</tr>
+<tr>
+<td>BIGINT(size)</td>
+<td>-9223372036854775808 到 9223372036854775807 常规。0 到 18446744073709551615 无符号*。在括号中规定最大位数。</td>
+</tr>
+<tr>
+<td>FLOAT(size,d)</td>
+<td>带有浮动小数点的小数字。在括号中规定最大位数。在 d 参数中规定小数点右侧的最大位数。</td>
+</tr>
+<tr>
+<td>DOUBLE(size,d)</td>
+<td>带有浮动小数点的大数字。在括号中规定最大位数。在 d 参数中规定小数点右侧的最大位数。</td>
+</tr>
+<tr>
+<td>DECIMAL(size,d)</td>
+<td>作为字符串存储的 DOUBLE 类型，允许固定的小数点。(* 这些整数类型拥有额外的选项 UNSIGNED。通常，整数可以是负数或正数。如果添加 UNSIGNED 属性，那么范围将从 0 开始，而不是某个负数。)</td>
+</tr>
+</tbody>
+</table></p>
+            <p class="article-more-link">
+                <a href="/2016/08/20/Mysql数据类型/#more">查看更多</a>
+            </p>
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://yoursite.com/2016/08/20/Mysql数据类型/" data-id="cj16jpe7x000j3kb0s0fsahm5" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://yoursite.com/2016/08/20/Mysql数据类型/#comments" class="article-comment-link ds-thread-count" data-thread-key="http://yoursite.com/2016/08/20/Mysql数据类型/">评论</a>
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
     <article id="post-Markdown简明语法手册1" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
@@ -324,7 +554,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2016/08/17/Markdown简明语法手册1/" data-id="cj16bk4kc0005wkb05k6gvzsm" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yoursite.com/2016/08/17/Markdown简明语法手册1/" data-id="cj16jpe8w000t3kb0534vt5ee" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -409,7 +639,7 @@
 <div class="article-gallery">
     <div class="article-gallery-photos">
         
-            <a class="article-gallery-img fancybox" href="http://o9pxg8pv5.bkt.clouddn.com/Licon1.jpg" rel="gallery_cj16bk4cv0000wkb0ype8s81a">
+            <a class="article-gallery-img fancybox" href="http://o9pxg8pv5.bkt.clouddn.com/Licon1.jpg" rel="gallery_cj16jpe82000l3kb0fz5dp20u">
                 <img src="http://o9pxg8pv5.bkt.clouddn.com/Licon1.jpg" itemprop="image">
             </a>
         
@@ -466,7 +696,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2016/08/13/Linux学习笔记1/" data-id="cj16bk4cv0000wkb0ype8s81a" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yoursite.com/2016/08/13/Linux学习笔记1/" data-id="cj16jpe82000l3kb0fz5dp20u" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -607,7 +837,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2016/08/07/正则表达式和Python中正则的使用/" data-id="cj16bk4wx000ywkb01r2gegqu" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yoursite.com/2016/08/07/正则表达式和Python中正则的使用/" data-id="cj16jpe9g00123kb0e8jyo22j" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -685,142 +915,6 @@
 
 
 
-    <article id="post-相册效果页面" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-<div class="article-gallery">
-    <div class="article-gallery-photos">
-        
-            <a class="article-gallery-img fancybox" href="http://o9pxg8pv5.bkt.clouddn.com/Eiffel.jpg" rel="gallery_cj16bk4uy000twkb0ost6qrlg">
-                <img src="http://o9pxg8pv5.bkt.clouddn.com/Eiffel.jpg" itemprop="image">
-            </a>
-        
-    </div>
-</div>
-
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2016/07/28/相册效果页面/">相册效果页面</a>
-        </h1>
-    
-
-                <div class="article-meta">
-                    
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2016/07/28/相册效果页面/">
-            <time datetime="2016-07-28T08:45:57.000Z" itemprop="datePublished">2016-07-28</time>
-        </a>
-    </div>
-
-
-                    
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/hexo/">hexo</a>
-    </div>
-
-                    
-                </div>
-            </header>
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            
-            <h6 id="7-27晚上花了半个小时-百度google没解决"><a href="#7-27晚上花了半个小时-百度google没解决" class="headerlink" title="7.27晚上花了半个小时 百度google没解决"></a>7.27晚上花了半个小时 百度google没解决</h6><p>   <img src="http://o9pxg8pv5.bkt.clouddn.com/London.jpg" alt=""></p>
-<h6 id="7-28上午stack-overflow-python3-5操作注册表库-winreg改变winreg-一次性解决"><a href="#7-28上午stack-overflow-python3-5操作注册表库-winreg改变winreg-一次性解决" class="headerlink" title="7.28上午stack overflow, python3.5操作注册表库_winreg改变winreg,一次性解决"></a>7.28上午stack overflow, python3.5操作注册表库<code>_winreg</code>改变<code>winreg</code>,一次性解决</h6><p>  <img src="http://o9pxg8pv5.bkt.clouddn.com/Sydney.jpg" alt=""><br>结论：百度不靠谱，Google大法好</p>
-
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://yoursite.com/2016/07/28/相册效果页面/" data-id="cj16bk4uy000twkb0ost6qrlg" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-        <a href="http://yoursite.com/2016/07/28/相册效果页面/#comments" class="article-comment-link ds-thread-count" data-thread-key="http://yoursite.com/2016/07/28/相册效果页面/">评论</a>
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
     <nav id="page-nav">
         <a class="extend prev" rel="prev" href="/page/2/">&laquo; 上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/">下一页 &raquo;</a>
     </nav>
@@ -833,6 +927,25 @@
         <h3 class="widget-title">最新文章</h3>
         <div class="widget">
             <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/04/06/sklearn-预测Titanics乘客生还率/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://o9pxg8pv5.bkt.clouddn.com/titanic_head.png)" alt="sklearn 预测Titanics乘客生还率" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/数据分析/">数据分析</a></p>
+                            <p class="item-title"><a href="/2017/04/06/sklearn-预测Titanics乘客生还率/" class="title">sklearn 预测Titanics乘客生还率</a></p>
+                            <p class="item-date"><time datetime="2017-04-06T13:49:36.910Z" itemprop="datePublished">2017-04-06</time></p>
+                        </div>
+                    </li>
                 
                     <li>
                         
@@ -910,25 +1023,6 @@
                         </div>
                     </li>
                 
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2016/09/25/All is Acting/" class="thumbnail">
-    
-    
-        <span style="background-image:url(http://o9pxg8pv5.bkt.clouddn.com/zuozhu.jpg)" alt="我该如何Act" class="thumbnail-image"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/读书和生活/">读书和生活</a></p>
-                            <p class="item-title"><a href="/2016/09/25/All is Acting/" class="title">我该如何Act</a></p>
-                            <p class="item-date"><time datetime="2016-09-25T05:56:18.054Z" itemprop="datePublished">2016-09-25</time></p>
-                        </div>
-                    </li>
-                
             </ul>
         </div>
     </div>
@@ -952,7 +1046,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">分类</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux学习/">Linux学习</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python数据分析/">Python数据分析</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/hexo/">hexo</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据库概论/">数据库概论</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/读书和生活/">读书和生活</a><span class="category-list-count">1</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux学习/">Linux学习</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python数据分析/">Python数据分析</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/hexo/">hexo</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据分析/">数据分析</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据库概论/">数据库概论</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/读书和生活/">读书和生活</a><span class="category-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -961,7 +1055,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">归档</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">1</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">1</span></li></ul>
         </div>
     </div>
 

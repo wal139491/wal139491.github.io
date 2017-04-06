@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <meta charset="utf-8">
+    
+    <title>sklearn 预测Titanics乘客生还率 | walsky&#39;s blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="导入外部包123456789101112131415import pandas as pdfrom pandas import Series,DataFrameimport numpy as npimport matplotlib.pyplot as pltimport seaborn as snssns.set_style(&apos;whitegrid&apos;)%matplotlib inline# mach">
+<meta property="og:type" content="article">
+<meta property="og:title" content="sklearn 预测Titanics乘客生还率">
+<meta property="og:url" content="http://yoursite.com/2017/04/06/sklearn-预测Titanics乘客生还率/index.html">
+<meta property="og:site_name" content="walsky's blog">
+<meta property="og:description" content="导入外部包123456789101112131415import pandas as pdfrom pandas import Series,DataFrameimport numpy as npimport matplotlib.pyplot as pltimport seaborn as snssns.set_style(&apos;whitegrid&apos;)%matplotlib inline# mach">
+<meta property="og:image" content="http://o9pxg8pv5.bkt.clouddn.com/titanic_head.png">
+<meta property="og:updated_time" content="2017-04-06T15:18:50.641Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="sklearn 预测Titanics乘客生还率">
+<meta name="twitter:description" content="导入外部包123456789101112131415import pandas as pdfrom pandas import Series,DataFrameimport numpy as npimport matplotlib.pyplot as pltimport seaborn as snssns.set_style(&apos;whitegrid&apos;)%matplotlib inline# mach">
+<meta name="twitter:image" content="http://o9pxg8pv5.bkt.clouddn.com/titanic_head.png">
+    
+
+    
+
+    
+
+    <link rel="stylesheet" href="/vendor/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/vendor/open-sans/styles.css">
+    <link rel="stylesheet" href="/vendor/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/vendor/jquery/2.1.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/vendor/fancybox/jquery.fancybox.css">
+    
+    
+    
+    
+
+</head>
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo" style="background-image: url(css/images/mylogo.gif)"></i>
+                <span class="site-title">walsky&#39;s blog</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">
+
+                     <i class="fa fa-home"></i>
+                   Home</a>
+                
+                    <a class="main-nav-link" href="/archives">
+
+                     <i class="fa fa-lightbulb-o"></i>
+                   Archives</a>
+                
+                    <a class="main-nav-link" href="/categories">
+
+                     <i class="fa fa-sort-alpha-asc"></i>
+                   Categories</a>
+                
+                    <a class="main-nav-link" href="/tags">
+
+                     <i class="fa fa-tag"></i>
+                   Tags</a>
+                
+                    <a class="main-nav-link" href="/about">
+
+                     <i class="fa fa-paper-plane"></i>
+                   About</a>
+                
+            </nav>
+            
+                
+                <nav id="sub-nav">
+                    <div class="profile" id="profile-nav">
+                        <a id="profile-anchor" href="javascript:;">
+                            <img class="avatar" src="/css/images/avatar.jpg" />
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                    </div>
+                </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">Home</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">Categories</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">Tags</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">About</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+                
+
+<aside id="profile">
+    <div class="inner profile-inner">
+        <div class="base-info profile-block">
+            <img id="avatar" src="/css/images/avatar.jpg" />
+            <h2 id="name">Laiwei</h2>
+            <h3 id="title">Developer &amp; life loving</h3>
+            <span id="location"><i class="fa fa-map-marker"></i>Beijing, China</span>
+            <a id="follow" target="_blank" href="https://github.com/wal139491/">关注我</a>
+        </div>
+        <div class="article-info profile-block">
+            <div class="article-info-block">
+                15
+                <span>文章</span>
+            </div>
+            <div class="article-info-block">
+                7
+                <span>标签</span>
+            </div>
+        </div>
+        
+        <div class="profile-block social-links">
+            <table>
+                <tr>
+                    
+                    
+                    <td>
+                        <a href="http://github.com/wal139491/" target="_blank" title="github" class=tooltip>
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="http://weibo.com/walsky" target="_blank" title="weibo" class=tooltip>
+                            <i class="fa fa-weibo"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="http://www.jianshu.com/users/de17c721f02a/latest_articles" target="_blank" title="dribbble" class=tooltip>
+                            <i class="fa fa-dribbble"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/atom.xml" target="_blank" title="rss" class=tooltip>
+                            <i class="fa fa-rss"></i>
+                        </a>
+                    </td>
+                    
+                </tr>
+            </table>
+        </div>
+        
+    </div>
+</aside>
+
+            
+            <section id="main"><article id="post-sklearn-预测Titanics乘客生还率" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            sklearn 预测Titanics乘客生还率
+        </h1>
+    
+
+                <div class="article-meta">
+                    
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/04/06/sklearn-预测Titanics乘客生还率/">
+            <time datetime="2017-04-06T13:49:36.910Z" itemprop="datePublished">2017-04-06</time>
+        </a>
+    </div>
+
+
+                    
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/数据分析/">数据分析</a>
+    </div>
+
+                    
+                </div>
+            </header>
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+                <div id="toc" class="toc-article">
+                <strong class="toc-title">文章目录</strong>
+                    <ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#导入外部包"><span class="toc-number">1.</span> <span class="toc-text">导入外部包</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#使用pandas导入并分析数据集"><span class="toc-number">2.</span> <span class="toc-text">使用pandas导入并分析数据集</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#票号，id-姓名，对预测无关可以删除"><span class="toc-number">3.</span> <span class="toc-text">票号，id,姓名，对预测无关可以删除</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#查看Embarked-登船港口-对生存的影响"><span class="toc-number">4.</span> <span class="toc-text">查看Embarked(登船港口)对生存的影响</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#对票价进行分析"><span class="toc-number">5.</span> <span class="toc-text">对票价进行分析</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#对Age列进行分析"><span class="toc-number">6.</span> <span class="toc-text">对Age列进行分析</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#使用密度估计图查看不同年纪乘客的存活情况-group后计算mean"><span class="toc-number">7.</span> <span class="toc-text">使用密度估计图查看不同年纪乘客的存活情况(group后计算mean)</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#后序待处理"><span class="toc-number">8.</span> <span class="toc-text">后序待处理</span></a></li></ol>
+                </div>
+            
+            <h5 id="导入外部包"><a href="#导入外部包" class="headerlink" title="导入外部包"></a>导入外部包</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">from</span> pandas <span class="keyword">import</span> Series,DataFrame</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> seaborn <span class="keyword">as</span> sns</span><br><span class="line">sns.set_style(<span class="string">'whitegrid'</span>)</span><br><span class="line">%matplotlib inline</span><br><span class="line"></span><br><span class="line"><span class="comment"># machine learning</span></span><br><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> LogisticRegression</span><br><span class="line"><span class="keyword">from</span> sklearn.svm <span class="keyword">import</span> SVC,LinearSVC</span><br><span class="line"><span class="keyword">from</span> sklearn.ensemble <span class="keyword">import</span> RandomForestClassifier</span><br><span class="line"><span class="keyword">from</span> sklearn.neighbors <span class="keyword">import</span> KNeighborsClassifier</span><br><span class="line"><span class="keyword">from</span> sklearn.naive_bayes <span class="keyword">import</span> GaussianNB</span><br></pre></td></tr></table></figure>
+<h5 id="使用pandas导入并分析数据集"><a href="#使用pandas导入并分析数据集" class="headerlink" title="使用pandas导入并分析数据集"></a>使用pandas导入并分析数据集</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">titanic_df = pd.read_csv(<span class="string">r"F:\数据集\Titanic数据分析\train.csv"</span>)</span><br><span class="line">test_df = pd.read_csv(<span class="string">r"F:\数据集\Titanic数据分析\test.csv"</span>)</span><br><span class="line"><span class="comment"># 查看df前5行</span></span><br><span class="line">titanic_df.head()</span><br></pre></td></tr></table></figure>
+<p><img src="http://o9pxg8pv5.bkt.clouddn.com/titanic_head.png" alt=""><br><br><br>使用dataFram.info 和describe查看具体信息<br><img src="http://o9pxg8pv5.bkt.clouddn.com/titanic_info.png" alt=""><br><br><br><img src="http://o9pxg8pv5.bkt.clouddn.com/titanic_des.png" alt=""><br><a id="more"></a></p>
+<h5 id="票号，id-姓名，对预测无关可以删除"><a href="#票号，id-姓名，对预测无关可以删除" class="headerlink" title="票号，id,姓名，对预测无关可以删除"></a>票号，id,姓名，对预测无关可以删除</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">titanic_df = titanic_df.drop([<span class="string">'PassengerId'</span>,<span class="string">'Name'</span>,<span class="string">'Ticket'</span>],axis=<span class="number">1</span>)</span><br><span class="line">test_df = test_df.drop([<span class="string">'Name'</span>,<span class="string">'Ticket'</span>],axis=<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+<h5 id="查看Embarked-登船港口-对生存的影响"><a href="#查看Embarked-登船港口-对生存的影响" class="headerlink" title="查看Embarked(登船港口)对生存的影响"></a>查看Embarked(登船港口)对生存的影响</h5><p>以出现次数最多的S港口填充缺失值，factorplo(FacetGrid 的一种匪类图)t绘制每个港口的生存情况，<br>再绘制每个港口登船人数和不同港口登船的 存活人员和非存活人员。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 填充登船港口的缺失值，以出现次数最多的S填充</span></span><br><span class="line">titanic_df[<span class="string">'Embarked'</span>] = titanic_df[<span class="string">'Embarked'</span>].fillna(<span class="string">"S"</span>)</span><br><span class="line"></span><br><span class="line">sns.factorplot(<span class="string">'Embarked'</span>,<span class="string">'Survived'</span>,data=titanic_df,size=<span class="number">4</span>,aspect=<span class="number">3</span>)</span><br><span class="line"></span><br><span class="line">fig, (axis1,axis2,axis3) =plt.subplots(<span class="number">1</span>,<span class="number">3</span>,figsize=(<span class="number">15</span>,<span class="number">5</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 绘制每个港口登船人数,countplot 使用条形图表示分类计数</span></span><br><span class="line">sns.countplot(x=<span class="string">"Embarked"</span>,data=titanic_df,ax=axis1)</span><br><span class="line"><span class="comment"># 绘制不同港口登船的 存活人员和非存活人员</span></span><br><span class="line">sns.countplot(x=<span class="string">'Survived'</span>,hue=<span class="string">'Embarked'</span>, data=titanic_df, order=[<span class="number">0</span>,<span class="number">1</span>],ax =axis2)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 通过emabraked分组，获取Embarked的每个值对应生存人员的分组</span></span><br><span class="line">embark_perc = titanic_df[[<span class="string">'Embarked'</span>,<span class="string">'Survived'</span>]].groupby([<span class="string">'Embarked'</span>],as_index=<span class="keyword">False</span>).mean()</span><br><span class="line"><span class="comment"># 这一步用pivot_table应该也能做</span></span><br><span class="line">sns.barplot(x=<span class="string">'Embarked'</span>,y=<span class="string">'Survived'</span>,data=embark_perc,order=[<span class="string">'S'</span>,<span class="string">'C'</span>,<span class="string">'Q'</span>], ax=axis3)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将embarked列考虑进预测，但不需要为Embarked列创建虚拟变量，在预测中似乎没有用可以删除</span></span><br><span class="line"><span class="comment"># one-hot-encoding</span></span><br><span class="line">embark_dummies_titanic = pd.get_dummies(titanic_df[<span class="string">'Embarked'</span>])</span><br><span class="line"><span class="comment">#get_dummies 将列的不同值作为df列，形成01矩阵或df</span></span><br><span class="line">embark_dummies_titanic.drop([<span class="string">'S'</span>],axis=<span class="number">1</span>,inplace=<span class="keyword">True</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 其实就是S C Q 三列 0，1表示的矩阵</span></span><br><span class="line">embark_dummies_test = pd.get_dummies(test_df[<span class="string">'Embarked'</span>])</span><br><span class="line">embark_dummies_test.drop([<span class="string">'S'</span>], axis=<span class="number">1</span>, inplace=<span class="keyword">True</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 留下CQ港 因为他们有很好的生存率</span></span><br><span class="line">titanic_df = titanic_df.join(embark_dummies_titanic)</span><br><span class="line">test_df = test_df.join(embark_dummies_test)</span><br><span class="line"><span class="comment"># 为两个训练数据和测试数据增加哑变量</span></span><br><span class="line"></span><br><span class="line">titanic_df.drop([<span class="string">'Embarked'</span>], axis=<span class="number">1</span> ,inplace=<span class="keyword">True</span>)</span><br><span class="line">test_df.drop([<span class="string">'Embarked'</span>], axis=<span class="number">1</span>, inplace=<span class="keyword">True</span>)</span><br></pre></td></tr></table></figure>
+<p><img src="http://o9pxg8pv5.bkt.clouddn.com/titanic_em.png" alt=""></p>
+<h5 id="对票价进行分析"><a href="#对票价进行分析" class="headerlink" title="对票价进行分析"></a>对票价进行分析</h5><p>先以中位数填充票价的缺失值，获取生还人员和非生还人员的票价，平均值和标准差<br>再绘制票价的直方图，生还和非生还乘客的票价箱线图。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">test_df[<span class="string">'Fare'</span>].fillna(titanic_df[<span class="string">'Fare'</span>].median(),inplace=<span class="keyword">True</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 转换float成int</span></span><br><span class="line">titanic_df[<span class="string">'Fare'</span>] = titanic_df[<span class="string">'Fare'</span>].astype(int)</span><br><span class="line">test_df[<span class="string">'Fare'</span>] = test_df[<span class="string">'Fare'</span>].astype(int)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 获取生还人员的a票价和非生还人员的票价</span></span><br><span class="line">fare_not_survived = titanic_df[<span class="string">'Fare'</span>][titanic_df[<span class="string">'Survived'</span>]== <span class="number">0</span>]</span><br><span class="line">fare_survived = titanic_df[<span class="string">'Fare'</span>][titanic_df[<span class="string">'Survived'</span>]==<span class="number">1</span>]</span><br><span class="line"><span class="comment"># 先获取survived 的Ture False,再用Bool索引</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 获取 生还和非生还人员的 平均值和标准差</span></span><br><span class="line">avgerage_fare = DataFrame([fare_not_survived.mean(),fare_survived.mean()])</span><br><span class="line"></span><br><span class="line">std_fare =DataFrame([fare_not_survived.std(), fare_survived.std()])</span><br><span class="line"></span><br><span class="line"><span class="comment"># plot</span></span><br><span class="line">titanic_df[<span class="string">'Fare'</span>].plot(kind=<span class="string">'hist'</span>,figsize=(<span class="number">5</span>,<span class="number">3</span>), bins=<span class="number">100</span>, xlim=(<span class="number">0</span>,<span class="number">50</span>))</span><br><span class="line">avgerage_fare.index.names = std_fare.index.names = [<span class="string">"Survived"</span>]</span><br><span class="line">avgerage_fare.plot(yerr = std_fare,kind=<span class="string">'bar'</span>,legend=<span class="keyword">False</span>)</span><br></pre></td></tr></table></figure></p>
+<p><img src="http://o9pxg8pv5.bkt.clouddn.com/tianic_fare.png" alt=""></p>
+<h5 id="对Age列进行分析"><a href="#对Age列进行分析" class="headerlink" title="对Age列进行分析"></a>对Age列进行分析</h5><p>分别绘制以mean+std和mean-std之间随机数填充的前、后Age列。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 分析年龄</span></span><br><span class="line">fig, (axis1,axis2) = plt.subplots(<span class="number">1</span>,<span class="number">2</span>,figsize=(<span class="number">15</span>,<span class="number">4</span>))</span><br><span class="line">axis1.set_title(<span class="string">'Original Age values - Titanic'</span>)</span><br><span class="line">axis2.set_title(<span class="string">'New Age values - Titanic'</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 获取age列的 平均值 标准差 空值</span></span><br><span class="line">average_age_titanic   = titanic_df[<span class="string">"Age"</span>].mean()</span><br><span class="line">std_age_titanic       = titanic_df[<span class="string">"Age"</span>].std()</span><br><span class="line">count_nan_age_titanic = titanic_df[<span class="string">"Age"</span>].isnull().sum()</span><br><span class="line"></span><br><span class="line"><span class="comment"># test数据集</span></span><br><span class="line">average_age_test   = test_df[<span class="string">"Age"</span>].mean()</span><br><span class="line">std_age_test       = test_df[<span class="string">"Age"</span>].std()</span><br><span class="line">count_nan_age_test = test_df[<span class="string">"Age"</span>].isnull().sum()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 产生mean+std和mean-std之间的随机数</span></span><br><span class="line">rand_1 = np.random.randint(average_age_titanic - std_age_titanic, average_age_titanic + std_age_titanic, size = count_nan_age_titanic)</span><br><span class="line">rand_2 = np.random.randint(average_age_test - std_age_test, average_age_test + std_age_test, size = count_nan_age_test)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 绘制原始Age （直方图）分布，删除了na值并转换为int</span></span><br><span class="line">titanic_df[<span class="string">'Age'</span>].dropna().astype(int).hist(bins=<span class="number">70</span>, ax=axis1)</span><br><span class="line"><span class="comment"># 使用随机数填充的数据集</span></span><br><span class="line">titanic_df[<span class="string">"Age"</span>][np.isnan(titanic_df[<span class="string">"Age"</span>])] = rand_1</span><br><span class="line">test_df[<span class="string">"Age"</span>][np.isnan(test_df[<span class="string">"Age"</span>])] = rand_2</span><br><span class="line">titanic_df[<span class="string">'Age'</span>] = titanic_df[<span class="string">'Age'</span>].astype(int)</span><br><span class="line">test_df[<span class="string">'Age'</span>]    = test_df[<span class="string">'Age'</span>].astype(int)</span><br><span class="line">        </span><br><span class="line"><span class="comment"># 绘制随机数填充的Age列</span></span><br><span class="line">titanic_df[<span class="string">'Age'</span>].hist(bins=<span class="number">70</span>, ax=axis2)</span><br></pre></td></tr></table></figure></p>
+<p><img src="http://o9pxg8pv5.bkt.clouddn.com/tianic_age1.png" alt=""><br><br></p>
+<h5 id="使用密度估计图查看不同年纪乘客的存活情况-group后计算mean"><a href="#使用密度估计图查看不同年纪乘客的存活情况-group后计算mean" class="headerlink" title="使用密度估计图查看不同年纪乘客的存活情况(group后计算mean)"></a>使用密度估计图查看不同年纪乘客的存活情况(group后计算mean)</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 绘制按年纪分的生存乘客的密度估计图</span></span><br><span class="line">facet = sns.FacetGrid(titanic_df, hue=<span class="string">"Survived"</span>,aspect=<span class="number">4</span>)</span><br><span class="line">facet.map(sns.kdeplot,<span class="string">'Age'</span>,shade= <span class="keyword">True</span>) </span><br><span class="line">facet.set(xlim=(<span class="number">0</span>, titanic_df[<span class="string">'Age'</span>].max()))</span><br><span class="line">facet.add_legend()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 按年龄分的乘客的平均存活率（接近1表示存活可能性越大）</span></span><br><span class="line">fig, axis1 = plt.subplots(<span class="number">1</span>,<span class="number">1</span>,figsize=(<span class="number">18</span>,<span class="number">4</span>))</span><br><span class="line">average_age = titanic_df[[<span class="string">"Age"</span>, <span class="string">"Survived"</span>]].groupby([<span class="string">'Age'</span>],as_index=<span class="keyword">False</span>).mean()</span><br><span class="line">sns.barplot(x=<span class="string">'Age'</span>, y=<span class="string">'Survived'</span>, data=average_age)</span><br></pre></td></tr></table></figure>
+<p><img src="http://o9pxg8pv5.bkt.clouddn.com/titanic_age2.png" alt=""></p>
+<h5 id="后序待处理"><a href="#后序待处理" class="headerlink" title="后序待处理"></a>后序待处理</h5><ol>
+<li>Sex(性别) family(乘客是否有亲属在船上)  pclass(乘客阶级)这三列对存活情况未分析</li>
+<li>利用Python机器学习库 sklearn中Logistic 回归和随机森林等算法对各类人群的生还情况做预测。</li>
+</ol>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://yoursite.com/2017/04/06/sklearn-预测Titanics乘客生还率/" data-id="cj16jpe71000a3kb0wf4ct3w4" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://yoursite.com/2017/04/06/sklearn-预测Titanics乘客生还率/#comments" class="article-comment-link ds-thread-count" data-thread-key="http://yoursite.com/2017/04/06/sklearn-预测Titanics乘客生还率/">评论</a>
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/2017/04/06/使用python和plotly可视化mysql数据库/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">下一篇</strong>
+            <div class="article-nav-title">使用python和plotly分析可视化mysql数据库</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    <section id="comments">
+    
+        
+    <div class="ds-thread" data-thread-key="2017/04/06/sklearn-预测Titanics乘客生还率/" data-title="sklearn 预测Titanics乘客生还率" data-url="http://yoursite.com/2017/04/06/sklearn-预测Titanics乘客生还率/"></div>
+    <style>
+        #ds-thread #ds-reset .ds-textarea-wrapper {
+            background: none;
+        }
+        #ds-reset .ds-avatar img {
+            box-shadow: none;
+        }
+        #ds-reset .ds-gradient-bg {
+            background: #f7f7f7;
+        }
+        #ds-thread #ds-reset li.ds-tab a {
+            border-radius: 3px;
+        }
+        #ds-thread #ds-reset .ds-post-button {
+            color: white;
+            border: none;
+            box-shadow: none;
+            background: #d32;
+            text-shadow: none;
+            font-weight: normal;
+            font-family: 'Microsoft Yahei';
+        }
+        #ds-thread #ds-reset .ds-post-button:hover {
+            color: white;
+            background: #DE594C;
+        }
+        #ds-thread #ds-reset .ds-post-button:active {
+            background: #d32;
+        }
+        #ds-smilies-tooltip ul.ds-smilies-tabs li a.ds-current {
+            color: white;
+            background: #d32;
+            box-shadow: none;
+            text-shadow: none;
+            font-weight: normal;
+        }
+    </style>
+
+    
+    </section>
+
+</section>
+            
+                <aside id="sidebar">
+   
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">最新文章</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/04/06/sklearn-预测Titanics乘客生还率/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://o9pxg8pv5.bkt.clouddn.com/titanic_head.png)" alt="sklearn 预测Titanics乘客生还率" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/数据分析/">数据分析</a></p>
+                            <p class="item-title"><a href="/2017/04/06/sklearn-预测Titanics乘客生还率/" class="title">sklearn 预测Titanics乘客生还率</a></p>
+                            <p class="item-date"><time datetime="2017-04-06T13:49:36.910Z" itemprop="datePublished">2017-04-06</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/04/06/使用python和plotly可视化mysql数据库/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://o9pxg8pv5.bkt.clouddn.com/plotly1.png)" alt="使用python和plotly分析可视化mysql数据库" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Python数据分析/">Python数据分析</a></p>
+                            <p class="item-title"><a href="/2017/04/06/使用python和plotly可视化mysql数据库/" class="title">使用python和plotly分析可视化mysql数据库</a></p>
+                            <p class="item-date"><time datetime="2017-04-06T07:28:33.065Z" itemprop="datePublished">2017-04-06</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/12/13/mathjax的使用/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://img.hb.aicdn.com/d79e605eeeafd49f7a0809e6fe685f5fce78f3a6260c9-I5x4D0_fw658)" alt="mathjax的使用" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/hexo/">hexo</a></p>
+                            <p class="item-title"><a href="/2016/12/13/mathjax的使用/" class="title">mathjax的使用</a></p>
+                            <p class="item-date"><time datetime="2016-12-13T12:03:11.973Z" itemprop="datePublished">2016-12-13</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/10/11/Python开发3(控制语句和文件操作)/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://img.hb.aicdn.com/caa47fa9beba2011138b444e7a1adf59996cadc9b825-Kf2Aum_fw658)" alt="Python开发3(控制语句和文件操作)" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/python/">python</a></p>
+                            <p class="item-title"><a href="/2016/10/11/Python开发3(控制语句和文件操作)/" class="title">Python开发3(控制语句和文件操作)</a></p>
+                            <p class="item-date"><time datetime="2016-10-11T01:06:30.797Z" itemprop="datePublished">2016-10-11</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/10/01/python网络采集1/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://img.hb.aicdn.com/bc0acb2f96d7314b03e5d59527587275e362a75c128f8-sD64Th_fw658)" alt="python网络数据采集1" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/python/">python</a></p>
+                            <p class="item-title"><a href="/2016/10/01/python网络采集1/" class="title">python网络数据采集1</a></p>
+                            <p class="item-date"><time datetime="2016-10-01T07:17:31.137Z" itemprop="datePublished">2016-10-01</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">虾米播播</h3>
+        <div class="widget tagcloud">
+           <ul>
+           <h5>
+           <embed src="https://www.xiami.com/widget/160864150_188998912_200_280_4DB653_009609_0/collectPlayer.swf" type="application/x-shockwave-flash" width="200" height="280" wmode="opaque"></embed>
+           </h5>
+           </ul>
+        </div>
+    </div>
+
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">分类</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux学习/">Linux学习</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python数据分析/">Python数据分析</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/hexo/">hexo</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据分析/">数据分析</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据库概论/">数据库概论</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/读书和生活/">读书和生活</a><span class="category-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">归档</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">标签</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android优化/">Android优化</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python基础/">python基础</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python网络数据采集/">python网络数据采集</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/something/">something</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据分析/">数据分析</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/正则表达式/">正则表达式</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/生活/">生活</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+        <div class="widget tag">
+<h3 class="title">友情链接</h3>
+<ul class="entry">
+<li><a href="https://www.google.ae/" title="google">Google</a></li>
+<li><a href="http://www.jianshu.com/users/de17c721f02a/latest_articles" title="jianshu">简书</a></li>
+<li><a href="https://blog.jamespan.me/" title="James Pan's Blog">James Pan's Blog </a></li>
+<li><a href="http://ibruce.info/" title="icruce">不如</a></li>
+<li><a href="http://rocko.xyz/2016/06/14/ADB-Issue-2/" title="rocko">Rocko</a></li>
+
+
+</ul>
+</div>
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+            
+        </div>
+        <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({"HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"], linebreaks: { automatic:true }, EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) },
+        tex2jax: { inlineMath: [ ["$", "$"], ["\\(","\\)"] ], processEscapes: true, ignoreClass: "tex2jax_ignore|dno",skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']},
+        TeX: {  noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "120%" } }, Macros: { href: "{}" } },
+        messageStyle: "none"
+    });
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2017 laiwei<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
+            &nbsp&nbsp&nbsp&nbsp
+            <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+             </script>
+            <span id="busuanzi_container_site_pv" >本站有<span id="busuanzi_value_site_pv" style="color:#ef7522"></span>个小伙伴留下脚印</span>
+
+        </div>
+    </div>
+</footer>
+
+
+        
+    
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:'walsky'};
+    (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script>
+
+
+
+    
+        <script src="/vendor/fancybox/jquery.fancybox.pack.js"></script>
+    
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>
