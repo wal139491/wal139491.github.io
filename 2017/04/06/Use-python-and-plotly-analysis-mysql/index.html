@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <meta charset="utf-8">
+    
+    <title>使用python和plotly分析可视化mysql数据库 | walsky&#39;s blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="在Mysql中创建world数据库将MySQL的“world”样例数据库导入到本地中。
+123CREATE DATABASE world;USE world;SOURCE /Desktop/world.sql;
+分析可视化world数据导入外部包sns.set_style 为微软雅黑，才能在图表中正常显示中文
+12345678910111213141516171819# plotly库import">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用python和plotly分析可视化mysql数据库">
+<meta property="og:url" content="http://yoursite.com/2017/04/06/Use-python-and-plotly-analysis-mysql/index.html">
+<meta property="og:site_name" content="walsky's blog">
+<meta property="og:description" content="在Mysql中创建world数据库将MySQL的“world”样例数据库导入到本地中。
+123CREATE DATABASE world;USE world;SOURCE /Desktop/world.sql;
+分析可视化world数据导入外部包sns.set_style 为微软雅黑，才能在图表中正常显示中文
+12345678910111213141516171819# plotly库import">
+<meta property="og:image" content="http://o9pxg8pv5.bkt.clouddn.com/plotly1.png">
+<meta property="og:updated_time" content="2017-04-10T07:02:34.973Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="使用python和plotly分析可视化mysql数据库">
+<meta name="twitter:description" content="在Mysql中创建world数据库将MySQL的“world”样例数据库导入到本地中。
+123CREATE DATABASE world;USE world;SOURCE /Desktop/world.sql;
+分析可视化world数据导入外部包sns.set_style 为微软雅黑，才能在图表中正常显示中文
+12345678910111213141516171819# plotly库import">
+<meta name="twitter:image" content="http://o9pxg8pv5.bkt.clouddn.com/plotly1.png">
+    
+
+    
+
+    
+
+    <link rel="stylesheet" href="/vendor/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/vendor/open-sans/styles.css">
+    <link rel="stylesheet" href="/vendor/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/vendor/jquery/2.1.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/vendor/fancybox/jquery.fancybox.css">
+    
+    
+    
+    
+
+</head>
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo" style="background-image: url(css/images/mylogo.gif)"></i>
+                <span class="site-title">walsky&#39;s blog</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">
+
+                     <i class="fa fa-home"></i>
+                   Home</a>
+                
+                    <a class="main-nav-link" href="/archives">
+
+                     <i class="fa fa-lightbulb-o"></i>
+                   Archives</a>
+                
+                    <a class="main-nav-link" href="/categories">
+
+                     <i class="fa fa-sort-alpha-asc"></i>
+                   Categories</a>
+                
+                    <a class="main-nav-link" href="/tags">
+
+                     <i class="fa fa-tag"></i>
+                   Tags</a>
+                
+                    <a class="main-nav-link" href="/about">
+
+                     <i class="fa fa-paper-plane"></i>
+                   About</a>
+                
+            </nav>
+            
+                
+                <nav id="sub-nav">
+                    <div class="profile" id="profile-nav">
+                        <a id="profile-anchor" href="javascript:;">
+                            <img class="avatar" src="/css/images/avatar.jpg" />
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                    </div>
+                </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">Home</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">Categories</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">Tags</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">About</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+                
+
+<aside id="profile">
+    <div class="inner profile-inner">
+        <div class="base-info profile-block">
+            <img id="avatar" src="/css/images/avatar.jpg" />
+            <h2 id="name">Laiwei</h2>
+            <h3 id="title">Developer &amp; life loving</h3>
+            <span id="location"><i class="fa fa-map-marker"></i>Beijing, China</span>
+            <a id="follow" target="_blank" href="https://github.com/wal139491/">关注我</a>
+        </div>
+        <div class="article-info profile-block">
+            <div class="article-info-block">
+                15
+                <span>文章</span>
+            </div>
+            <div class="article-info-block">
+                6
+                <span>标签</span>
+            </div>
+        </div>
+        
+        <div class="profile-block social-links">
+            <table>
+                <tr>
+                    
+                    
+                    <td>
+                        <a href="http://github.com/wal139491/" target="_blank" title="github" class=tooltip>
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="http://weibo.com/walsky" target="_blank" title="weibo" class=tooltip>
+                            <i class="fa fa-weibo"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="http://www.jianshu.com/users/de17c721f02a/latest_articles" target="_blank" title="dribbble" class=tooltip>
+                            <i class="fa fa-dribbble"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/atom.xml" target="_blank" title="rss" class=tooltip>
+                            <i class="fa fa-rss"></i>
+                        </a>
+                    </td>
+                    
+                </tr>
+            </table>
+        </div>
+        
+    </div>
+</aside>
+
+            
+            <section id="main"><article id="post-Use-python-and-plotly-analysis-mysql" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            使用python和plotly分析可视化mysql数据库
+        </h1>
+    
+
+                <div class="article-meta">
+                    
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/04/06/Use-python-and-plotly-analysis-mysql/">
+            <time datetime="2017-04-06T07:28:33.065Z" itemprop="datePublished">2017-04-06</time>
+        </a>
+    </div>
+
+
+                    
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/数据分析/">数据分析</a>
+    </div>
+
+                    
+                </div>
+            </header>
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+                <div id="toc" class="toc-article">
+                <strong class="toc-title">文章目录</strong>
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#在Mysql中创建world数据库"><span class="toc-number">1.</span> <span class="toc-text">在Mysql中创建world数据库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#分析可视化world数据"><span class="toc-number">2.</span> <span class="toc-text">分析可视化world数据</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#导入外部包"><span class="toc-number">2.1.</span> <span class="toc-text">导入外部包</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#使用pymysql连接查询数据库"><span class="toc-number">2.1.1.</span> <span class="toc-text">使用pymysql连接查询数据库</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#将查询的结果加载到DataFrame中"><span class="toc-number">2.1.2.</span> <span class="toc-text">将查询的结果加载到DataFrame中</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#计算汇总统计量"><span class="toc-number">2.1.3.</span> <span class="toc-text">计算汇总统计量</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#先只分析关心的几个国家的数据"><span class="toc-number">2.2.</span> <span class="toc-text">先只分析关心的几个国家的数据</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#使用plotly-下拉列表显示关心国家的信息"><span class="toc-number">2.2.1.</span> <span class="toc-text">使用plotly 下拉列表显示关心国家的信息</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#计算GNP与平均寿命和人口的相关性"><span class="toc-number">2.3.</span> <span class="toc-text">计算GNP与平均寿命和人口的相关性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#根据洲建立数据透视表分析"><span class="toc-number">2.4.</span> <span class="toc-text">根据洲建立数据透视表分析</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#使用饼状图分析各大洲人口占比"><span class="toc-number">2.4.1.</span> <span class="toc-text">使用饼状图分析各大洲人口占比</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#seaborn绘制各洲GNP平均值对比"><span class="toc-number">2.4.2.</span> <span class="toc-text">seaborn绘制各洲GNP平均值对比</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#对全球平均寿命分组绘图"><span class="toc-number">2.4.3.</span> <span class="toc-text">对全球平均寿命分组绘图</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#利用散点图绘制各国的平均寿命和GNP"><span class="toc-number">2.5.</span> <span class="toc-text">利用散点图绘制各国的平均寿命和GNP</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#绘制气泡图"><span class="toc-number">2.6.</span> <span class="toc-text">绘制气泡图</span></a></li></ol></li></ol>
+                </div>
+            
+            <h3 id="在Mysql中创建world数据库"><a href="#在Mysql中创建world数据库" class="headerlink" title="在Mysql中创建world数据库"></a>在Mysql中创建world数据库</h3><p>将MySQL的“world”样例数据库导入到本地中。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">DATABASE</span> world;</span><br><span class="line"><span class="keyword">USE</span> world;</span><br><span class="line">SOURCE /Desktop/world.sql;</span><br></pre></td></tr></table></figure>
+<h3 id="分析可视化world数据"><a href="#分析可视化world数据" class="headerlink" title="分析可视化world数据"></a>分析可视化world数据</h3><h4 id="导入外部包"><a href="#导入外部包" class="headerlink" title="导入外部包"></a>导入外部包</h4><p>sns.set_style 为微软雅黑，才能在图表中正常显示中文</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># plotly库</span></span><br><span class="line"><span class="keyword">import</span> pymysql.cursors</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> plotly.plotly <span class="keyword">as</span> py</span><br><span class="line"><span class="keyword">import</span> plotly</span><br><span class="line"><span class="keyword">from</span> plotly.graph_objs <span class="keyword">import</span> *</span><br><span class="line">plotly.tools.set_credentials_file(username=<span class="string">'walsky'</span>, api_key=<span class="string">'...'</span>)</span><br><span class="line">py.sign_in(<span class="string">"walsky"</span>, <span class="string">"..."</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># pandas、nump、seaborn库</span></span><br><span class="line"><span class="keyword">from</span> pandas <span class="keyword">import</span> DataFrame, Series</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> numpy <span class="keyword">import</span> random</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line">%matplotlib inline</span><br><span class="line"><span class="keyword">import</span> seaborn <span class="keyword">as</span> sns</span><br><span class="line">sns.set_style(<span class="string">'whitegrid'</span>,&#123;<span class="string">'font.sans-serif'</span>:[<span class="string">'simhei'</span>,<span class="string">'Arial'</span>]&#125;)</span><br><span class="line"><span class="keyword">import</span> plotly.graph_objs <span class="keyword">as</span> go</span><br><span class="line">plotly.offline.init_notebook_mode()</span><br></pre></td></tr></table></figure>
+<h5 id="使用pymysql连接查询数据库"><a href="#使用pymysql连接查询数据库" class="headerlink" title="使用pymysql连接查询数据库"></a>使用pymysql连接查询数据库</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">connection = pymysql.connect(host = <span class="string">'localhost'</span>,</span><br><span class="line">                             user = <span class="string">'walsky'</span>,</span><br><span class="line">                             password = <span class="string">'wal139491007'</span>,</span><br><span class="line">                             db = <span class="string">'world'</span>,</span><br><span class="line">                             charset=<span class="string">'utf8mb4'</span>,</span><br><span class="line">                             cursorclass = pymysql.cursors.DictCursor</span><br><span class="line">                             )</span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    <span class="keyword">with</span> connection.cursor() <span class="keyword">as</span> cursor:</span><br><span class="line">        sql = <span class="string">'select Name, Continent, Population, LifeExpectancy, GNP from Country'</span></span><br><span class="line">        cursor.execute(sql)</span><br><span class="line">        result = cursor.fetchall()</span><br><span class="line"><span class="keyword">finally</span>:</span><br><span class="line">    connection.close()</span><br></pre></td></tr></table></figure>
+<h5 id="将查询的结果加载到DataFrame中"><a href="#将查询的结果加载到DataFrame中" class="headerlink" title="将查询的结果加载到DataFrame中"></a>将查询的结果加载到DataFrame中</h5><p>df1 按照原始查询到的数据生成的DataFrame</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">df1 = pd.DataFrame(result)</span><br><span class="line">df1.columns</span><br></pre></td></tr></table></figure>
+<p>df 是按照平均寿命升序排列的DataFrame<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">df = pd.DataFrame( result )</span><br><span class="line">df = df[[<span class="string">'Name'</span>,<span class="string">'Continent'</span>,<span class="string">'Population'</span>,<span class="string">'LifeExpectancy'</span>,<span class="string">'GNP'</span>]]</span><br><span class="line">df = df.sort_values([<span class="string">'LifeExpectancy'</span>],ascending=<span class="keyword">True</span>)</span><br></pre></td></tr></table></figure></p>
+<h5 id="计算汇总统计量"><a href="#计算汇总统计量" class="headerlink" title="计算汇总统计量"></a>计算汇总统计量</h5><p> 汇总统计量是 数字列的计算结果，包括非空值count数量，最大最小，中位数、均值等。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.describe()</span><br></pre></td></tr></table></figure></p>
+<p><img src="http://o9pxg8pv5.bkt.clouddn.com/plotly1.png" alt=""></p>
+<p>观测前五行数据和中国的数据：<br><img src="http://o9pxg8pv5.bkt.clouddn.com/plot_china.png" alt=""><br><a id="more"></a></p>
+<h4 id="先只分析关心的几个国家的数据"><a href="#先只分析关心的几个国家的数据" class="headerlink" title="先只分析关心的几个国家的数据"></a>先只分析关心的几个国家的数据</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 只分析几个国家的数据</span></span><br><span class="line">countries = [<span class="string">'United States'</span>, <span class="string">'China'</span>, <span class="string">'South Korea'</span>, <span class="string">'Hungary'</span>, <span class="string">'Austraila'</span>, <span class="string">'Canada'</span>]</span><br><span class="line"><span class="keyword">for</span> country <span class="keyword">in</span> countries:</span><br><span class="line">    print(country <span class="keyword">in</span> df.Name.unique())</span><br><span class="line"></span><br><span class="line">df_several_country = df1[df1.Name.isin(countries)]</span><br><span class="line">df_several_country</span><br></pre></td></tr></table></figure>
+<p><br><br><strong>结果为：</strong><br><img src="http://o9pxg8pv5.bkt.clouddn.com/several_country.png" alt=""></p>
+<h5 id="使用plotly-下拉列表显示关心国家的信息"><a href="#使用plotly-下拉列表显示关心国家的信息" class="headerlink" title="使用plotly 下拉列表显示关心国家的信息"></a>使用plotly 下拉列表显示关心国家的信息</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line">strace1 = Scatter(</span><br><span class="line">    x=countries, y=df_several_country.GNP,</span><br><span class="line">    line=Line(</span><br><span class="line">        color=<span class="string">'#FAEE1C'</span>,</span><br><span class="line">        width=<span class="number">3</span></span><br><span class="line">    ),</span><br><span class="line">    name=<span class="string">'GNP'</span></span><br><span class="line">)</span><br><span class="line">strace2 = Scatter(</span><br><span class="line">      x =countries,y=df_several_country.LifeExpectancy,</span><br><span class="line">   line=Line(</span><br><span class="line">        color=<span class="string">'#F3558E'</span>,</span><br><span class="line">        width=<span class="number">3</span></span><br><span class="line">    ),</span><br><span class="line">    name=<span class="string">'LifeExpectancy'</span></span><br><span class="line">)</span><br><span class="line">strace3 = Scatter(</span><br><span class="line">    x=countries,y=df_several_country.Population,</span><br><span class="line">    line = Line(</span><br><span class="line">        color=<span class="string">'#9C1DE7'</span>,</span><br><span class="line">        width=<span class="number">3</span></span><br><span class="line">    ),</span><br><span class="line">    name=<span class="string">'Population'</span></span><br><span class="line">)</span><br><span class="line">data = Data([strace1,strace2,strace3])</span><br><span class="line">layout = Layout(</span><br><span class="line">    title=<span class="string">'Using dropdown menus show several countries Info'</span>,</span><br><span class="line">    updatemenus=list([</span><br><span class="line">        dict(</span><br><span class="line">            x=<span class="number">-0.05</span>,</span><br><span class="line">            y=<span class="number">1</span>,</span><br><span class="line">            yanchor=<span class="string">'top'</span>,</span><br><span class="line">            buttons=list([</span><br><span class="line">                dict(</span><br><span class="line">                    args=[<span class="string">'visible'</span>, [<span class="keyword">True</span>, <span class="keyword">True</span>, <span class="keyword">True</span>, <span class="keyword">True</span>]],</span><br><span class="line">                    label=<span class="string">'All'</span>,</span><br><span class="line">                    method=<span class="string">'restyle'</span></span><br><span class="line">                ),</span><br><span class="line">                dict(</span><br><span class="line">                    args=[<span class="string">'visible'</span>, [<span class="keyword">True</span>, <span class="keyword">False</span>, <span class="keyword">False</span>, <span class="keyword">False</span>]],</span><br><span class="line">                    label=<span class="string">'GDP'</span>,</span><br><span class="line">                    method=<span class="string">'restyle'</span></span><br><span class="line">                ),</span><br><span class="line">                dict(</span><br><span class="line">                    args=[<span class="string">'visible'</span>, [<span class="keyword">False</span>, <span class="keyword">True</span>, <span class="keyword">False</span>, <span class="keyword">False</span>]],</span><br><span class="line">                    label=<span class="string">'LifeExpectancy'</span>,</span><br><span class="line">                    method=<span class="string">'restyle'</span></span><br><span class="line">                ),</span><br><span class="line">                dict(</span><br><span class="line">                    args=[<span class="string">'visible'</span>, [<span class="keyword">False</span>, <span class="keyword">False</span>, <span class="keyword">True</span>, <span class="keyword">False</span>]],</span><br><span class="line">                    label=<span class="string">'Population'</span>,</span><br><span class="line">                    method=<span class="string">'restyle'</span></span><br><span class="line">                )</span><br><span class="line">            ]),</span><br><span class="line">        )</span><br><span class="line">    ]),</span><br><span class="line">)</span><br><span class="line">fig = Figure(data=data, layout=layout)</span><br><span class="line"><span class="comment">#url_1 = py.plot(data, filename='dropdmenu-for-dashboard', auto_open=False)</span></span><br><span class="line">plotly.offline.iplot(fig,filename=<span class="string">'dropdmenu-for-dashboard'</span>)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>绘图结果如下图：</p>
+</blockquote>
+<center><embed src="https://plot.ly/~walsky/16.embed?share_key=cLLP6GjjuZAjHd3iZd6DLS" width="750" height="450"></center>
+
+<h4 id="计算GNP与平均寿命和人口的相关性"><a href="#计算GNP与平均寿命和人口的相关性" class="headerlink" title="计算GNP与平均寿命和人口的相关性"></a>计算GNP与平均寿命和人口的相关性</h4><p>使用<strong>corr函数</strong>计算相关性，越接近 0，表示越没有相关性。越接近 1，则正相关性越强，越接近 -1，则负相关性越强：GNP与人口的相关性比平均寿命相关性强。</p>
+<blockquote>
+<p>在多变量因素影响时比较有用，例如成绩，房价受多方面因素影响。</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df1.corr()[<span class="string">'GNP'</span>][[<span class="string">'LifeExpectancy'</span>,<span class="string">'Population'</span>]].plot.bar()</span><br></pre></td></tr></table></figure>
+<p><img src="http://o9pxg8pv5.bkt.clouddn.com/corr_life.png" alt=""></p>
+<h4 id="根据洲建立数据透视表分析"><a href="#根据洲建立数据透视表分析" class="headerlink" title="根据洲建立数据透视表分析"></a>根据洲建立数据透视表分析</h4><p>pivot_table分析各大洲平均国民生产总值和人口</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mean_GNP_Po = df1.pivot_table([<span class="string">'GNP'</span>,<span class="string">'Population'</span>],index=<span class="string">'Continent'</span>,aggfunc=<span class="string">'mean'</span>)</span><br><span class="line">mean_GNP_Po</span><br></pre></td></tr></table></figure>
+<p><strong>OutPut:</strong><br><img src="http://o9pxg8pv5.bkt.clouddn.com/mean_pno.png" alt=""></p>
+<h5 id="使用饼状图分析各大洲人口占比"><a href="#使用饼状图分析各大洲人口占比" class="headerlink" title="使用饼状图分析各大洲人口占比"></a>使用饼状图分析各大洲人口占比</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">labels=mean_GNP_Po.index</span><br><span class="line">values=mean_GNP_Po.Population</span><br><span class="line">colors = [<span class="string">'#FAEE1C'</span>, <span class="string">'#F3558E'</span>, <span class="string">'#9C1DE7'</span>, <span class="string">'#98FB98'</span>,<span class="string">'#CD1076'</span>,<span class="string">'#C1FFC1'</span>,<span class="string">'#4F94CD'</span>]</span><br><span class="line"></span><br><span class="line">trace=go.Pie(labels=labels,values=values,marker=&#123;<span class="string">'colors'</span>: colors&#125;,text=<span class="string">'Different'</span>)</span><br><span class="line"><span class="comment"># dashborad需要版本2.0.5以上</span></span><br><span class="line"><span class="comment">#url_2 = py.plot([trace], filename='pie-for-dashboard', auto_open=False)</span></span><br><span class="line">plotly.offline.iplot([trace], filename=<span class="string">'pie-for-dashboard'</span>)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>绘图结果如下：</p>
+</blockquote>
+<p><br></p>
+<center><embed src="https://plot.ly/~walsky/4.embed" width="600" height="600"></center>
+
+<h5 id="seaborn绘制各洲GNP平均值对比"><a href="#seaborn绘制各洲GNP平均值对比" class="headerlink" title="seaborn绘制各洲GNP平均值对比"></a>seaborn绘制各洲GNP平均值对比</h5><p>seabron是基于python matplotlib的另一个流行绘图库，图形更加丰富，但没有交互功能。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 每个州GNP平均值对比</span></span><br><span class="line">gnp_mean = mean_GNP_Po.GNP.sort_values()</span><br><span class="line">gnp_bar = sns.barplot(x=mean_GNP_Po.index,y=gnp_mean,data=mean_GNP_Po)</span><br><span class="line">gnp_bar.set(title=<span class="string">'各大洲GNP平均值升序'</span>)</span><br></pre></td></tr></table></figure>
+<p><img src="http://o9pxg8pv5.bkt.clouddn.com/sea_zhou.png" alt=""></p>
+<h5 id="对全球平均寿命分组绘图"><a href="#对全球平均寿命分组绘图" class="headerlink" title="对全球平均寿命分组绘图"></a>对全球平均寿命分组绘图</h5><p>查看平均寿命分组，使用cut离散化到多个面元<br><img src="http://o9pxg8pv5.bkt.clouddn.com/GNP_size.png" alt=""></p>
+<blockquote>
+<p>使用plotly bar charts进行绘制</p>
+</blockquote>
+<p><strong>添加鼠标移动到bar chart上面的文字</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">percent_list = []</span><br><span class="line">sum_size = lf_size.sum()</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> lf_size:</span><br><span class="line">    p = i/sum_size</span><br><span class="line">    percent_list.append(<span class="string">'Count about:'</span> + format(p,<span class="string">'0.1%'</span>)) <span class="comment">#将小数转换为百分比</span></span><br><span class="line">percent_list</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">trace_bar = go.Bar(</span><br><span class="line">    x = lf_size.index,</span><br><span class="line">    y = lf_size.values,</span><br><span class="line">    text = percent_list,</span><br><span class="line">    marker=dict(</span><br><span class="line">        color=<span class="string">'rgb(158,202,225)'</span>,</span><br><span class="line">        line=dict(</span><br><span class="line">            color=<span class="string">'rgb(8,48,107)'</span>,</span><br><span class="line">            width=<span class="number">1.5</span>,<span class="comment"># 外层的边线</span></span><br><span class="line">        )</span><br><span class="line">    ),</span><br><span class="line">    opacity=<span class="number">0.8</span></span><br><span class="line">)</span><br><span class="line">data =Data([trace_bar])</span><br><span class="line"></span><br><span class="line">layout = go.Layout(</span><br><span class="line">    title = <span class="string">'The size between different LifeExpectancy in World'</span>,</span><br><span class="line">    xaxis=XAxis(title= <span class="string">'不同LifeExpectancy分组'</span>),</span><br><span class="line">    yaxis=YAxis(title=<span class="string">'LifeExpectancy'</span>)</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">fig = go.Figure(data=data, layout=layout)</span><br><span class="line">plotly.offline.iplot(fig, filename=<span class="string">'sizeOfLife-bar'</span>)</span><br></pre></td></tr></table></figure>
+<center><embed src="https://plot.ly/~walsky/14.embed" width="600" height="500"></center>
+
+<h4 id="利用散点图绘制各国的平均寿命和GNP"><a href="#利用散点图绘制各国的平均寿命和GNP" class="headerlink" title="利用散点图绘制各国的平均寿命和GNP"></a>利用散点图绘制各国的平均寿命和GNP</h4><p>散点图上每个点对应一个国家，鼠标移动到点上回显示国家名称，平均寿命和GNP。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 绘制散点图</span></span><br><span class="line">trace1 = Scatter(</span><br><span class="line">    x=df[<span class="string">'GNP'</span>],</span><br><span class="line">    y=df[<span class="string">'LifeExpectancy'</span>],</span><br><span class="line">    text=country_names,</span><br><span class="line">    mode=<span class="string">'markers'</span></span><br><span class="line">)</span><br><span class="line">layout = Layout(</span><br><span class="line">    title=<span class="string">'Life expectancy vs GNP from MySQL world database'</span>,</span><br><span class="line">    xaxis=XAxis( type=<span class="string">'log'</span>, title=<span class="string">'GNP'</span> ),</span><br><span class="line">    yaxis=YAxis( title=<span class="string">'Life expectancy'</span> ),</span><br><span class="line">)</span><br><span class="line">data = Data([trace1])</span><br><span class="line">fig = Figure(data=data, layout=layout)</span><br><span class="line">plotly.offline.iplot(fig, filename=<span class="string">'world GNP vs life expectancy'</span>)</span><br></pre></td></tr></table></figure></p>
+<center><embed src="https://plot.ly/~walsky/0.embed" width="600" height="450"></center>
+
+<h4 id="绘制气泡图"><a href="#绘制气泡图" class="headerlink" title="绘制气泡图"></a>绘制气泡图</h4><p>绘制一幅气泡图，<strong>气泡大小</strong>表示人口的多少，<strong>气泡的颜色</strong>代表不同的大洲。<br>定义一个make_text函数 表示鼠标悬停时显示的字符。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br></pre></td><td class="code"><pre><span class="line">sizemode = <span class="string">'area'</span></span><br><span class="line"><span class="comment"># 设置size为area代替diameter（直径），这样显得气泡图更大</span></span><br><span class="line"></span><br><span class="line">sizeref=df[<span class="string">'Population'</span>].max()/<span class="number">1e2</span>**<span class="number">2</span></span><br><span class="line"><span class="comment"># 最大气泡区域将在100像素的量级</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">colors = &#123;</span><br><span class="line">    <span class="string">'Asia'</span>:<span class="string">"rgb(255,65,54)"</span>,</span><br><span class="line">    <span class="string">'Europe'</span>:<span class="string">"rgb(133,20,75)"</span>,</span><br><span class="line">    <span class="string">'Africa'</span>:<span class="string">"rgb(0,116,217)"</span>,</span><br><span class="line">    <span class="string">'North America'</span>:<span class="string">"rgb(255,133,27)"</span>,</span><br><span class="line">    <span class="string">'South America'</span>:<span class="string">"rgb(23,190,207)"</span>,</span><br><span class="line">    <span class="string">'Antarctica'</span>:<span class="string">"rgb(61,153,112)"</span>,</span><br><span class="line">    <span class="string">'Oceania'</span>:<span class="string">"rgb(255,220,0)"</span>,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义一个鼠标悬停产生字体函数</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">make_text</span><span class="params">(X)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">'Country: %s\</span><br><span class="line">    &lt;br&gt;Life Expectancy: %s years\</span><br><span class="line">    &lt;br&gt;Population: %s million'</span>\</span><br><span class="line">    % (X[<span class="string">'Name'</span>], X[<span class="string">'LifeExpectancy'</span>], X[<span class="string">'Population'</span>]/<span class="number">1e6</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义一个trace_generating函数，返回Scatter对象re</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">make_trace</span><span class="params">(X, continent, sizes, color)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> Scatter(</span><br><span class="line">        x=X[<span class="string">'GNP'</span>],</span><br><span class="line">        y=X[<span class="string">'LifeExpectancy'</span>],</span><br><span class="line">        name=continent,    <span class="comment"># label continent names on hover</span></span><br><span class="line">        mode=<span class="string">'markers'</span>,    <span class="comment"># 点标记</span></span><br><span class="line">        text=X.apply(make_text, axis=<span class="number">1</span>).tolist(),</span><br><span class="line">        marker= Marker(</span><br><span class="line">            color=color,</span><br><span class="line">            size=sizes,            <span class="comment"># size大小表示人口</span></span><br><span class="line">            sizeref=sizeref,</span><br><span class="line">            sizemode=sizemode,</span><br><span class="line">            opacity=<span class="number">0.6</span>,</span><br><span class="line">            line= Line(width=<span class="number">3</span>,color=<span class="string">"white"</span>)  <span class="comment"># 网格颜色</span></span><br><span class="line">        )</span><br><span class="line">    )</span><br><span class="line"><span class="comment"># 初始化Data对象</span></span><br><span class="line">data = Data()</span><br><span class="line"><span class="comment">#一般写作data = Data([trace1,trace2]), Data函数里面是list</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># for 循环得到groupby后各个大陆的数据</span></span><br><span class="line"><span class="comment"># 每个大陆dataframe分组 命名为X</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> continent, X <span class="keyword">in</span> df.groupby(<span class="string">'Continent'</span>):</span><br><span class="line">    sizes = X[<span class="string">'Population'</span>]</span><br><span class="line">    color = colors[continent]</span><br><span class="line">    data.append(make_trace(X, continent, sizes, color))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置x,y，图表标题</span></span><br><span class="line">title = <span class="string">"Life expectancy vs GNP from MySQL world database (bubble chart)"</span></span><br><span class="line">x_title = <span class="string">"Gross National Product"</span></span><br><span class="line">y_title = <span class="string">"Life Expectancy [in years]"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置坐标风格，dict</span></span><br><span class="line">axis_style = dict(</span><br><span class="line">    type=<span class="string">'log'</span>,</span><br><span class="line">    zeroline=<span class="keyword">False</span>,       <span class="comment"># 不从零开始</span></span><br><span class="line">    gridcolor=<span class="string">'#FFFFFF'</span>,</span><br><span class="line">    ticks=<span class="string">'outside'</span>,</span><br><span class="line">    ticklen=<span class="number">8</span>,            <span class="comment"># tick 长度</span></span><br><span class="line">    tickwidth=<span class="number">1.5</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment"># layout</span></span><br><span class="line">layout = Layout(</span><br><span class="line">    title=title,</span><br><span class="line">    plot_bgcolor=<span class="string">'#EFECEA'</span>,  <span class="comment"># 背景颜色</span></span><br><span class="line">    hovermode=<span class="string">"closest"</span>,</span><br><span class="line">    xaxis=XAxis(</span><br><span class="line">        axis_style,</span><br><span class="line">        title=x_title,</span><br><span class="line">        range=[<span class="number">2.5</span>,<span class="number">7.2</span>], <span class="comment"># 取log的限制</span></span><br><span class="line">    ),</span><br><span class="line">    yaxis=YAxis(</span><br><span class="line">        axis_style,</span><br><span class="line">        title=y_title,</span><br><span class="line">    )</span><br><span class="line">)</span><br><span class="line">fig = Figure(data=data, layout=layout)</span><br><span class="line">plotly.offline.iplot(fig, filename=<span class="string">'LIFE_GNP_bubble'</span>)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>绘制结果如下：</p>
+</blockquote>
+<center><embed src="https://plot.ly/~walsky/7.embed" width="700" height="500"></center>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://yoursite.com/2017/04/06/Use-python-and-plotly-analysis-mysql/" data-id="cj1brvncq0005k8b08b3p7h5t" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://yoursite.com/2017/04/06/Use-python-and-plotly-analysis-mysql/#comments" class="article-comment-link ds-thread-count" data-thread-key="http://yoursite.com/2017/04/06/Use-python-and-plotly-analysis-mysql/">评论</a>
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2017/04/06/sklearn-predict-Titanics'survive/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">上一篇</strong>
+            <div class="article-nav-title">
+                
+                    sklearn 预测Titanics乘客生还率
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2016/12/13/mathjax的使用/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">下一篇</strong>
+            <div class="article-nav-title">mathjax的使用</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    <section id="comments">
+    
+        
+    <div class="ds-thread" data-thread-key="2017/04/06/Use-python-and-plotly-analysis-mysql/" data-title="使用python和plotly分析可视化mysql数据库" data-url="http://yoursite.com/2017/04/06/Use-python-and-plotly-analysis-mysql/"></div>
+    <style>
+        #ds-thread #ds-reset .ds-textarea-wrapper {
+            background: none;
+        }
+        #ds-reset .ds-avatar img {
+            box-shadow: none;
+        }
+        #ds-reset .ds-gradient-bg {
+            background: #f7f7f7;
+        }
+        #ds-thread #ds-reset li.ds-tab a {
+            border-radius: 3px;
+        }
+        #ds-thread #ds-reset .ds-post-button {
+            color: white;
+            border: none;
+            box-shadow: none;
+            background: #d32;
+            text-shadow: none;
+            font-weight: normal;
+            font-family: 'Microsoft Yahei';
+        }
+        #ds-thread #ds-reset .ds-post-button:hover {
+            color: white;
+            background: #DE594C;
+        }
+        #ds-thread #ds-reset .ds-post-button:active {
+            background: #d32;
+        }
+        #ds-smilies-tooltip ul.ds-smilies-tabs li a.ds-current {
+            color: white;
+            background: #d32;
+            box-shadow: none;
+            text-shadow: none;
+            font-weight: normal;
+        }
+    </style>
+
+    
+    </section>
+
+</section>
+            
+                <aside id="sidebar">
+   
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">最新文章</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/04/06/sklearn-predict-Titanics'survive/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://o9pxg8pv5.bkt.clouddn.com/titanic_head.png)" alt="sklearn 预测Titanics乘客生还率" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/数据分析/">数据分析</a></p>
+                            <p class="item-title"><a href="/2017/04/06/sklearn-predict-Titanics'survive/" class="title">sklearn 预测Titanics乘客生还率</a></p>
+                            <p class="item-date"><time datetime="2017-04-06T13:49:36.910Z" itemprop="datePublished">2017-04-06</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/04/06/Use-python-and-plotly-analysis-mysql/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://o9pxg8pv5.bkt.clouddn.com/plotly1.png)" alt="使用python和plotly分析可视化mysql数据库" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/数据分析/">数据分析</a></p>
+                            <p class="item-title"><a href="/2017/04/06/Use-python-and-plotly-analysis-mysql/" class="title">使用python和plotly分析可视化mysql数据库</a></p>
+                            <p class="item-date"><time datetime="2017-04-06T07:28:33.065Z" itemprop="datePublished">2017-04-06</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/12/13/mathjax的使用/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://img.hb.aicdn.com/d79e605eeeafd49f7a0809e6fe685f5fce78f3a6260c9-I5x4D0_fw658)" alt="mathjax的使用" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/hexo/">hexo</a></p>
+                            <p class="item-title"><a href="/2016/12/13/mathjax的使用/" class="title">mathjax的使用</a></p>
+                            <p class="item-date"><time datetime="2016-12-13T12:03:11.973Z" itemprop="datePublished">2016-12-13</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/10/11/Python开发3(控制语句和文件操作)/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://img.hb.aicdn.com/caa47fa9beba2011138b444e7a1adf59996cadc9b825-Kf2Aum_fw658)" alt="Python开发3(控制语句和文件操作)" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/python/">python</a></p>
+                            <p class="item-title"><a href="/2016/10/11/Python开发3(控制语句和文件操作)/" class="title">Python开发3(控制语句和文件操作)</a></p>
+                            <p class="item-date"><time datetime="2016-10-11T01:06:30.797Z" itemprop="datePublished">2016-10-11</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/10/01/python网络采集1/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://img.hb.aicdn.com/bc0acb2f96d7314b03e5d59527587275e362a75c128f8-sD64Th_fw658)" alt="python网络数据采集1" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/python/">python</a></p>
+                            <p class="item-title"><a href="/2016/10/01/python网络采集1/" class="title">python网络数据采集1</a></p>
+                            <p class="item-date"><time datetime="2016-10-01T07:17:31.137Z" itemprop="datePublished">2016-10-01</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">虾米播播</h3>
+        <div class="widget tagcloud">
+           <ul>
+           <h5>
+           <embed src="https://www.xiami.com/widget/160864150_188998912_200_280_4DB653_009609_0/collectPlayer.swf" type="application/x-shockwave-flash" width="200" height="280" wmode="opaque"></embed>
+           </h5>
+           </ul>
+        </div>
+    </div>
+
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">分类</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux学习/">Linux学习</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/hexo/">hexo</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据分析/">数据分析</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据库概论/">数据库概论</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/读书和生活/">读书和生活</a><span class="category-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">归档</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">标签</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android优化/">Android优化</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python基础/">python基础</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python网络数据采集/">python网络数据采集</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/something/">something</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/正则表达式/">正则表达式</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/生活/">生活</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+        <div class="widget tag">
+<h3 class="title">友情链接</h3>
+<ul class="entry">
+<li><a href="https://www.google.ae/" title="google">Google</a></li>
+<li><a href="http://www.jianshu.com/users/de17c721f02a/latest_articles" title="jianshu">简书</a></li>
+<li><a href="https://blog.jamespan.me/" title="James Pan's Blog">James Pan's Blog </a></li>
+<li><a href="http://ibruce.info/" title="icruce">不如</a></li>
+<li><a href="http://rocko.xyz/2016/06/14/ADB-Issue-2/" title="rocko">Rocko</a></li>
+
+
+</ul>
+</div>
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+            
+        </div>
+        <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({"HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"], linebreaks: { automatic:true }, EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) },
+        tex2jax: { inlineMath: [ ["$", "$"], ["\\(","\\)"] ], processEscapes: true, ignoreClass: "tex2jax_ignore|dno",skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']},
+        TeX: {  noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "120%" } }, Macros: { href: "{}" } },
+        messageStyle: "none"
+    });
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2017 laiwei<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
+            &nbsp&nbsp&nbsp&nbsp
+            <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+             </script>
+            <span id="busuanzi_container_site_pv" >本站有<span id="busuanzi_value_site_pv" style="color:#ef7522"></span>个小伙伴留下脚印</span>
+
+        </div>
+    </div>
+</footer>
+
+
+        
+    
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:'walsky'};
+    (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script>
+
+
+
+    
+        <script src="/vendor/fancybox/jquery.fancybox.pack.js"></script>
+    
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>
