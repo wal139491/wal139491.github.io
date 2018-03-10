@@ -5,26 +5,29 @@
     
     <title>使用python和plotly分析可视化mysql数据库 | walsky&#39;s blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="在Mysql中创建world数据库将MySQL的“world”样例数据库导入到本地中。
-123CREATE DATABASE world;USE world;SOURCE /Desktop/world.sql;
-分析可视化world数据导入外部包sns.set_style 为微软雅黑，才能在图表中正常显示中文
-12345678910111213141516171819# plotly库import">
+    <meta name="description" content="分析结果选择Mysql官网上的world数据库，包含所有国家的所属大洲、人口、平均寿命、国民生产总值GNP，得出的结论如下：
+
+全球平均寿命37岁，平均国民生产总值1.2万亿美元
+在美国、中国、韩国、匈牙利、澳大利亚五个国家中，国民生产总值最高的是澳大利亚，平均寿命最高的是美国79.4，人口最多的中国13亿
+看国民产生总值与人口、平均寿命有没有相关性，都是弱相关，人口相关性高一点相关系数&amp;lt;0">
 <meta property="og:type" content="article">
 <meta property="og:title" content="使用python和plotly分析可视化mysql数据库">
 <meta property="og:url" content="http://yoursite.com/2017/04/06/Use-python&plotly-analysis/index.html">
 <meta property="og:site_name" content="walsky's blog">
-<meta property="og:description" content="在Mysql中创建world数据库将MySQL的“world”样例数据库导入到本地中。
-123CREATE DATABASE world;USE world;SOURCE /Desktop/world.sql;
-分析可视化world数据导入外部包sns.set_style 为微软雅黑，才能在图表中正常显示中文
-12345678910111213141516171819# plotly库import">
+<meta property="og:description" content="分析结果选择Mysql官网上的world数据库，包含所有国家的所属大洲、人口、平均寿命、国民生产总值GNP，得出的结论如下：
+
+全球平均寿命37岁，平均国民生产总值1.2万亿美元
+在美国、中国、韩国、匈牙利、澳大利亚五个国家中，国民生产总值最高的是澳大利亚，平均寿命最高的是美国79.4，人口最多的中国13亿
+看国民产生总值与人口、平均寿命有没有相关性，都是弱相关，人口相关性高一点相关系数&amp;lt;0">
 <meta property="og:image" content="http://o9pxg8pv5.bkt.clouddn.com/plotly1.png">
-<meta property="og:updated_time" content="2017-04-10T07:02:34.973Z">
+<meta property="og:updated_time" content="2018-03-10T14:41:06.206Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用python和plotly分析可视化mysql数据库">
-<meta name="twitter:description" content="在Mysql中创建world数据库将MySQL的“world”样例数据库导入到本地中。
-123CREATE DATABASE world;USE world;SOURCE /Desktop/world.sql;
-分析可视化world数据导入外部包sns.set_style 为微软雅黑，才能在图表中正常显示中文
-12345678910111213141516171819# plotly库import">
+<meta name="twitter:description" content="分析结果选择Mysql官网上的world数据库，包含所有国家的所属大洲、人口、平均寿命、国民生产总值GNP，得出的结论如下：
+
+全球平均寿命37岁，平均国民生产总值1.2万亿美元
+在美国、中国、韩国、匈牙利、澳大利亚五个国家中，国民生产总值最高的是澳大利亚，平均寿命最高的是美国79.4，人口最多的中国13亿
+看国民产生总值与人口、平均寿命有没有相关性，都是弱相关，人口相关性高一点相关系数&amp;lt;0">
 <meta name="twitter:image" content="http://o9pxg8pv5.bkt.clouddn.com/plotly1.png">
     
 
@@ -176,7 +179,7 @@
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                15
+                16
                 <span>文章</span>
             </div>
             <div class="article-info-block">
@@ -260,10 +263,19 @@
             
                 <div id="toc" class="toc-article">
                 <strong class="toc-title">文章目录</strong>
-                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#在Mysql中创建world数据库"><span class="toc-number">1.</span> <span class="toc-text">在Mysql中创建world数据库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#分析可视化world数据"><span class="toc-number">2.</span> <span class="toc-text">分析可视化world数据</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#导入外部包"><span class="toc-number">2.1.</span> <span class="toc-text">导入外部包</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#使用pymysql连接查询数据库"><span class="toc-number">2.1.1.</span> <span class="toc-text">使用pymysql连接查询数据库</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#将查询的结果加载到DataFrame中"><span class="toc-number">2.1.2.</span> <span class="toc-text">将查询的结果加载到DataFrame中</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#计算汇总统计量"><span class="toc-number">2.1.3.</span> <span class="toc-text">计算汇总统计量</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#先只分析关心的几个国家的数据"><span class="toc-number">2.2.</span> <span class="toc-text">先只分析关心的几个国家的数据</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#使用plotly-下拉列表显示关心国家的信息"><span class="toc-number">2.2.1.</span> <span class="toc-text">使用plotly 下拉列表显示关心国家的信息</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#计算GNP与平均寿命和人口的相关性"><span class="toc-number">2.3.</span> <span class="toc-text">计算GNP与平均寿命和人口的相关性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#根据洲建立数据透视表分析"><span class="toc-number">2.4.</span> <span class="toc-text">根据洲建立数据透视表分析</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#使用饼状图分析各大洲人口占比"><span class="toc-number">2.4.1.</span> <span class="toc-text">使用饼状图分析各大洲人口占比</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#seaborn绘制各洲GNP平均值对比"><span class="toc-number">2.4.2.</span> <span class="toc-text">seaborn绘制各洲GNP平均值对比</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#对全球平均寿命分组绘图"><span class="toc-number">2.4.3.</span> <span class="toc-text">对全球平均寿命分组绘图</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#利用散点图绘制各国的平均寿命和GNP"><span class="toc-number">2.5.</span> <span class="toc-text">利用散点图绘制各国的平均寿命和GNP</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#绘制气泡图"><span class="toc-number">2.6.</span> <span class="toc-text">绘制气泡图</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#分析结果"><span class="toc-number">1.</span> <span class="toc-text">分析结果</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分析步骤"><span class="toc-number">2.</span> <span class="toc-text">分析步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#在Mysql中创建world数据库"><span class="toc-number">2.1.</span> <span class="toc-text">在Mysql中创建world数据库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#分析可视化world数据"><span class="toc-number">2.2.</span> <span class="toc-text">分析可视化world数据</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#导入外部包"><span class="toc-number">2.2.1.</span> <span class="toc-text">导入外部包</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#使用pymysql连接查询数据库"><span class="toc-number">2.2.1.1.</span> <span class="toc-text">使用pymysql连接查询数据库</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#将查询的结果加载到DataFrame中"><span class="toc-number">2.2.1.2.</span> <span class="toc-text">将查询的结果加载到DataFrame中</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#计算汇总统计量"><span class="toc-number">2.2.1.3.</span> <span class="toc-text">计算汇总统计量</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#先只分析关心的几个国家的数据"><span class="toc-number">2.2.2.</span> <span class="toc-text">先只分析关心的几个国家的数据</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#使用plotly-下拉列表显示关心国家的信息"><span class="toc-number">2.2.2.1.</span> <span class="toc-text">使用plotly 下拉列表显示关心国家的信息</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#计算GNP与平均寿命和人口的相关性"><span class="toc-number">2.2.3.</span> <span class="toc-text">计算GNP与平均寿命和人口的相关性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#根据洲建立数据透视表分析"><span class="toc-number">2.2.4.</span> <span class="toc-text">根据洲建立数据透视表分析</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#使用饼状图分析各大洲人口占比"><span class="toc-number">2.2.4.1.</span> <span class="toc-text">使用饼状图分析各大洲人口占比</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#seaborn绘制各洲GNP平均值对比"><span class="toc-number">2.2.4.2.</span> <span class="toc-text">seaborn绘制各洲GNP平均值对比</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#对全球平均寿命分组绘图"><span class="toc-number">2.2.4.3.</span> <span class="toc-text">对全球平均寿命分组绘图</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#利用散点图绘制各国的平均寿命和GNP"><span class="toc-number">2.2.5.</span> <span class="toc-text">利用散点图绘制各国的平均寿命和GNP</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#绘制气泡图"><span class="toc-number">2.2.6.</span> <span class="toc-text">绘制气泡图</span></a></li></ol></li></ol></li></ol>
                 </div>
             
-            <h3 id="在Mysql中创建world数据库"><a href="#在Mysql中创建world数据库" class="headerlink" title="在Mysql中创建world数据库"></a>在Mysql中创建world数据库</h3><p>将MySQL的“world”样例数据库导入到本地中。</p>
+            <h2 id="分析结果"><a href="#分析结果" class="headerlink" title="分析结果"></a>分析结果</h2><p>选择Mysql官网上的world数据库，包含所有国家的所属大洲、人口、平均寿命、国民生产总值GNP，得出的结论如下：</p>
+<ol>
+<li>全球平均寿命37岁，平均国民生产总值1.2万亿美元</li>
+<li>在美国、中国、韩国、匈牙利、澳大利亚五个国家中，国民生产总值最高的是澳大利亚，平均寿命最高的是美国79.4，人口最多的中国13亿</li>
+<li>看国民产生总值与人口、平均寿命有没有相关性，都是弱相关，人口相关性高一点<br><em>相关系数&lt;0.4显著弱相关; 0.4-0.75中等相关; 大于0.75强相关</em></li>
+<li>北美的国民生产总值最高，人口亚洲最多占51%</li>
+<li>平均寿命65-75最多，84个，占38%</li>
+<li>国民生产总值和平均寿命都位于前前列的国家是美国、中国、日本</li>
+</ol>
+<h2 id="分析步骤"><a href="#分析步骤" class="headerlink" title="分析步骤"></a>分析步骤</h2><h3 id="在Mysql中创建world数据库"><a href="#在Mysql中创建world数据库" class="headerlink" title="在Mysql中创建world数据库"></a>在Mysql中创建world数据库</h3><p>将MySQL的“world”样例数据库导入到本地中。</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">DATABASE</span> world;</span><br><span class="line"><span class="keyword">USE</span> world;</span><br><span class="line">SOURCE /Desktop/world.sql;</span><br></pre></td></tr></table></figure>
 <h3 id="分析可视化world数据"><a href="#分析可视化world数据" class="headerlink" title="分析可视化world数据"></a>分析可视化world数据</h3><h4 id="导入外部包"><a href="#导入外部包" class="headerlink" title="导入外部包"></a>导入外部包</h4><p>sns.set_style 为微软雅黑，才能在图表中正常显示中文</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># plotly库</span></span><br><span class="line"><span class="keyword">import</span> pymysql.cursors</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> plotly.plotly <span class="keyword">as</span> py</span><br><span class="line"><span class="keyword">import</span> plotly</span><br><span class="line"><span class="keyword">from</span> plotly.graph_objs <span class="keyword">import</span> *</span><br><span class="line">plotly.tools.set_credentials_file(username=<span class="string">'walsky'</span>, api_key=<span class="string">'...'</span>)</span><br><span class="line">py.sign_in(<span class="string">"walsky"</span>, <span class="string">"..."</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># pandas、nump、seaborn库</span></span><br><span class="line"><span class="keyword">from</span> pandas <span class="keyword">import</span> DataFrame, Series</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> numpy <span class="keyword">import</span> random</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line">%matplotlib inline</span><br><span class="line"><span class="keyword">import</span> seaborn <span class="keyword">as</span> sns</span><br><span class="line">sns.set_style(<span class="string">'whitegrid'</span>,&#123;<span class="string">'font.sans-serif'</span>:[<span class="string">'simhei'</span>,<span class="string">'Arial'</span>]&#125;)</span><br><span class="line"><span class="keyword">import</span> plotly.graph_objs <span class="keyword">as</span> go</span><br><span class="line">plotly.offline.init_notebook_mode()</span><br></pre></td></tr></table></figure>
@@ -328,7 +340,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/04/06/Use-python&plotly-analysis/" data-id="cj1c2wxjq000bh8b0mrhcq2tj" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yoursite.com/2017/04/06/Use-python&plotly-analysis/" data-id="cjelhafgr000hh4b005aelkq9" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -486,6 +498,25 @@
                     <li>
                         
                         <div class="item-thumbnail">
+                            <a href="/2017/04/23/关联分析算法/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2017/04/23/关联分析算法/" class="title">关联分析算法</a></p>
+                            <p class="item-date"><time datetime="2017-04-23T13:03:03.352Z" itemprop="datePublished">2017-04-23</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
                             <a href="/2017/04/06/sklearn-predict-Titanics'survive/" class="thumbnail">
     
     
@@ -559,25 +590,6 @@
                         </div>
                     </li>
                 
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2016/10/01/python网络采集1/" class="thumbnail">
-    
-    
-        <span style="background-image:url(http://img.hb.aicdn.com/bc0acb2f96d7314b03e5d59527587275e362a75c128f8-sD64Th_fw658)" alt="python网络数据采集1" class="thumbnail-image"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/python/">python</a></p>
-                            <p class="item-title"><a href="/2016/10/01/python网络采集1/" class="title">python网络数据采集1</a></p>
-                            <p class="item-date"><time datetime="2016-10-01T07:17:31.137Z" itemprop="datePublished">2016-10-01</time></p>
-                        </div>
-                    </li>
-                
             </ul>
         </div>
     </div>
@@ -610,7 +622,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">归档</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">1</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -665,7 +677,7 @@
 <footer id="footer">
     <div class="outer">
         <div id="footer-info" class="inner">
-            &copy; 2017 laiwei<br>
+            &copy; 2018 laiwei<br>
             Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
             &nbsp&nbsp&nbsp&nbsp
             <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">

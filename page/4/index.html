@@ -164,7 +164,7 @@
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                15
+                16
                 <span>文章</span>
             </div>
             <div class="article-info-block">
@@ -211,6 +211,147 @@
 
             
             <section id="main">
+    <article id="post-正则表达式和Python中正则的使用" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2016/08/07/正则表达式和Python中正则的使用/">正则表达式和Python中正则的使用</a>
+        </h1>
+    
+
+                <div class="article-meta">
+                    
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2016/08/07/正则表达式和Python中正则的使用/">
+            <time datetime="2016-08-07T10:09:32.809Z" itemprop="datePublished">2016-08-07</time>
+        </a>
+    </div>
+
+
+                    
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/python/">python</a>
+    </div>
+
+                    
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/正则表达式/">正则表达式</a>
+    </div>
+
+                </div>
+            </header>
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <p><h4 id="正则表达式的概念和用法"><a href="#正则表达式的概念和用法" class="headerlink" title="正则表达式的概念和用法"></a>正则表达式的概念和用法</h4><p><strong>多练习，多使用，才能熟练掌握正则表达式</strong></p>
+<p><img src="http://qiniu.cuiqingcai.com/wp-content/uploads/2015/02/20130515113723855-e1424095177180.png" alt=""></p>
+<h6 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h6><ul>
+<li><a href="http://mp.weixin.qq.com/s?__biz=MzA4MjEyNTA5Mw==&amp;mid=2652563938&amp;idx=2&amp;sn=52881e92c413cca92cdf8b1a9492a30e&amp;scene=23&amp;srcid=0806R6uskwun6yYYK1C8YS2o#rd">Python 正则表达式学习摘要及资料</a></li>
+<li><a href="http://blog.parryqiu.com/2015/06/01/regex-lesson/">正则表达式入门以及高阶视频教程</a></li>
+<li><a href="http://www.cnblogs.com/deerchao/archive/2006/08/24/zhengzhe30fengzhongjiaocheng.html#mission">正则表达式30分钟入门教程</a></li>
+<li><a href="https://gold.xitu.io/search">掘金</a></li>
+<li><a href="http://cuiqingcai.com/977.html">Python爬虫入门七之正则表达式</a></li>
+</ul>
+<p>######基本概念<br>在编写处理字符串的程序或者网页时，需要查找某些复杂规则的字符串。<br>正则表达式： <code>描述这些规则的工具</code></p>
+<p>####Python 中正则的使用<br></p>
+            <p class="article-more-link">
+                <a href="/2016/08/07/正则表达式和Python中正则的使用/#more">查看更多</a>
+            </p>
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://yoursite.com/2016/08/07/正则表达式和Python中正则的使用/" data-id="cjelhaflk000th4b0pc672lf0" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://yoursite.com/2016/08/07/正则表达式和Python中正则的使用/#comments" class="article-comment-link ds-thread-count" data-thread-key="http://yoursite.com/2016/08/07/正则表达式和Python中正则的使用/">评论</a>
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
     <article id="post-相册效果页面" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
@@ -218,7 +359,7 @@
 <div class="article-gallery">
     <div class="article-gallery-photos">
         
-            <a class="article-gallery-img fancybox" href="http://o9pxg8pv5.bkt.clouddn.com/Eiffel.jpg" rel="gallery_cj1c2wxmt0015h8b0rnbx43qd">
+            <a class="article-gallery-img fancybox" href="http://o9pxg8pv5.bkt.clouddn.com/Eiffel.jpg" rel="gallery_cjelhafj4000nh4b0c8kg7mlb">
                 <img src="http://o9pxg8pv5.bkt.clouddn.com/Eiffel.jpg" itemprop="image">
             </a>
         
@@ -269,7 +410,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2016/07/28/相册效果页面/" data-id="cj1c2wxmt0015h8b0rnbx43qd" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yoursite.com/2016/07/28/相册效果页面/" data-id="cjelhafj4000nh4b0c8kg7mlb" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -423,7 +564,7 @@ int heapsize=manager.getMemoryClass();</code></li>
 
 </div>
 
-    <a data-url="http://yoursite.com/2016/07/06/Android避免OOM-内存优化/" data-id="cj1c2wxjf0006h8b0wtul0atb" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yoursite.com/2016/07/06/Android避免OOM-内存优化/" data-id="cjelhafdw000bh4b0n3sk6r1y" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -551,7 +692,7 @@ int heapsize=manager.getMemoryClass();</code></li>
 
 </div>
 
-    <a data-url="http://yoursite.com/2016/06/20/my-first-blog/" data-id="cj1c2wxl0000rh8b00mis4pvl" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yoursite.com/2016/06/20/my-first-blog/" data-id="cjelhafs2001hh4b0cbav2b5f" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -645,6 +786,25 @@ int heapsize=manager.getMemoryClass();</code></li>
                     <li>
                         
                         <div class="item-thumbnail">
+                            <a href="/2017/04/23/关联分析算法/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2017/04/23/关联分析算法/" class="title">关联分析算法</a></p>
+                            <p class="item-date"><time datetime="2017-04-23T13:03:03.352Z" itemprop="datePublished">2017-04-23</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
                             <a href="/2017/04/06/sklearn-predict-Titanics'survive/" class="thumbnail">
     
     
@@ -718,25 +878,6 @@ int heapsize=manager.getMemoryClass();</code></li>
                         </div>
                     </li>
                 
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2016/10/01/python网络采集1/" class="thumbnail">
-    
-    
-        <span style="background-image:url(http://img.hb.aicdn.com/bc0acb2f96d7314b03e5d59527587275e362a75c128f8-sD64Th_fw658)" alt="python网络数据采集1" class="thumbnail-image"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/python/">python</a></p>
-                            <p class="item-title"><a href="/2016/10/01/python网络采集1/" class="title">python网络数据采集1</a></p>
-                            <p class="item-date"><time datetime="2016-10-01T07:17:31.137Z" itemprop="datePublished">2016-10-01</time></p>
-                        </div>
-                    </li>
-                
             </ul>
         </div>
     </div>
@@ -769,7 +910,7 @@ int heapsize=manager.getMemoryClass();</code></li>
     <div class="widget-wrap">
         <h3 class="widget-title">归档</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">1</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -824,7 +965,7 @@ int heapsize=manager.getMemoryClass();</code></li>
 <footer id="footer">
     <div class="outer">
         <div id="footer-info" class="inner">
-            &copy; 2017 laiwei<br>
+            &copy; 2018 laiwei<br>
             Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
             &nbsp&nbsp&nbsp&nbsp
             <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">

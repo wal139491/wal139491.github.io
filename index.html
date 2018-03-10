@@ -164,7 +164,7 @@
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                15
+                16
                 <span>文章</span>
             </div>
             <div class="article-info-block">
@@ -211,6 +211,125 @@
 
             
             <section id="main">
+    <article id="post-关联分析算法" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2017/04/23/关联分析算法/">关联分析算法</a>
+        </h1>
+    
+
+                <div class="article-meta">
+                    
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/04/23/关联分析算法/">
+            <time datetime="2017-04-23T13:03:03.352Z" itemprop="datePublished">2017-04-23</time>
+        </a>
+    </div>
+
+
+                    
+                    
+                </div>
+            </header>
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://yoursite.com/2017/04/23/关联分析算法/" data-id="cjelhafg4000gh4b090pyirbl" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://yoursite.com/2017/04/23/关联分析算法/#comments" class="article-comment-link ds-thread-count" data-thread-key="http://yoursite.com/2017/04/23/关联分析算法/">评论</a>
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
     <article id="post-sklearn-predict-Titanics&#39;survive" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
@@ -261,7 +380,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/04/06/sklearn-predict-Titanics'survive/" data-id="cj1c2wxki000ih8b0smnnm9o5" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yoursite.com/2017/04/06/sklearn-predict-Titanics'survive/" data-id="cjelhafm4000wh4b0ucrhh5yr" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -374,7 +493,16 @@
         
         <div class="article-entry" itemprop="articleBody">
         
-            <p><h3 id="在Mysql中创建world数据库"><a href="#在Mysql中创建world数据库" class="headerlink" title="在Mysql中创建world数据库"></a>在Mysql中创建world数据库</h3><p>将MySQL的“world”样例数据库导入到本地中。</p>
+            <p><h2 id="分析结果"><a href="#分析结果" class="headerlink" title="分析结果"></a>分析结果</h2><p>选择Mysql官网上的world数据库，包含所有国家的所属大洲、人口、平均寿命、国民生产总值GNP，得出的结论如下：</p>
+<ol>
+<li>全球平均寿命37岁，平均国民生产总值1.2万亿美元</li>
+<li>在美国、中国、韩国、匈牙利、澳大利亚五个国家中，国民生产总值最高的是澳大利亚，平均寿命最高的是美国79.4，人口最多的中国13亿</li>
+<li>看国民产生总值与人口、平均寿命有没有相关性，都是弱相关，人口相关性高一点<br><em>相关系数&lt;0.4显著弱相关; 0.4-0.75中等相关; 大于0.75强相关</em></li>
+<li>北美的国民生产总值最高，人口亚洲最多占51%</li>
+<li>平均寿命65-75最多，84个，占38%</li>
+<li>国民生产总值和平均寿命都位于前前列的国家是美国、中国、日本</li>
+</ol>
+<h2 id="分析步骤"><a href="#分析步骤" class="headerlink" title="分析步骤"></a>分析步骤</h2><h3 id="在Mysql中创建world数据库"><a href="#在Mysql中创建world数据库" class="headerlink" title="在Mysql中创建world数据库"></a>在Mysql中创建world数据库</h3><p>将MySQL的“world”样例数据库导入到本地中。</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">DATABASE</span> world;</span><br><span class="line"><span class="keyword">USE</span> world;</span><br><span class="line">SOURCE /Desktop/world.sql;</span><br></pre></td></tr></table></figure>
 <h3 id="分析可视化world数据"><a href="#分析可视化world数据" class="headerlink" title="分析可视化world数据"></a>分析可视化world数据</h3><h4 id="导入外部包"><a href="#导入外部包" class="headerlink" title="导入外部包"></a>导入外部包</h4><p>sns.set_style 为微软雅黑，才能在图表中正常显示中文</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># plotly库</span></span><br><span class="line"><span class="keyword">import</span> pymysql.cursors</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> plotly.plotly <span class="keyword">as</span> py</span><br><span class="line"><span class="keyword">import</span> plotly</span><br><span class="line"><span class="keyword">from</span> plotly.graph_objs <span class="keyword">import</span> *</span><br><span class="line">plotly.tools.set_credentials_file(username=<span class="string">'walsky'</span>, api_key=<span class="string">'...'</span>)</span><br><span class="line">py.sign_in(<span class="string">"walsky"</span>, <span class="string">"..."</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># pandas、nump、seaborn库</span></span><br><span class="line"><span class="keyword">from</span> pandas <span class="keyword">import</span> DataFrame, Series</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> numpy <span class="keyword">import</span> random</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line">%matplotlib inline</span><br><span class="line"><span class="keyword">import</span> seaborn <span class="keyword">as</span> sns</span><br><span class="line">sns.set_style(<span class="string">'whitegrid'</span>,&#123;<span class="string">'font.sans-serif'</span>:[<span class="string">'simhei'</span>,<span class="string">'Arial'</span>]&#125;)</span><br><span class="line"><span class="keyword">import</span> plotly.graph_objs <span class="keyword">as</span> go</span><br><span class="line">plotly.offline.init_notebook_mode()</span><br></pre></td></tr></table></figure>
@@ -397,7 +525,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/04/06/Use-python&plotly-analysis/" data-id="cj1c2wxjq000bh8b0mrhcq2tj" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yoursite.com/2017/04/06/Use-python&plotly-analysis/" data-id="cjelhafgr000hh4b005aelkq9" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -560,7 +688,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2016/12/13/mathjax的使用/" data-id="cj1c2wxka000gh8b021k5bz7u" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yoursite.com/2016/12/13/mathjax的使用/" data-id="cjelhafdd0008h4b0t4krsmoj" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -638,276 +766,6 @@
 
 
 
-    <article id="post-Python开发3(控制语句和文件操作)" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2016/10/11/Python开发3(控制语句和文件操作)/">Python开发3(控制语句和文件操作)</a>
-        </h1>
-    
-
-                <div class="article-meta">
-                    
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2016/10/11/Python开发3(控制语句和文件操作)/">
-            <time datetime="2016-10-11T01:06:30.797Z" itemprop="datePublished">2016-10-11</time>
-        </a>
-    </div>
-
-
-                    
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/python/">python</a>
-    </div>
-
-                    
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/python基础/">python基础</a>
-    </div>
-
-                </div>
-            </header>
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            <p><p><img src="http://img.hb.aicdn.com/caa47fa9beba2011138b444e7a1adf59996cadc9b825-Kf2Aum_fw658" alt=""></p>
-<h5 id="python的控制语句"><a href="#python的控制语句" class="headerlink" title="python的控制语句"></a>python的控制语句</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">x = input(<span class="string">"x:"</span>)</span><br><span class="line"><span class="comment"># input支持用户输入数字和表达式，最后返回数字类型，表达式会自动计算</span></span><br><span class="line">print(x)</span><br><span class="line">x = raw_imput(<span class="string">"x:"</span>)</span><br><span class="line"><span class="comment"># raw_input捕获原始输入，返回的是字符串类型</span></span><br><span class="line">x = int(x) <span class="comment"># 如果需要使用数字类型,转换位数字类型</span></span><br><span class="line">x = x+<span class="number">1</span></span><br></pre></td></tr></table></figure>
-<p>####### switch语句</p>
-<blockquote>
-<p>switch语句容易造成代码不易维护，使源文件拥挤。<strong>面向对象程序设计，常常对switch语句进行重构，把switch语句分解成若干个类。</strong>当然对于分支流程简单的switch可以使用字典来实现，使用字典更加容易管理switch.<br>字典是键值对组成的集合，类似JAVA的HashTable</p>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 使用字典实现switch</span></span><br><span class="line"><span class="keyword">from</span> __future__ <span class="keyword">import</span> division</span><br><span class="line"><span class="comment"># python提供了__future__模块，把新版本的特性导入到当前版本</span></span><br><span class="line">x =<span class="number">1</span></span><br><span class="line">y = <span class="number">2</span></span><br><span class="line">operator = <span class="string">"/"</span></span><br><span class="line">result = &#123;</span><br><span class="line"><span class="string">"+"</span>: x+y,</span><br><span class="line"><span class="string">"*"</span>: x*y,</span><br><span class="line"><span class="string">"-"</span>: x-y,</span><br><span class="line"><span class="string">"/"</span>: x/y,</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">print</span> result.get(operator)</span><br></pre></td></tr></table></figure>
-<h6 id="循环语句"><a href="#循环语句" class="headerlink" title="循环语句"></a>循环语句</h6><p>python循环语句包括while和for<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">####### while循环</span></span><br><span class="line">numbers = raw_input(<span class="string">"输入几个数字，以逗号分隔"</span>).split(<span class="string">","</span>)</span><br><span class="line"><span class="comment"># 输入数字，赋值给numbers列表</span></span><br><span class="line">x = <span class="number">0</span></span><br><span class="line"><span class="keyword">if</span> x &lt; len(numbers):</span><br><span class="line"><span class="keyword">print</span> numbers[x]</span><br><span class="line">x+<span class="number">1</span> = x</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 带else的while的循环语句</span></span><br><span class="line">x = input(<span class="string">"输入x的值"</span>)</span><br><span class="line">i = <span class="number">0</span></span><br><span class="line"><span class="keyword">while</span>(x!=<span class="number">0</span>):</span><br><span class="line">  <span class="keyword">if</span>(x&gt;<span class="number">0</span>)</span><br><span class="line">  x<span class="number">-1</span>=x</span><br><span class="line">  <span class="keyword">else</span>:</span><br><span class="line">   x+<span class="number">1</span>=x</span><br><span class="line"> i+<span class="number">1</span>=i</span><br><span class="line"> print(<span class="string">"第%d循环"</span>%i, x)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">print(<span class="string">"x等于0"</span>，x)</span><br></pre></td></tr></table></figure>
-<p>####### for循环<br>for循环用于遍历一个集合，依次访问集合中的每一个项目<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> 变量 <span class="keyword">in</span> 集合：</span><br><span class="line">...</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">...</span><br><span class="line"><span class="comment"># 集合可以是元组、列表、字典等数据结构</span></span><br><span class="line"><span class="comment"># 每次从集合中取出一个值并赋值给变量，else可以省略</span></span><br><span class="line"><span class="string">'''</span><br><span class="line">for循环通常与range()函数一起使用，range(开始，结束值，步长)返回一个列表</span><br><span class="line">range(5,-1,-1) -&gt;[5,4,3,2,1,0]    包前不包后</span><br><span class="line">'''</span></span><br><span class="line"><span class="comment"># for in 语句</span></span><br><span class="line"><span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">-1</span>,<span class="number">3</span>,<span class="number">1</span>):</span><br><span class="line">    <span class="keyword">if</span> x &gt; <span class="number">0</span> :</span><br><span class="line">        print(<span class="string">"正数"</span>,x)</span><br><span class="line">    <span class="keyword">elif</span> x == <span class="number">0</span> :</span><br><span class="line">        print(<span class="string">"零"</span>,x)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        print(<span class="string">"负数"</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    print(<span class="string">"函数结束"</span>)</span><br></pre></td></tr></table></figure></p>
-<p>python中没有for(x=2;x&lt;15;x++)这种表达式，可以使用：<br><code>x= 0
-while x &lt; 5:
-    print x
-    x + 1=x</code></p>
-<p>####### break 和 continue<br>break: 直接中断循环<br>continue: 停止本次循环，进入下一次循环<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">x = <span class="number">4</span></span><br><span class="line"><span class="keyword">for</span> y <span class="keyword">in</span> range(<span class="number">0</span>,<span class="number">20</span>,):</span><br><span class="line">    <span class="keyword">if</span> x != y:</span><br><span class="line">        print(y)</span><br><span class="line">        <span class="keyword">continue</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        print(x)</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line"><span class="comment"># x不等于y，continue，进入下次循环</span></span><br><span class="line"><span class="comment"># x等于y,break中断循环，输入：0，1，2，3，4</span></span><br></pre></td></tr></table></figure></p>
-<p><strong>介绍下xrange()函数：</strong><br>xrange是一个类，返回一个xrange对象，`xrange(开始，结束值，步长）<br>xrange()进行遍历的时候                      <strong>每次只返回一个值</strong> <strong><br>range()返回的是列表             </strong>一次性计算并返回所有的值**，<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># xrange()</span></span><br><span class="line">x = xrange(<span class="number">0</span>,<span class="number">8</span>)</span><br><span class="line"><span class="keyword">print</span> x <span class="comment">#输出xrange(8),这是一个xrange对象</span></span><br><span class="line"><span class="keyword">print</span> x[<span class="number">0</span>] <span class="comment">#输出 0</span></span><br><span class="line"><span class="keyword">print</span> x[<span class="number">7</span>] <span class="comment">#输出最后一个元素的值 输出结果为：7</span></span><br></pre></td></tr></table></figure></p>
-<p>####### xrange()实现的冒泡排序算法<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">bubbleSort</span><span class="params">(numbers)</span>:</span></span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> range(len(numbers)<span class="number">-1</span>,<span class="number">-1</span>,<span class="number">-1</span>):</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(j):</span><br><span class="line">            <span class="keyword">if</span> numbers[i] &gt; numbers[i+<span class="number">1</span>]:   <span class="comment"># 把数值小的放到顶端</span></span><br><span class="line">                numbers[i], numbers[i+<span class="number">1</span>] = numbers[i+<span class="number">1</span>], numbers[i]</span><br><span class="line">            print(numbers)</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></span><br><span class="line">    numbers = [<span class="number">23</span>,<span class="number">12</span>,<span class="number">9</span>,<span class="number">15</span>,<span class="number">6</span>]</span><br><span class="line">    bubbleSort(numbers)</span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure></p>
-<h4 id="Python文件的处理"><a href="#Python文件的处理" class="headerlink" title="Python文件的处理"></a>Python文件的处理</h4><p>数据的存储可以使用数据库（保持了数据完整性、关联性，数据更加安全可靠）和文件（简单易用，通常用于存储应用程序软件的参数和临时数据）</p>
-<h5 id="文件的基本操作"><a href="#文件的基本操作" class="headerlink" title="文件的基本操作"></a>文件的基本操作</h5><p>python提供os,os.path,shutil等模块用于处理文件用于处理文件，包括：<br>文件的创建、读写、修改和复制、删除和重命名<br>文件内容的搜索和替换<br>文件内容的比较<br>配置文集的读写，目录创建和遍历<br>文件和流</p>
-<h6 id="文件的打开和创建"><a href="#文件的打开和创建" class="headerlink" title="文件的打开和创建"></a>文件的打开和创建</h6><p>python使用内联函数file()创建和打开文件， 返回一个file对象可以对文件进行各种操作<br><strong>使用open()可以替换file()，open()是file()的别名</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">file(name, mode, buffering)</span><br><span class="line"><span class="comment"># name:被打开文件的名称，mode文件的打开模式，buffering设置缓存模式，0是无缓存，1表示行缓存，&gt;1表示缓冲区的大小以字节为单位</span></span><br></pre></td></tr></table></figure></p>
-<table>
-<thead>
-<tr>
-<th>模式名称</th>
-<th>含义</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>r</td>
-<td>以只读方式打开</td>
-</tr>
-<tr>
-<td>r+</td>
-<td>以读写方式打开</td>
-</tr>
-<tr>
-<td>w</td>
-<td>以写入方式打开，先删除原有内容，再写入新的数据，<strong>如果文件不存在就创建一个新的文件 </strong></td>
-</tr>
-<tr>
-<td>w+</td>
-<td>以读写方式打开，先删除原有内容，再写入新的数据，<strong>如果文件不存在就创建一个新的文件</strong></td>
-</tr>
-<tr>
-<td>a</td>
-<td>以写入方式打开，在文件末尾增加新的内容，如果文件不存在就创建一个新的文件</td>
-</tr>
-<tr>
-<td>a+</td>
-<td>以读写方式打开，在文件末尾增加新的内容，如果文件不存在就创建一个新的文件</td>
-</tr>
-<tr>
-<td>b</td>
-<td>以二进制方式打开文件，与r r+  w w+ a +结合使用</td>
-</tr>
-<tr>
-<td>U</td>
-<td>支持所有换行符，\r \n <code>\r\n</code></td>
-</tr>
-</tbody>
-</table>
-<blockquote>
-<p>对于图片，视频文件必须使用“b”（也就是二进制的方式读写）</p>
-</blockquote>
-<p><strong>file的常用属性和方法：</strong></p>
-<table>
-<thead>
-<tr>
-<th>属性名称</th>
-<th>方法</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Closed</td>
-<td>判断文件是否关闭，关闭返回True</td>
-</tr>
-<tr>
-<td>Mode</td>
-<td>显示文件的打开模式</td>
-</tr>
-<tr>
-<td>Encoding</td>
-<td>显示文件的编码模式   print(f.Encoding) f是file对象</td>
-</tr>
-<tr>
-<td>Newlines</td>
-<td>显示文件的换行模式</td>
-</tr>
-<tr>
-<td>file(name,mode,buffering)</td>
-<td>以mode模式打开name文件</td>
-</tr>
-<tr>
-<td>flush</td>
-<td>把缓存区内容写入磁盘</td>
-</tr>
-<tr>
-<td>close</td>
-<td>关闭文件</td>
-</tr>
-<tr>
-<td>read(5)</td>
-<td>读取文件中读取5个字节的内容作为字符串返回</td>
-</tr>
-<tr>
-<td>readline()</td>
-<td>读取1行作为字符串返回，readlines(2)表示每行每次读取两个字节，直到行的末尾</td>
-</tr>
-<tr>
-<td>readlines()</td>
-<td>读取每行的内容存储在列表中返回</td>
-</tr>
-<tr>
-<td>seek(offset, whence)</td>
-<td>把文件指针移动到1个新的位置，offset是相对于whence的位置，whence为0从文件开始的位置计算，为1表示从当前位置计算，为2表示从文件末尾位置计算</td>
-</tr>
-<tr>
-<td>tell()</td>
-<td>返回文件指针的位置</td>
-</tr>
-<tr>
-<td>next()</td>
-<td>返回下一行的内容，并将文件的指针移动到下一行</td>
-</tr>
-<tr>
-<td>truncate(size)</td>
-<td>删除size个字节的内容</td>
-</tr>
-<tr>
-<td>write(str)</td>
-<td>将字符串str的内容写入文件</td>
-</tr>
-<tr>
-<td>writelines(str)</td>
-<td>将字符串序列的内容写入文件</td>
-</tr>
-</tbody>
-</table></p>
-            <p class="article-more-link">
-                <a href="/2016/10/11/Python开发3(控制语句和文件操作)/#more">查看更多</a>
-            </p>
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://yoursite.com/2016/10/11/Python开发3(控制语句和文件操作)/" data-id="cj1c2wxjz000dh8b05iusfngt" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-        <a href="http://yoursite.com/2016/10/11/Python开发3(控制语句和文件操作)/#comments" class="article-comment-link ds-thread-count" data-thread-key="http://yoursite.com/2016/10/11/Python开发3(控制语句和文件操作)/">评论</a>
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
     <nav id="page-nav">
         <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">下一页 &raquo;</a>
     </nav>
@@ -920,6 +778,25 @@ while x &lt; 5:
         <h3 class="widget-title">最新文章</h3>
         <div class="widget">
             <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/04/23/关联分析算法/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2017/04/23/关联分析算法/" class="title">关联分析算法</a></p>
+                            <p class="item-date"><time datetime="2017-04-23T13:03:03.352Z" itemprop="datePublished">2017-04-23</time></p>
+                        </div>
+                    </li>
                 
                     <li>
                         
@@ -997,25 +874,6 @@ while x &lt; 5:
                         </div>
                     </li>
                 
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2016/10/01/python网络采集1/" class="thumbnail">
-    
-    
-        <span style="background-image:url(http://img.hb.aicdn.com/bc0acb2f96d7314b03e5d59527587275e362a75c128f8-sD64Th_fw658)" alt="python网络数据采集1" class="thumbnail-image"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/python/">python</a></p>
-                            <p class="item-title"><a href="/2016/10/01/python网络采集1/" class="title">python网络数据采集1</a></p>
-                            <p class="item-date"><time datetime="2016-10-01T07:17:31.137Z" itemprop="datePublished">2016-10-01</time></p>
-                        </div>
-                    </li>
-                
             </ul>
         </div>
     </div>
@@ -1048,7 +906,7 @@ while x &lt; 5:
     <div class="widget-wrap">
         <h3 class="widget-title">归档</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">1</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -1103,7 +961,7 @@ while x &lt; 5:
 <footer id="footer">
     <div class="outer">
         <div id="footer-info" class="inner">
-            &copy; 2017 laiwei<br>
+            &copy; 2018 laiwei<br>
             Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
             &nbsp&nbsp&nbsp&nbsp
             <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
